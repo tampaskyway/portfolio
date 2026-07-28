@@ -32,12 +32,15 @@ export function initModal() {
 
     // Закрытие по кнопке-крестику
     if (closeBtn) {
-        closeBtn.addEventListener('click', closeModal);
+        closeBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            closeModal();
+        });
     }
 
     // Закрытие при клике на пустую область вокруг картинки
     modal.addEventListener('click', (e) => {
-        if (e.target === modal) {
+        if (e.target === modal || e.target.classList.contains('modal-close')) {
             closeModal();
         }
     });
