@@ -329,7 +329,7 @@ nav .social-icons a:hover {
     font-size: 1.1rem;
     font-weight: 300;
     line-height: 1.6;
-    color: #e0e0e0; /* Приятный светло-серый цвет текста */
+    color: #a0a0a0; /* Приятный светло-серый цвет текста */
     text-align: center;
     max-width: 650px; /* Ограничиваем ширину, чтобы текст красиво разбивался */
     margin: 0 auto 40px auto; /* Центрируем блок и делаем отступ снизу до формы */
