@@ -1,11 +1,11 @@
-<!DOCTYPE html> 
+    <!DOCTYPE html> 
 <html lang="ru"> 
 <head> 
     <meta charset="UTF-8"> 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <title>Vladliena Abkadirova | Painting & Portfolio</title> 
-    <!-- Подключение иконок Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Подключение иконок Font Awesome --> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> 
     <style> 
         :root { 
             --bg-main: #fcfbfa; /* Мягкий жемчужно-белый */ 
@@ -48,17 +48,16 @@
             border-bottom: 1px solid var(--border-color); 
         } 
 
-        .logo img {
-            transition: transform 0.3s ease, filter 0.3s ease;
-            /* Инвертируем черный цвет в белый, если у шапки темный фон (опционально) */
+        .logo img { 
+            transition: transform 0.3s ease, filter 0.3s ease; 
             filter: brightness(1); 
-        }
+        } 
 
-        /* Плавный интерактив при наведении мыши */
-        .logo img:hover {
-            transform: scale(1.05); /* Подпись изящно увеличивается */
-            filter: opacity(0.8);    /* И мягко приглушается, как ссылки меню */
-        }
+        /* Плавный интерактив при наведении мыши */ 
+        .logo img:hover { 
+            transform: scale(1.05); /* Подпись изящно увеличивается */ 
+            filter: opacity(0.8); /* И мягко приглушается */ 
+        } 
 
         nav a { 
             color: var(--text-main); 
@@ -66,40 +65,43 @@
             margin-left: 30px; 
             font-weight: 500; 
             transition: 0.3s; 
+            border-bottom: 2px solid transparent; /* Заготовка под линию для плавной анимации */
+            padding-bottom: 4px;
         } 
 
         nav a:hover { 
             color: var(--accent-color); 
         } 
-        /* Блок соцсетей в меню */
-        .social-icons {
-            margin-left: 30px;
-            border-left: 1px solid var(--border-color); 
-            padding-left: 20px;
-            display: inline-flex;
-            gap: 20px; 
-            align-items: center;
-        }
 
-        /* Стилизация самих иконок с жестким сбросом параметров текста */
-        nav .social-icons a {
+        /* Перенесено выше соцсетей и оптимизировано для плавной анимации линии */
+        nav a.active { 
+            color: var(--accent-color); 
+            border-bottom-color: var(--accent-color); 
+        } 
+
+        /* Блок соцсетей в меню */ 
+        .social-icons { 
+            margin-left: 30px; 
+            border-left: 1px solid var(--border-color); 
+            padding-left: 20px; 
+            display: inline-flex; 
+            gap: 20px; 
+            align-items: center; 
+        } 
+
+        /* Стилизация самих иконок с жестким сбросом параметров текста */ 
+        nav .social-icons a { 
             margin-left: 0 !important; 
             font-size: 1.3rem !important; 
             color: var(--text-muted) !important; 
             border-bottom: none !important; 
-            padding-bottom: 0 !important;
-            display: inline-block !important;
-        }
+            padding-bottom: 0 !important; 
+            display: inline-block !important; 
+        } 
 
-        nav .social-icons a:hover {
+        nav .social-icons a:hover { 
             color: var(--accent-color) !important; 
             transform: translateY(-2px); 
-        }
-
-        nav a.active { 
-            color: var(--accent-color); 
-            border-bottom: 2px solid var(--accent-color); 
-            padding-bottom: 4px; 
         } 
 
         /* Главный экран */ 
@@ -118,31 +120,30 @@
         } 
 
         .hero h1 { 
-            /* Используем благородный системный шрифт Georgia */
-            font-family: Georgia, 'Times New Roman', serif;
+            /* Используем благородный системный шрифт Georgia */ 
+            font-family: Georgia, 'Times New Roman', serif; 
             font-size: 4.5rem; 
-            font-weight: 700;  
+            font-weight: 700; 
             margin-bottom: 20px; 
             line-height: 1.2; 
-    
             background: var(--accent-gradient); 
             -webkit-background-clip: text; 
             -webkit-text-fill-color: transparent; 
         } 
 
         .hero h1 span { 
-            font-style: italic; /* Ваше имя останется красивым курсивом */
+            font-style: italic; /* Ваше имя останется красивым курсивом */ 
         } 
 
         .hero p { 
-            /* Подзаголовок тоже переводим на системный шрифт в стиле курсива */
-            font-family: Georgia, 'Times New Roman', serif;
-            font-style: italic;
+            /* Подзаголовок тоже переводим на системный шрифт в стиле курсива */ 
+            font-family: Georgia, 'Times New Roman', serif; 
+            font-style: italic; 
             font-size: 1.5rem; 
             color: var(--text-muted); 
             max-width: 600px; 
             margin-bottom: 40px; 
-        }
+        } 
 
         .btn { 
             display: inline-block; 
@@ -196,7 +197,7 @@
             gap: 40px; 
         } 
 
-        /* ОБЪЕДИНЕННЫЙ КЛАСС КАРТОЧКИ: все стили внешнего вида + подготовка к анимации */
+        /* ОБЪЕДИНЕННЫЙ КЛАСС КАРТОЧКИ: все стили внешнего вида + подготовка к анимации */ 
         .art-card { 
             background: var(--card-bg); 
             border-radius: 16px; 
@@ -204,20 +205,22 @@
             border: 1px solid var(--border-color); 
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03); 
             cursor: pointer; 
-            
-            /* Начальное скрытое состояние для анимации наплыва */
+            /* Начальное скрытое состояние для анимации наплыва */ 
             opacity: 0; 
             transform: translateY(40px); 
-            transition: opacity 0.8s ease, transform 0.8s ease, box-shadow 0.4s ease; 
+            /* Добавлена плавность для свойства transform при ховере */
+            transition: opacity 0.8s ease, transform 0.4s ease, box-shadow 0.4s ease; 
         } 
 
-        /* Состояние, когда карточка становится видимой */
+        /* Состояние, когда карточка становится видимой */ 
         .art-card.reveal { 
             opacity: 1; 
             transform: translateY(0); 
-        }
+            /* После активации переключаем transition на быстрый отклик для ховера */
+            transition: opacity 0.8s ease, transform 0.4s ease, box-shadow 0.4s ease;
+        } 
 
-        .art-card:hover { 
+        .art-card.reveal:hover { 
             transform: translateY(-10px); 
             box-shadow: 0 20px 40px rgba(255, 0, 127, 0.1); 
         } 
@@ -236,7 +239,7 @@
             transition: 0.6s transform; 
         } 
 
-        .art-card:hover img { 
+        .art-card.reveal:hover img { 
             transform: scale(1.05); 
         } 
 
@@ -275,7 +278,8 @@
             background: #f5f5f5; 
             color: #888; 
             border: 1px solid #e0e0e0; 
-        }
+        } 
+
         
         /* О художнике */ 
         .about-container { 
