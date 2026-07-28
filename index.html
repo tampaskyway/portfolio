@@ -136,44 +136,52 @@
                 </div> 
             </div> 
         </section>
+</main> <!-- Закрываем тег main из первой части сайта -->
 
-        <!-- Раздел: Контакты --> 
-        <section id="contact" class="contact-section"> 
-            <h2>Contact me</h2> 
-            <div class="contact-container"> 
+    <!-- Раздел: Контакты -->
+    <section id="contact" class="contact-section">
+        <h2>Contact me</h2>
+        <div class="contact-container">
+            <!-- Контейнеры кастомных уведомлений -->
+            <div id="form-success" class="form-alert success" style="display: none;">
+                Thank you! Your message has been sent successfully.
+            </div>
+            <div id="form-error" class="form-alert error" style="display: none;">
+                Oops! There was a problem submitting your form.
+            </div>
+
+            <form id="contact-form" novalidate>
+                <!-- Защитное поле Formshield от спам-ботов -->
+                <input type="text" name="_gotcha" style="display:none !important" tabIndex="-1" autocomplete="off">
                 
-                <!-- Контейнеры кастомных уведомлений -->
-                <div id="form-success" class="form-alert success" style="display: none;">
-                    Thank you! Your message has been sent successfully.
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name" required placeholder="Name">
                 </div>
-                <div id="form-error" class="form-alert error" style="display: none;">
-                    Oops! There was a problem submitting your form.
+                <div class="form-group">
+                    <label for="email">Contacts (Email / Telegram)</label>
+                    <input type="text" id="email" name="contact" required placeholder="example@gmail.com or @username">
                 </div>
+                <div class="form-group">
+                    <label for="message">Your message</label>
+                    <!-- ИСПРАВЛЕНО: Убран лишний знак вопроса -->
+                    <textarea id="message" name="message" rows="5" required placeholder="Which painting are you interested in, or what is your collaboration proposal?"></textarea>
+                </div>
+                <button type="submit" class="btn">Send Message</button> <!-- Добавлена кнопка отправки, если её не было -->
+            </form>
+        </div>
+    </section>
 
-                <form id="contact-form" novalidate> 
-                    <!-- Защитное поле Formshield от спам-ботов -->
-                    <input type="text" name="_gotcha" style="display:none !important"> 
-                    <div class="form-group"> 
-                        <label for="name">Your Name</label> 
-                        <input type="text" id="name" name="name" required placeholder="Name"> 
-                    </div> 
-                    <div class="form-group"> 
-                        <label for="email">Contacts (Email / Telegram)</label> 
-                        <input type="text" id="email" name="contact" required placeholder="example@gmail.com or @username"> 
-                    </div> 
-                    <div class="form-group"> 
-                        <label for="message">Your message</label> 
-                        <textarea id="message" name="message" rows="5" required placeholder="Which painting are you interested in, or what is your collaboration proposal??"></textarea> 
-                    </div> 
-                     <!-- Полноэкранное модальное окно просмотра картин --> 
-    <div class="modal" id="artModal" aria-hidden="true" role="dialog"> 
-        <button class="modal-close" aria-label="Закрыть окно">&times;</button> 
-        <img class="modal-content" id="modalImg" alt="Увеличенный просмотр картины"> 
-    </div> 
+    <!-- ИСПРАВЛЕНО: Модальное окно вынесено ИЗ формы наружу -->
+    <div class="modal" id="artModal" aria-hidden="true" role="dialog">
+        <button class="modal-close" aria-label="Закрыть окно">&times;</button>
+        <img class="modal-content" id="modalImg" alt="Увеличенный просмотр картины">
+    </div>
 
-    <!-- ВОТ СЮДА МЫ ВСТАВИЛИ ПРЯМОЕ ПОДКЛЮЧЕНИЕ ФАЙЛОВ МОДАЛКИ И ФОРМЫ -->
+    <!-- Подключение внешних файлов скриптов -->
     <script src="js/modal.js"></script>
     <script src="js/contact.js"></script>
+    
     <script>
         // Инициализируем модалку и форму сразу после загрузки DOM
         document.addEventListener('DOMContentLoaded', () => {
@@ -182,12 +190,14 @@
         });
     </script>
 
-    <!-- СЛЕДОМ ИДЕТ ВАШ ВТОРОЙ СКРИПТ АНИМАЦИИ И СКРОЛЛА (СТРАХОВКА) -->
+    <!-- Оптимизированный скрипт анимации и скролла -->
     <script>
         function forceRevealElements() {
-            let windowHeight = window.innerHeight;
+            const windowHeight = window.innerHeight;
+            const headerHeight = document.querySelector('.site-header')?.clientHeight || 0;
+            const scrollDistance = window.scrollY;
 
-            // Каскадное появление картин строго по цепочке друг за другом
+            // 1. Каскадное появление картин строго по цепочке друг за другом
             document.querySelectorAll('.art-card').forEach((card, index) => {
                 if (card.getBoundingClientRect().top < windowHeight - 50) {
                     setTimeout(() => {
@@ -196,7 +206,7 @@
                 }
             });
 
-            // Появление блока биографии
+            // 2. Появление блока биографии
             const aboutContainer = document.querySelector('.about-container');
             if (aboutContainer && !aboutContainer.classList.contains('reveal') && aboutContainer.getBoundingClientRect().top < windowHeight - 50) {
                 setTimeout(() => {
@@ -204,24 +214,37 @@
                 }, 200);
             }
 
-            // Автоподсветка активных пунктов меню
-            let scrollDistance = window.scrollY;
-            document.querySelectorAll('.hero, section').forEach((el, i) => {
-                if (el.offsetTop - document.querySelector('.site-header').clientHeight <= scrollDistance + 50) {
-                    document.querySelectorAll('.nav-menu .nav-link').forEach((link) => link.classList.remove('active'));
-                    if(document.querySelectorAll('.nav-menu .nav-link')[i]) {
-                        document.querySelectorAll('.nav-menu .nav-link')[i].classList.add('active');
-                    }
+            // 3. ИСПРАВЛЕНО: Надежная автоподсветка активных пунктов меню по ID секций
+            let currentSectionId = '';
+            document.querySelectorAll('.hero, section').forEach((el) => {
+                if (el.offsetTop - headerHeight <= scrollDistance + 60) {
+                    currentSectionId = el.getAttribute('id') || 'home'; 
+                }
+            });
+
+            document.querySelectorAll('.nav-menu .nav-link').forEach((link) => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${currentSectionId}`) {
+                    link.classList.add('active');
                 }
             });
         }
 
-        // Привязываем запуск напрямую к событиям окна
-        window.addEventListener('scroll', forceRevealElements);
+        // Оптимизация скролла через Throttling (чтобы функция не вызывалась слишком часто)
+        let isScrolling = false;
+        window.addEventListener('scroll', () => {
+            if (!isScrolling) {
+                window.requestAnimationFrame(() => {
+                    forceRevealElements();
+                    isScrolling = false;
+                });
+                isScrolling = true;
+            }
+        });
+
         window.addEventListener('DOMContentLoaded', forceRevealElements);
-        
-        // Запуск-страховка на случай мгновенного кэширования серверами GitHub Pages
+        // Запуск-страховка для GitHub Pages
         setTimeout(forceRevealElements, 500);
     </script>
-</body> 
+</body>
 </html>
