@@ -253,7 +253,18 @@
             border-radius: 24px; 
             border: 1px solid var(--border-color); 
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.02); 
+
+            /* НАЧАЛЬНОЕ СОСТОЯНИЕ: блок скрыт и смещен вниз */
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 1s ease, transform 1s ease;
         } 
+
+        /* СОСТОЯНИЕ ПОСЛЕ СКРОЛЛА: блок плавно проявляется */
+        .about-container.reveal {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
         .about-text { 
             flex: 1; 
@@ -578,6 +589,12 @@
                     }, index * 100); 
                 } 
             }); 
+
+            // Плавное появление блока «About me»
+            const aboutContainer = document.querySelector('.about-container');
+            if (aboutContainer && aboutContainer.getBoundingClientRect().top < windowHeight - 50) {
+                aboutContainer.classList.add('reveal');
+            }
         } 
 
         // Привязка событий скролла
