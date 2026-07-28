@@ -71,6 +71,30 @@
         nav a:hover { 
             color: var(--accent-color); 
         } 
+        /* Блок соцсетей в меню */
+        .social-icons {
+            margin-left: 30px;
+            border-left: 1px solid var(--border-color); /* Элегантная разделительная черта */
+            padding-left: 20px;
+            display: inline-flex;
+            gap: 20px; /* Расстояние между иконками */
+        }
+
+        /* Стилизация самих иконок */
+        .social-icons a {
+            margin-left: 0 !important; /* Сбрасываем стандартный отступ обычных ссылок */
+            font-size: 1.15rem; /* Аккуратный, утонченный размер */
+            color: var(--text-muted) !important; /* В обычном состоянии они мягкого серого цвета */
+            border: none !important; /* Убираем подчеркивание от активных пунктов */
+            padding-bottom: 0 !important;
+            transition: 0.3s color ease, 0.3s transform ease;
+        }
+
+        /* Эффект при наведении на соцсеть */
+        .social-icons a:hover {
+            color: var(--accent-color) !important; /* Окрашиваются в розовый */
+            transform: translateY(-2px); /* Слегка приподнимаются */
+        }
 
         nav a.active { 
             color: var(--accent-color); 
