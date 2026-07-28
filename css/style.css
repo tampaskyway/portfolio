@@ -158,7 +158,7 @@ nav .social-icons a:hover {
     padding: 0 20px;
     
     /* ВОЗВРАЩАЕМ КАРТИНКУ: Укажите здесь правильный путь к вашему фону */
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/hero-bg.jpg') no-repeat center center / cover;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/wall.jpg') no-repeat center center / cover;
     
     color: #ffffff;
 }
