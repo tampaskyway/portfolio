@@ -74,26 +74,26 @@
         /* Блок соцсетей в меню */
         .social-icons {
             margin-left: 30px;
-            border-left: 1px solid var(--border-color); /* Элегантная разделительная черта */
+            border-left: 1px solid var(--border-color); 
             padding-left: 20px;
             display: inline-flex;
-            gap: 20px; /* Расстояние между иконками */
+            gap: 20px; 
+            align-items: center;
         }
 
-        /* Стилизация самих иконок */
-        .social-icons a {
-            margin-left: 0 !important; /* Сбрасываем стандартный отступ обычных ссылок */
-            font-size: 1.15rem; /* Аккуратный, утонченный размер */
-            color: var(--text-muted) !important; /* В обычном состоянии они мягкого серого цвета */
-            border: none !important; /* Убираем подчеркивание от активных пунктов */
+        /* Стилизация самих иконок с жестким сбросом параметров текста */
+        nav .social-icons a {
+            margin-left: 0 !important; 
+            font-size: 1.3rem !important; 
+            color: var(--text-muted) !important; 
+            border-bottom: none !important; 
             padding-bottom: 0 !important;
-            transition: 0.3s color ease, 0.3s transform ease;
+            display: inline-block !important;
         }
 
-        /* Эффект при наведении на соцсеть */
-        .social-icons a:hover {
-            color: var(--accent-color) !important; /* Окрашиваются в розовый */
-            transform: translateY(-2px); /* Слегка приподнимаются */
+        nav .social-icons a:hover {
+            color: var(--accent-color) !important; 
+            transform: translateY(-2px); 
         }
 
         nav a.active { 
@@ -444,10 +444,10 @@
             <a href="#contact">Contact</a> 
             
             <!-- НОВЫЙ БЛОК: Иконки социальных сетей -->
-            <span class="social-icons">
-            <a href="art.vladilena" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="vladkamsk" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="artistvladilena" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            <span class="social-icons"> 
+            <a href="https://instagram.com" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a> 
+            <a href="https://facebook.com" target="_blank" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a> 
+            <a href="https://youtube.com" target="_blank" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a> 
         </span>
         </nav> 
     </header> 
