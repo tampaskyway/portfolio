@@ -559,12 +559,12 @@
                 } 
             }); 
 
-            // Плавное появление карточек картин
+            // Плавное появление карточек картин строго по очереди
             document.querySelectorAll('.art-card').forEach((card, index) => { 
                 if (card.getBoundingClientRect().top < windowHeight - 50) { 
                     setTimeout(() => { 
                         card.classList.add('reveal'); 
-                    }, (index % 3) * 150); 
+                    }, index * 100); // <-- ТЕПЕРЬ ТУТ ПРОСТАЯ ОЧЕРЕДЬ: каждая следующая картина ждет ровно 100мс
                 } 
             }); 
         } 
