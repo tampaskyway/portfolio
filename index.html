@@ -26,10 +26,10 @@
 
         /* Сработает ТОЛЬКО на этой странице благодаря классу 'home' */
         body.home { 
-            background-image: linear-gradient(rgba(252, 251, 250, 0.4), rgba(252, 251, 250, 0.4)), url('images/wall.jpg'); 
-            background-repeat: no-repeat; 
-            background-size: cover; 
-            background-position: center; 
+            background-color: var(--bg-main); 
+            color: var(--text-main); 
+            min-height: 100vh; 
+            overflow-x: hidden; 
         } 
 
         body { 
@@ -79,7 +79,11 @@
         /* Главный экран */ 
         .hero { 
             height: 100vh; 
-            background: transparent; /* Сделано прозрачным, чтобы видеть wall.jpg */
+            background-image: linear-gradient(rgba(252, 251, 250, 0.4), rgba(252, 251, 250, 0.4)), url('images/wall.jpg'); 
+            background-repeat: no-repeat; 
+            background-size: cover; 
+            background-position: center; 
+    
             display: flex; 
             flex-direction: column; 
             justify-content: center; 
