@@ -48,14 +48,16 @@
             border-bottom: 1px solid var(--border-color); 
         } 
 
-        .logo svg {
+        .logo img {
             transition: transform 0.3s ease, filter 0.3s ease;
+            /* Инвертируем черный цвет в белый, если у шапки темный фон (опционально) */
+            filter: brightness(1); 
         }
 
-        /* Эффект изящного увеличения при наведении мыши */
-        .logo svg:hover {
-            transform: scale(1.05);
-            filter: brightness(1.15); /* Подпись будет слегка подсвечиваться */
+        /* Плавный интерактив при наведении мыши */
+        .logo img:hover {
+            transform: scale(1.05); /* Подпись изящно увеличивается */
+            filter: opacity(0.8);    /* И мягко приглушается, как ссылки меню */
         }
 
         nav a { 
