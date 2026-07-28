@@ -164,6 +164,7 @@ nav .social-icons a:hover {
 .hero h1 { 
     font-size: 6rem; 
     font-weight: 900; 
+    color: var(--text-muted);
     margin-bottom: 20px; 
     line-height: 1.1; 
     background: var(--accent-gradient); 
