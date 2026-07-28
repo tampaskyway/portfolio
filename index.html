@@ -92,23 +92,24 @@
         } 
 
         .hero h1 { 
-            /* Переключаем шрифт на изящный Playfair Display */
+            /* Используем изящный шрифт */
             font-family: 'Playfair Display', Georgia, serif;
-            font-size: 4.5rem; /* Немного увеличили размер для элегантности */
-            font-weight: 400;  /* Сделали буквы более тонкими и утонченными */
+            font-size: 4.5rem; 
+            font-weight: 700;  /* Делаем шрифт плотнее, чтобы градиент читался идеально */
             margin-bottom: 20px; 
             line-height: 1.2; 
-            letter-spacing: 0px; /* Убрали жесткое сжатие букв */
-        } 
-
-        ..hero h1 span { 
+    
+            /* ВОЗВРАЩАЕМ ГРАДИЕНТ НА ВЕСЬ ЗАГОЛОВОК */
             background: var(--accent-gradient); 
             -webkit-background-clip: text; 
             -webkit-text-fill-color: transparent; 
-            font-style: italic; /* Сделали само имя изящным курсивом */
-            font-weight: 700;   /* Имя автора делаем чуть плотнее */
         } 
 
+        .hero h1 span { 
+            /* Для самого имени добавляем элегантный курсивный наклон */
+            font-style: italic; 
+            /* Свойства градиента здесь дублировать не нужно, они наследуются сверху */
+        } 
         .hero p { 
             /* Для подзаголовка тоже используем новый шрифт в стиле легкого литературного курсива */
             font-family: 'Playfair Display', Georgia, serif;
