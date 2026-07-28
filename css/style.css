@@ -167,7 +167,7 @@ nav .social-icons a:hover {
     color: var(--text-muted);
     margin-bottom: 20px; 
     line-height: 1.1; 
-    
+    background: var(--accent-gradient); 
     -webkit-background-clip: text; 
     -webkit-text-fill-color: transparent; 
 } 
