@@ -10,7 +10,7 @@ export function initScrollEffects() {
     // 1. ПОДСВЕТКА АКТИВНЫХ ПУНКТОВ МЕНЮ
     const navObserverOptions = {
         root: null,
-        rootMargin: '-20% 0px -60% 0px', // Окно фиксации центра экрана
+        rootMargin: '-10% 0px -50% 0px', 
         threshold: 0
     };
 
@@ -28,13 +28,15 @@ export function initScrollEffects() {
         });
     }, navObserverOptions);
 
-    sections.forEach(section => navObserver.observe(section));
+    sections.forEach(section => {
+        if (section) navObserver.observe(section);
+    });
 
     // 2. АНИМАЦИЯ ПЛАВНОГО ПОЯВЛЕНИЯ КАРТОЧЕК КАРТИН
     const cardsObserverOptions = {
         root: null,
-        rootMargin: '0px 0px -50px 0px',
-        threshold: 0.1
+        rootMargin: '0px 0px 100px 0px', // Увеличили зону: карточки начнут проявляться чуть заранее
+        threshold: 0.05
     };
 
     const cardsObserver = new IntersectionObserver((entries, observer) => {
@@ -42,17 +44,18 @@ export function initScrollEffects() {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 const card = entry.target;
-                // Эффект красивой каскадной очереди строго друг за другом
                 setTimeout(() => {
                     card.classList.add('reveal');
                 }, delayCount * 100);
                 delayCount++;
-                observer.unobserve(card); // Отключаем слежку после появления
+                observer.unobserve(card); 
             }
         });
     }, cardsObserverOptions);
 
-    artCards.forEach(card => cardsObserver.observe(card));
+    artCards.forEach(card => {
+        if (card) cardsObserver.observe(card);
+    });
 
     // 3. АНИМАЦИЯ ПОЯВЛЕНИЯ БЛОКА «ABOUT ME»
     if (aboutContainer) {
@@ -61,11 +64,15 @@ export function initScrollEffects() {
                 if (entry.isIntersecting) {
                     setTimeout(() => {
                         aboutContainer.classList.add('reveal');
-                    }, 200);
+                    }, 150);
                     observer.unobserve(entry.target);
                 }
             });
-        }, { threshold: 0.1 });
+        }, { 
+            root: null,
+            rootMargin: '0px 0px 100px 0px',
+            threshold: 0.05 
+        });
 
         aboutObserver.observe(aboutContainer);
     }
