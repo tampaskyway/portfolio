@@ -590,10 +590,13 @@
                 } 
             }); 
 
-            // Плавное появление блока «About me»
+            // Плавное появление блока «About me» с аккуратной задержкой
             const aboutContainer = document.querySelector('.about-container');
-            if (aboutContainer && aboutContainer.getBoundingClientRect().top < windowHeight - 50) {
-                aboutContainer.classList.add('reveal');
+            // Проверяем, вошел ли блок в зону видимости И что на нем еще нет класса reveal
+            if (aboutContainer && !aboutContainer.classList.contains('reveal') && aboutContainer.getBoundingClientRect().top < windowHeight - 50) {
+                setTimeout(() => {
+                    aboutContainer.classList.add('reveal');
+                }, 200); // 200мс задержки для идеального каскадного эффекта после галереи
             }
         } 
 
