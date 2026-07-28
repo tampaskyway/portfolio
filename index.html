@@ -525,17 +525,23 @@
         }); 
     </script> 
     window.addEventListener('scroll', () => {
-    let scrollDistance = window.scrollY;
-    document.querySelectorAll('section, .hero').forEach((el, i) => {
-        if (el.offsetTop - document.querySelector('header').clientHeight <= scrollDistance + 10) {
-            document.querySelectorAll('nav a').forEach((el) => {
-                if (el.classList.contains('active')) {
-                    el.classList.remove('active');
+        let scrollDistance = window.scrollY;
+        
+        // Перебираем главный экран и все секции сайта
+        document.querySelectorAll('.hero, section').forEach((el, i) => {
+            // Вычисляем, доскроллил ли пользователь до текущей секции с учетом высоты шапки
+            if (el.offsetTop - document.querySelector('header').clientHeight <= scrollDistance + 50) {
+                // Снимаем класс active со всех ссылок в меню
+                document.querySelectorAll('nav a').forEach((link) => {
+                    link.classList.remove('active');
+                });
+                // Добавляем класс active только той ссылке, которая соответствует текущей секции
+                if(document.querySelectorAll('nav a')[i]) {
+                    document.querySelectorAll('nav a')[i].classList.add('active');
                 }
-            });
-            document.querySelectorAll('nav a')[i].classList.add('active');
-        }
+            }
+        });
     });
-});
+</script>
 </body> 
 </html>
