@@ -15,11 +15,7 @@
             --card-bg: #ffffff; 
             --border-color: rgba(0, 0, 0, 0.06); 
         } 
-        nav a.active {
-            color: var(--accent-color);
-            border-bottom: 2px solid var(--accent-color);
-            padding-bottom: 4px;
-        }
+
         * { 
             margin: 0; 
             padding: 0; 
@@ -79,7 +75,11 @@
         nav a:hover { 
             color: var(--accent-color); 
         } 
-
+        nav a.active {
+            color: var(--accent-color);
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 4px;
+        }
         /* Главный экран */ 
         .hero { 
             height: 100vh; 
