@@ -1,706 +1,167 @@
-    <!DOCTYPE html> 
+<!DOCTYPE html> 
 <html lang="ru"> 
 <head> 
     <meta charset="UTF-8"> 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <title>Vladliena Abkadirova | Painting & Portfolio</title> 
     <!-- Подключение иконок Font Awesome --> 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> 
-    <style> 
-        :root { 
-            --bg-main: #fcfbfa; /* Мягкий жемчужно-белый */ 
-            --bg-accent: linear-gradient(135deg, #fff5f5 0%, #f0f3ff 100%); 
-            --accent-gradient: linear-gradient(45deg, #ff007f, #ff6b00); /* Яркий арт-акцент */ 
-            --accent-color: #ff007f; 
-            --text-main: #1a1a1a; 
-            --text-muted: #555555; 
-            --card-bg: #ffffff; 
-            --border-color: rgba(0, 0, 0, 0.06); 
-        } 
-
-        * { 
-            margin: 0; 
-            padding: 0; 
-            box-sizing: border-box; 
-            font-family: 'Segoe UI', Roboto, sans-serif; 
-            scroll-behavior: smooth; 
-        } 
-
-        body { 
-            background-color: var(--bg-main); 
-            color: var(--text-main); 
-            min-height: 100vh; 
-            overflow-x: hidden; 
-        } 
-
-        /* Шапка сайта */ 
-        header { 
-            position: fixed; 
-            top: 0; 
-            width: 100%; 
-            padding: 20px 5%; 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            background: rgba(252, 251, 250, 0.9); 
-            backdrop-filter: blur(10px); 
-            z-index: 1000; 
-            border-bottom: 1px solid var(--border-color); 
-        } 
-
-        .logo img { 
-            transition: transform 0.3s ease, filter 0.3s ease; 
-            filter: brightness(1); 
-        } 
-
-        /* Плавный интерактив при наведении мыши */ 
-        .logo img:hover { 
-            transform: scale(1.05); /* Подпись изящно увеличивается */ 
-            filter: opacity(0.8); /* И мягко приглушается */ 
-        } 
-
-        nav a { 
-            color: var(--text-main); 
-            text-decoration: none; 
-            margin-left: 30px; 
-            font-weight: 500; 
-            transition: 0.3s; 
-            border-bottom: 2px solid transparent; /* Заготовка под линию для плавной анимации */
-            padding-bottom: 4px;
-        } 
-
-        nav a:hover { 
-            color: var(--accent-color); 
-        } 
-
-        /* Перенесено выше соцсетей и оптимизировано для плавной анимации линии */
-        nav a.active { 
-            color: var(--accent-color); 
-            border-bottom-color: var(--accent-color); 
-        } 
-
-        /* Блок соцсетей в меню */ 
-        .social-icons { 
-            margin-left: 30px; 
-            border-left: 1px solid var(--border-color); 
-            padding-left: 20px; 
-            display: inline-flex; 
-            gap: 20px; 
-            align-items: center; 
-        } 
-
-        /* Стилизация самих иконок с жестким сбросом параметров текста */ 
-        nav .social-icons a { 
-            margin-left: 0 !important; 
-            font-size: 1.3rem !important; 
-            color: var(--text-muted) !important; 
-            border-bottom: none !important; 
-            padding-bottom: 0 !important; 
-            display: inline-block !important; 
-        } 
-
-        nav .social-icons a:hover { 
-            color: var(--accent-color) !important; 
-            transform: translateY(-2px); 
-        } 
-
-        /* Главный экран */ 
-        .hero { 
-            height: 100vh; 
-            background-image: linear-gradient(rgba(252, 251, 250, 0.4), rgba(252, 251, 250, 0.4)), url('images/wall.jpg'); 
-            background-repeat: no-repeat; 
-            background-size: cover; 
-            background-position: center; 
-            display: flex; 
-            flex-direction: column; 
-            justify-content: center; 
-            align-items: center; 
-            text-align: center; 
-            padding: 0 20px; 
-        } 
-
-        .hero h1 { 
-            /* Используем благородный системный шрифт Georgia */ 
-            font-family: Georgia, 'Times New Roman', serif; 
-            font-size: 4.5rem; 
-            font-weight: 700; 
-            margin-bottom: 20px; 
-            line-height: 1.2; 
-            background: var(--accent-gradient); 
-            -webkit-background-clip: text; 
-            -webkit-text-fill-color: transparent; 
-        } 
-
-        .hero h1 span { 
-            font-style: italic; /* Ваше имя останется красивым курсивом */ 
-        } 
-
-        .hero p { 
-            /* Подзаголовок тоже переводим на системный шрифт в стиле курсива */ 
-            font-family: Georgia, 'Times New Roman', serif; 
-            font-style: italic; 
-            font-size: 1.5rem; 
-            color: var(--text-muted); 
-            max-width: 600px; 
-            margin-bottom: 40px; 
-        } 
-
-        .btn { 
-            display: inline-block; 
-            padding: 16px 40px; 
-            background: var(--accent-gradient); 
-            background-size: 200% auto; 
-            background-position: left center; 
-            color: white; 
-            text-decoration: none; 
-            font-weight: 700; 
-            border-radius: 50px; 
-            text-transform: uppercase; 
-            letter-spacing: 1px; 
-            box-shadow: 0 10px 25px rgba(255, 0, 127, 0.2); 
-            transition: background-position 0.4s ease, transform 0.3s ease, box-shadow 0.3s ease; 
-        } 
-
-        .btn:hover { 
-            transform: translateY(-3px); 
-            background-position: right center; 
-            box-shadow: 0 15px 30px rgba(255, 0, 127, 0.35); 
-        } 
-
-        /* Общие стили секций */ 
-        section { 
-            padding: 120px 8%; 
-        } 
-
-        section h2 { 
-            font-size: 2.5rem; 
-            text-align: center; 
-            margin-bottom: 60px; 
-            text-transform: uppercase; 
-            letter-spacing: 1px; 
-        } 
-
-        section h2::after { 
-            content: ''; 
-            display: block; 
-            width: 60px; 
-            height: 3px; 
-            background: var(--accent-gradient); 
-            margin: 15px auto 0; 
-            border-radius: 2px; 
-        } 
-
-        /* Галерея */ 
-        .gallery-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); 
-            gap: 40px; 
-        } 
-
-        /* ОБЪЕДИНЕННЫЙ КЛАСС КАРТОЧКИ: все стили внешнего вида + подготовка к анимации */ 
-        .art-card { 
-            background: var(--card-bg); 
-            border-radius: 16px; 
-            overflow: hidden; 
-            border: 1px solid var(--border-color); 
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03); 
-            cursor: pointer; 
-            /* Начальное скрытое состояние для анимации наплыва */ 
-            opacity: 0; 
-            transform: translateY(40px); 
-            /* Добавлена плавность для свойства transform при ховере */
-            transition: opacity 0.8s ease, transform 0.4s ease, box-shadow 0.4s ease; 
-        } 
-
-        /* Состояние, когда карточка становится видимой */ 
-        .art-card.reveal { 
-            opacity: 1; 
-            transform: translateY(0); 
-            /* После активации переключаем transition на быстрый отклик для ховера */
-            transition: opacity 0.8s ease, transform 0.4s ease, box-shadow 0.4s ease;
-        } 
-
-        .art-card.reveal:hover { 
-            transform: translateY(-10px); 
-            box-shadow: 0 20px 40px rgba(255, 0, 127, 0.1); 
-        } 
-
-        .art-img-wrapper { 
-            width: 100%; 
-            height: 380px; 
-            overflow: hidden; 
-            background: #f0f0f0; 
-        } 
-
-        .art-card img { 
-            width: 100%; 
-            height: 100%; 
-            object-fit: cover; 
-            transition: 0.6s transform; 
-        } 
-
-        .art-card.reveal:hover img { 
-            transform: scale(1.05); 
-        } 
-
-        .art-info { 
-            padding: 25px; 
-        } 
-
-        .art-title { 
-            font-size: 1.3rem; 
-            margin-bottom: 8px; 
-            font-weight: 700; 
-        } 
-
-        .art-meta { 
-            font-size: 0.95rem; 
-            color: var(--text-muted); 
-            margin-bottom: 15px; 
-        } 
-
-        .art-status { 
-            display: inline-block; 
-            padding: 6px 14px; 
-            border-radius: 20px; 
-            font-size: 0.8rem; 
-            font-weight: 600; 
-            text-transform: uppercase; 
-        } 
-
-        .status-available { 
-            background: rgba(255, 0, 127, 0.06); 
-            color: var(--accent-color); 
-            border: 1px solid rgba(255, 0, 127, 0.15); 
-        } 
-
-        .status-sold { 
-            background: #f5f5f5; 
-            color: #888; 
-            border: 1px solid #e0e0e0; 
-        } 
-
-        
-        /* О художнике */ 
-        .about-container { 
-            display: flex; 
-            align-items: center; 
-            gap: 60px; 
-            background: var(--card-bg); 
-            padding: 60px; 
-            border-radius: 24px; 
-            border: 1px solid var(--border-color); 
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.02); 
-
-            /* НАЧАЛЬНОЕ СОСТОЯНИЕ: блок скрыт и смещен вниз */
-            opacity: 0;
-            transform: translateY(50px);
-            transition: opacity 1s ease, transform 1s ease;
-        } 
-
-        /* СОСТОЯНИЕ ПОСЛЕ СКРОЛЛА: блок плавно проявляется */
-        .about-container.reveal {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .about-text { 
-            flex: 1; 
-        } 
-
-        .about-text p { 
-            font-size: 1.15rem; 
-            line-height: 1.8; 
-            color: var(--text-muted); 
-            margin-bottom: 20px; 
-        } 
-
-        .about-text p:last-child { 
-            margin-bottom: 0; 
-        } 
-
-        /* Контакты */ 
-        .contact-container { 
-            max-width: 600px; 
-            margin: 0 auto; 
-            background: var(--card-bg); 
-            padding: 50px; 
-            border-radius: 24px; 
-            border: 1px solid var(--border-color); 
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.02); 
-        } 
-
-        .form-group { 
-            margin-bottom: 25px; 
-        } 
-
-        .form-group label { 
-            display: block; 
-            margin-bottom: 8px; 
-            font-weight: 600; 
-            font-size: 0.85rem; 
-            text-transform: uppercase; 
-            letter-spacing: 0.5px; 
-            color: var(--text-main); 
-        } 
-
-        .form-group input, .form-group textarea { 
-            width: 100%; 
-            padding: 16px; 
-            background: #f9f8f7; 
-            border: 1px solid #e2dedb; 
-            border-radius: 10px; 
-            color: var(--text-main); 
-            font-size: 1rem; 
-            transition: 0.3s; 
-        } 
-
-        .form-group input:focus, .form-group textarea:focus { 
-            outline: none; 
-            border-color: var(--accent-color); 
-            background: #ffffff; 
-            box-shadow: 0 0 10px rgba(255, 0, 127, 0.1); 
-        } 
-
-        .contact-container .btn { 
-            width: 100%; 
-            border: none; 
-            cursor: pointer; 
-        } 
-
-        /* Поп-ап окно с эффектом матового стекла */ 
-        .modal { 
-            display: none; 
-            position: fixed; 
-            top: 0; 
-            left: 0; 
-            width: 100%; 
-            height: 100%; 
-            /* Делаем белый фон очень прозрачным (0.3 вместо 0.96) */
-            background: rgba(255, 255, 255, 0.3); 
-            z-index: 2000; 
-            justify-content: center; 
-            align-items: center; 
-            padding: 20px; 
-    
-            /* Эффект глубокого размытия заднего плана */
-            backdrop-filter: blur(15px); 
-            -webkit-backdrop-filter: blur(15px); /* Поддержка для браузеров Safari и iPhone */
-    
-            /* Плавное проявление (опционально, для красоты) */
-            animation: fadeInModal 0.3s ease-out;
-        } 
-
-        /* Небольшая плавная анимация появления окна */
-            @keyframes fadeInModal {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        .modal-content { 
-            max-width: 90%; 
-            max-height: 85vh; 
-            border-radius: 12px; /* Чуть более мягкие аккуратные углы */
-            /* Красивая глубокая тень, как у картины на выставке */
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2); 
-        } 
-
-        .modal-close { 
-            position: absolute; 
-            top: 30px; 
-            right: 40px; 
-            font-size: 40px; 
-            color: var(--text-main); 
-            cursor: pointer; 
-            transition: 0.3s; 
-        } 
-
-        .modal-close:hover { 
-            color: var(--accent-color); 
-        } 
-
-        /* Мобильная адаптивность */ 
-        @media (max-width: 768px) { 
-            .hero h1 { 
-                font-size: 2.8rem; 
-            } 
-            .about-container { 
-                flex-direction: column; 
-                padding: 35px; 
-            } 
-            nav { 
-                display: none; 
-            } 
-        } 
-    </style> 
+    <link rel="stylesheet" href="https://cloudflare.com"> 
+    <!-- Единый файл стилей проекта -->
+    <link rel="stylesheet" href="css/style.css">
 </head> 
-<body class="home">
+<body> 
 
-    <!-- Шапка сайта -->
-    <header> 
-        <div class="logo">
-            <a href="#home">
-                <!-- Указываем путь к новому градиентному логотипу-подписи -->
-                <img src="images/logo-gradient.png" alt="Vladilena Art" style="height: 45px; width: auto; display: block;">
-            </a>
-        </div>
-        <nav> 
-            <a href="#home">Home</a> 
-            <a href="#gallery">Gallery</a> 
-            <a href="#about">About</a> 
-            <a href="#contact">Contact</a> 
+    <!-- Шапка сайта --> 
+    <header class="site-header"> 
+        <div class="logo"> 
+            <a href="#home" aria-label="На главную"> 
+                <img src="images/logo-gradient.png" alt="Vladliena Art Logo"> 
+            </a> 
+        </div> 
+        <nav class="nav-menu" aria-label="Основная навигация"> 
+            <a href="#home" class="nav-link">Home</a> 
+            <a href="#gallery" class="nav-link">Gallery</a> 
+            <a href="#about" class="nav-link">About</a> 
+            <a href="#contact" class="nav-link">Contact</a> 
             
-            <!-- НОВЫЙ БЛОК: Иконки социальных сетей -->
             <span class="social-icons"> 
-            <a href="https://instagram.com/art.vladilena/" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a> 
-            <a href="https://facebook.com/vladkamsk/" target="_blank" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a> 
-            <a href="https://youtube.com/@artistvladilena" target="_blank" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a> 
-        </span>
+                <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a> 
+                <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a> 
+                <a href="https://youtube.com" target="_blank" rel="noopener" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a> 
+            </span> 
         </nav> 
     </header> 
 
-    <!-- Главный экран --> 
-    <div class="hero" id="home"> 
-        <h1>Painting <br><span>Vladliena Abkadirova</span></h1> 
-        <p>Vivid visual subjects, color expression and textured canvases of a contemporary artist.</p> 
-        <a href="#gallery" class="btn">Explore the gallery</a> 
-    </div> 
+    <!-- Главный смысловой блок сайта -->
+    <main>
+        <!-- Главный экран --> 
+        <section class="hero" id="home"> 
+            <h1>Painting <br><span>Vladliena Abkadirova</span></h1> 
+            <p>Vivid visual subjects, color expression and textured canvases of a contemporary artist.</p> 
+            <a href="#gallery" class="btn">Explore the gallery</a> 
+        </section> 
 
-    <!-- Раздел: Галерея картинок --> 
-    <section id="gallery"> 
-        <h2>Gallery</h2> 
-        <div class="gallery-grid"> 
-            <!-- Картина 1 --> 
-            <div class="art-card" onclick="openModal('images/art1.jpeg')"> 
-                <div class="art-img-wrapper"> 
-                    <img src="images/art1.jpeg" alt="Painting name 1"> 
-                </div> 
-                <div class="art-info"> 
-                    <div class="art-title">Old tree in Sunset</div> 
-                    <div class="art-meta">Canvas, oil • 36x48" • 2026.</div> 
-                    <span class="art-status status-available">$3000</span> 
+        <!-- Раздел: Галерея картинок --> 
+        <section id="gallery" class="gallery-section"> 
+            <h2>Gallery</h2> 
+            <div class="gallery-grid"> 
+                <!-- Картина 1 -->
+                <article class="art-card" data-src="images/art1.jpeg"> 
+                    <div class="art-img-wrapper"> 
+                        <img src="images/art1.jpeg" alt="Old tree in Sunset painting" loading="lazy"> 
+                    </div> 
+                    <div class="art-info"> 
+                        <h3 class="art-title">Old tree in Sunset</h3> 
+                        <p class="art-meta">Canvas, oil • 36x48" • 2026</p> 
+                        <span class="art-status status-available">$3000</span> 
+                    </div> 
+                </article> 
+
+                <!-- Картина 2 -->
+                <article class="art-card" data-src="images/art2.jpeg"> 
+                    <div class="art-img-wrapper"> 
+                        <img src="images/art2.jpeg" alt="Surfer painting" loading="lazy"> 
+                    </div> 
+                    <div class="art-info"> 
+                        <h3 class="art-title">Surfer</h3> 
+                        <p class="art-meta">Canvas, oil • 24x36" • 2025</p> 
+                        <span class="art-status status-available">$2500</span> 
+                    </div> 
+                </article> 
+
+                <!-- Картина 3 -->
+                <article class="art-card" data-src="images/art3.jpeg"> 
+                    <div class="art-img-wrapper"> 
+                        <img src="images/art3.jpeg" alt="Beach painting" loading="lazy"> 
+                    </div> 
+                    <div class="art-info"> 
+                        <h3 class="art-title">Beach</h3> 
+                        <p class="art-meta">Canvas, oil • 24x36" • 2025</p> 
+                        <span class="art-status status-available">$2500</span> 
+                    </div> 
+                </article> 
+
+                <!-- Картина 4 -->
+                <article class="art-card" data-src="images/art4.jpeg"> 
+                    <div class="art-img-wrapper"> 
+                        <img src="images/art4.jpeg" alt="Apples painting" loading="lazy"> 
+                    </div> 
+                    <div class="art-info"> 
+                        <h3 class="art-title">Apples</h3> 
+                        <p class="art-meta">Canvas, oil • 24x18" • 2026</p> 
+                        <span class="art-status status-available">$1000</span> 
+                    </div> 
+                </article> 
+
+                <!-- Картина 5 -->
+                <article class="art-card" data-src="images/art5.jpeg"> 
+                    <div class="art-img-wrapper"> 
+                        <img src="images/art5.jpeg" alt="Sea Turtle painting" loading="lazy"> 
+                    </div> 
+                    <div class="art-info"> 
+                        <h3 class="art-title">Sea Turtle</h3> 
+                        <p class="art-meta">Canvas, oil • 24x36" • 2025</p> 
+                        <span class="art-status status-available">$2500</span> 
+                    </div> 
+                </article> 
+
+                <!-- Картина 6 -->
+                <article class="art-card" data-src="images/art6.jpeg"> 
+                    <div class="art-img-wrapper"> 
+                        <img src="images/art6.jpeg" alt="Wave painting" loading="lazy"> 
+                    </div> 
+                    <div class="art-info"> 
+                        <h3 class="art-title">Wave</h3> 
+                        <p class="art-meta">Canvas, acryl • 24x36" • 2025</p> 
+                        <span class="art-status status-available">$1200</span> 
+                    </div> 
+                </article> 
+            </div> 
+        </section> 
+
+        <!-- Раздел: О художнике --> 
+        <section id="about" class="about-section"> 
+            <h2>About me</h2> 
+            <div class="about-container"> 
+                <div class="about-text"> 
+                    <p>Hello! My name is <strong>Vladliena Abkadirova</strong>. I am a professional artist dedicated to exploring the possibilities of color, form, and texture in contemporary painting.</p> 
+                    <p>I currently live in Florida, where the beauty of nature and the ever-changing light inspire my artistic journey every day.</p> 
+                    <p>I was born in Russia, where I received my education and discovered my passion for art, design, drawing, and painting. From an early early age, I was captivated by the expressive power of oil painting, a medium that has remained at the heart of my creative work.</p> 
+                    <p>Working primarily with oils on canvas, I enjoy exploring different techniques and textures, often incorporating a palette knife to bring depth, movement, and energy to my paintings.</p> 
+                    <p>Nature is my greatest source of inspiration. I am especially drawn to landscapes, still lifes, and the beauty of birds and wildlife. Each subject offers an opportunity to capture not only its appearance but also its unique atmosphere and spirit.</p> 
+                    <p>For me, painting is much more than creating an image—it is a way of expressing emotions that cannot always be put into words. Every painting reflects a moment in time, an impression, or a feeling that has touched me deeply. It is an invitation to slow down, appreciate the beauty that surrounds us, and connect with the quiet emotions of everyday life.</p> 
+                    <p>My work is shaped by memories, light, color, and the subtle impressions that remain in the subconscious. As every artist leaves a part of themselves in their work, each of my paintings carries a piece of my own story.</p> 
+                    <p>Painting is also my form of meditation. The moment I begin to paint, the outside world fades away, time loses its meaning, and I become completely immersed in the creative process. It is a source of peace, fulfillment, and endless inspiration.</p> 
+                    <p>Through my art, I hope to share these feelings with others and create paintings that bring warmth, serenity, and joy to those who experience them.</p> 
                 </div> 
             </div> 
-            <!-- Картина 2 --> 
-            <div class="art-card" onclick="openModal('images/art2.jpeg')"> 
-                <div class="art-img-wrapper"> 
-                    <img src="images/art2.jpeg" alt="Painting name 2"> 
-                </div> 
-                <div class="art-info"> 
-                    <div class="art-title">Surfer</div> 
-                    <div class="art-meta">Canvas, oil • 24x36" • 2025.</div> 
-                    <span class="art-status status-available">$2500</span> 
-                </div> 
-            </div> 
-            <!-- Картина 3 --> 
-            <div class="art-card" onclick="openModal('images/art3.jpeg')"> 
-                <div class="art-img-wrapper"> 
-                    <img src="images/art3.jpeg" alt="Painting name 3"> 
-                </div> 
-                <div class="art-info"> 
-                    <div class="art-title">Beach</div> 
-                    <div class="art-meta">Canvas, oil • 24x36" • 2025.</div> 
-                    <span class="art-status status-available">$2500</span> 
-                </div> 
-            </div> 
-            <!-- Картина 4 --> 
-            <div class="art-card" onclick="openModal('images/art4.jpeg')"> 
-                <div class="art-img-wrapper"> 
-                    <img src="images/art4.jpeg" alt="Painting name 4"> 
-                </div> 
-                <div class="art-info"> 
-                    <div class="art-title">Apples</div> 
-                    <div class="art-meta">Canvas, oil • 24x18" • 2026.</div> 
-                    <span class="art-status status-available">$1000</span> 
-                </div> 
-            </div> 
-            <!-- Картина 5 --> 
-            <div class="art-card" onclick="openModal('images/art5.jpeg')"> 
-                <div class="art-img-wrapper"> 
-                    <img src="images/art5.jpeg" alt="Painting name 5"> 
-                </div> 
-                <div class="art-info"> 
-                    <div class="art-title">Sea Turtle</div> 
-                    <div class="art-meta">Canvas, oil • 24x36" • 2025.</div> 
-                    <span class="art-status status-available">$2500</span> 
-                </div> 
-            </div> 
-            <!-- Картина 6 --> 
-            <div class="art-card" onclick="openModal('images/art6.jpeg')"> 
-                <div class="art-img-wrapper"> 
-                    <img src="images/art6.jpeg" alt="Painting name 6"> 
-                </div> 
-                <div class="art-info"> 
-                    <div class="art-title">Wave</div> 
-                    <div class="art-meta">Canvas, acryl • 24x36" • 2025.</div> 
-                    <span class="art-status status-available">$1200</span> 
-                </div> 
-            </div> 
-        </div> 
-    </section> 
+        </section>
 
- <!-- Раздел: О художнике --> 
-    <section id="about"> 
-        <h2>About me</h2> 
-        <div class="about-container"> 
-            <div class="about-text"> 
-                <p>Hello! My name is <strong>Vladliena Abkadirova</strong>. I am a professional artist dedicated to exploring the possibilities of color, form, and texture in contemporary painting.</p> 
-                <p>I currently live in Florida, where the beauty of nature and the ever-changing light inspire my artistic journey every day.</p> 
-                <p>I was born in Russia, where I received my education and discovered my passion for art, design, drawing, and painting. From an early age, I was captivated by the expressive power of oil painting, a medium that has remained at the heart of my creative work.</p>
-                <p>Working primarily with oils on canvas, I enjoy exploring different techniques and textures, often incorporating a palette knife to bring depth, movement, and energy to my paintings.</p>
-                <p>Nature is my greatest source of inspiration. I am especially drawn to landscapes, still lifes, and the beauty of birds and wildlife. Each subject offers an opportunity to capture not only its appearance but also its unique atmosphere and spirit.</p>
-                <p>For me, painting is much more than creating an image—it is a way of expressing emotions that cannot always be put into words. Every painting reflects a moment in time, an impression, or a feeling that has touched me deeply. It is an invitation to slow down, appreciate the beauty that surrounds us, and connect with the quiet emotions of everyday life.</p>
-                <p>My work is shaped by memories, light, color, and the subtle impressions that remain in the subconscious. As every artist leaves a part of themselves in their work, each of my paintings carries a piece of my own story.</p>
-                <p>Painting is also my form of meditation. The moment I begin to paint, the outside world fades away, time loses its meaning, and I become completely immersed in the creative process. It is a source of peace, fulfillment, and endless inspiration.</p>
-                <p>Through my art, I hope to share these feelings with others and create paintings that bring warmth, serenity, and joy to those who experience them.</p>
-            </div> 
-        </div> 
-    </section> 
-
-    <!-- Раздел: Контакты --> 
-    <section id="contact"> 
-    <h2>Contact me</h2> 
-    <div class="contact-container"> 
-        
-        <!-- Кастомные плашки уведомлений -->
-        <div id="form-success" style="display: none; padding: 15px; background: rgba(40, 167, 69, 0.1); color: #28a745; border-radius: 10px; margin-bottom: 20px; text-align: center; font-weight: 600;">
-            Thank you! Your message has been sent successfully.
-        </div>
-        <div id="form-error" style="display: none; padding: 15px; background: rgba(220, 53, 69, 0.1); color: #dc3545; border-radius: 10px; margin-bottom: 20px; text-align: center; font-weight: 600;">
-            Oops! There was a problem submitting your form.
-        </div>
-
-        <form id="contact-form"> 
-            <!-- Невидимое поле для ловли спам-ботов -->
-            <input type="text" name="_gotcha" style="display:none !important">
-            <div class="form-group"> 
-                <label for="name">Your Name</label> 
-                <input type="text" id="name" name="name" required placeholder="Name"> 
-            </div> 
-            <div class="form-group"> 
-                <label for="email">Contacts (Email / Telegram)</label> 
-                <input type="text" id="email" name="contact" required placeholder="example@gmail.com or @username"> 
-            </div> 
-            <div class="form-group"> 
-                <label for="message">Your message</label> 
-                <textarea id="message" name="message" rows="5" required placeholder="Which painting are you interested in, or what is your collaboration proposal??"></textarea> 
-            </div> 
-            <button type="submit" id="submit-btn" class="btn">Send message</button> 
-        </form> 
-    </div> 
-</section>
-
-    <!-- Всплывающее окно просмотра изображений --> 
-    <div class="modal" id="artModal"> 
-        <span class="modal-close" onclick="closeModal()">&times;</span> 
-        <img class="modal-content" id="modalImg" alt="Modal view"> 
-    </div> 
-
-    <!-- ОДИН ОБЩИЙ ИСПРАВЛЕННЫЙ ТЕГ SCRIPT -->
-<script> 
-        // 1. Логика модального окна просмотра картин 
-        const modal = document.getElementById('artModal'); 
-        const modalImg = document.getElementById('modalImg'); 
-
-        function openModal(imgSrc) { 
-            modal.style.display = 'flex'; 
-            modalImg.src = imgSrc; 
-        } 
-
-        function closeModal() { 
-            modal.style.display = 'none'; 
-        } 
-
-        modal.addEventListener('click', function(e) { 
-            if(e.target === modal) { 
-                closeModal(); 
-            } 
-        }); 
-
-        // 2. Умный скролл: Подсветка меню + Появление картин строго по очереди 
-        function handleScroll() { 
-            let scrollDistance = window.scrollY; 
-            let windowHeight = window.innerHeight; 
-
-            // Подсветка пунктов меню
-            document.querySelectorAll('.hero, section').forEach((el, i) => { 
-                if (el.offsetTop - document.querySelector('header').clientHeight <= scrollDistance + 50) { 
-                    document.querySelectorAll('nav a').forEach((link) => link.classList.remove('active')); 
-                    if(document.querySelectorAll('nav a')[i]) { 
-                        document.querySelectorAll('nav a')[i].classList.add('active'); 
-                    } 
-                } 
-            }); 
-
-            // Плавное появление карточек картин строго по очереди
-            document.querySelectorAll('.art-card').forEach((card, index) => { 
-                if (card.getBoundingClientRect().top < windowHeight - 50) { 
-                    setTimeout(() => { 
-                        card.classList.add('reveal'); 
-                    }, index * 100); 
-                } 
-            }); 
-
-            // Плавное появление блока «About me» с аккуратной задержкой
-            const aboutContainer = document.querySelector('.about-container');
-            // Проверяем, вошел ли блок в зону видимости И что на нем еще нет класса reveal
-            if (aboutContainer && !aboutContainer.classList.contains('reveal') && aboutContainer.getBoundingClientRect().top < windowHeight - 50) {
-                setTimeout(() => {
-                    aboutContainer.classList.add('reveal');
-                }, 200); // 200мс задержки для идеального каскадного эффекта после галереи
-            }
-        } 
-
-        // Привязка событий скролла
-        window.addEventListener('scroll', handleScroll); 
-        window.addEventListener('DOMContentLoaded', handleScroll); 
-
-        // 3. ВОЗВРАЩЕННЫЙ AJAX ОБРАБОТЧИК ФОРМЫ (Решает проблему ошибки 405 и отправляет в Telegram)
-        const form = document.getElementById("contact-form");
-        const successMessage = document.getElementById("form-success");
-        const errorMessage = document.getElementById("form-error");
-        const submitBtn = document.getElementById("submit-btn");
-
-        if (form) {
-            form.addEventListener("submit", async function (event) {
-                event.preventDefault(); // Блокируем перезагрузку страницы
+        <!-- Раздел: Контакты --> 
+        <section id="contact" class="contact-section"> 
+            <h2>Contact me</h2> 
+            <div class="contact-container"> 
                 
-                // Визуально отключаем кнопку на время отправки
-                submitBtn.disabled = true;
-                submitBtn.innerText = "Sending...";
-                
-                // Прячем старые уведомления
-                successMessage.style.display = "none";
-                errorMessage.style.display = "none";
+                <!-- Контейнеры кастомных уведомлений -->
+                <div id="form-success" class="form-alert success" style="display: none;">
+                    Thank you! Your message has been sent successfully.
+                </div>
+                <div id="form-error" class="form-alert error" style="display: none;">
+                    Oops! There was a problem submitting your form.
+                </div>
 
-                // Собираем данные
-                const data = new FormData(form);
-
-                // Асинхронный фоновый AJAX-запрос на Formspree
-                fetch("https://formspree.io/f/mrenjezk", {
-                    method: "POST",
-                    body: data,
-                    headers: {
-                        'Accept': 'application/json'
-                    }
-                }).then(response => {
-                    submitBtn.disabled = false;
-                    submitBtn.innerText = "Send message";
-                    
-                    if (response.ok) {
-                        // Показываем плашку успеха и очищаем форму
-                        successMessage.style.display = "block";
-                        form.reset();
-                    } else {
-                        errorMessage.style.display = "block";
-                    }
-                }).catch(error => {
-                    submitBtn.disabled = false;
-                    submitBtn.innerText = "Send message";
-                    errorMessage.style.display = "block";
-                });
-            });
-        }
-    </script> 
-</body> 
-</html>
+                <form id="contact-form" novalidate> 
+                    <!-- Защитное поле Formshield от спам-ботов -->
+                    <input type="text" name="_gotcha" style="display:none !important"> 
+                    <div class="form-group"> 
+                        <label for="name">Your Name</label> 
+                        <input type="text" id="name" name="name" required placeholder="Name"> 
+                    </div> 
+                    <div class="form-group"> 
+                        <label for="email">Contacts (Email / Telegram)</label> 
+                        <input type="text" id="email" name="contact" required placeholder="example@gmail.com or @username"> 
+                    </div> 
+                    <div class="form-group"> 
+                        <label for="message">Your message</label> 
+                        <textarea id="message" name="message" rows="5" required placeholder="Which painting are you interested in, or what is your collaboration proposal??"></textarea> 
+                    </div> 
