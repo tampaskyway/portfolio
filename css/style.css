@@ -162,11 +162,10 @@ nav .social-icons a:hover {
 } 
 
 .hero h1 { 
-    font-family: Georgia, 'Times New Roman', serif; 
-    font-size: 4.5rem; 
-    font-weight: 700; 
+    font-size: 4rem; 
+    font-weight: 900; 
     margin-bottom: 20px; 
-    line-height: 1.2; 
+    line-height: 1.1; 
     background: var(--accent-gradient); 
     -webkit-background-clip: text; 
     -webkit-text-fill-color: transparent; 
