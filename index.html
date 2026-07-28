@@ -48,15 +48,15 @@
             border-bottom: 1px solid var(--border-color); 
         } 
 
-        .logo { 
-            font-size: 22px; 
-            font-weight: 800; 
-            text-transform: uppercase; 
-            letter-spacing: 2px; 
-            background: var(--accent-gradient); 
-            -webkit-background-clip: text; 
-            -webkit-text-fill-color: transparent; 
-        } 
+        .logo svg {
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+
+        /* Эффект изящного увеличения при наведении мыши */
+        .logo svg:hover {
+            transform: scale(1.05);
+            filter: brightness(1.15); /* Подпись будет слегка подсвечиваться */
+        }
 
         nav a { 
             color: var(--text-main); 
