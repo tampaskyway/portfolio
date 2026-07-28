@@ -323,6 +323,18 @@ nav .social-icons a:hover {
 .about-text p:last-child { 
     margin-bottom: 0; 
 } 
+/* Стили для подзаголовка в контактах */
+.contact-section .contact-subtitle {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 300;
+    line-height: 1.6;
+    color: #e0e0e0; /* Приятный светло-серый цвет текста */
+    text-align: center;
+    max-width: 650px; /* Ограничиваем ширину, чтобы текст красиво разбивался */
+    margin: 0 auto 40px auto; /* Центрируем блок и делаем отступ снизу до формы */
+    padding: 0 15px; /* Боковые отступы для мобильных экранов */
+}
 
 .contact-container { 
     max-width: 600px; 
