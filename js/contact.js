@@ -1,77 +1,57 @@
-/**
- * Модуль асинхронной отправки контактной формы с валидацией
- */
-export function initContactForm() {
-    const form = document.getElementById("contact-form");
-    const successMessage = document.getElementById("form-success");
-    const errorMessage = document.getElementById("form-error");
-    const submitBtn = document.getElementById("submit-btn");
+function initContactForm() {
+    const form = document.getElementById('contact-form');
+    const successAlert = document.getElementById('form-success');
+    const errorAlert = document.getElementById('form-error');
 
     if (!form) return;
 
-    // Вспомогательная функция для проверки корректности контактов
-    function validateContact(inputString) {
-        if (inputString.includes('@')) {
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            return emailRegex.test(inputString);
-        }
-        if (inputString.startsWith('@')) {
-            return inputString.length >= 5;
-        }
-        return false;
-    }
+    form.addEventListener('submit', async function(event) {
+        event.preventDefault(); // 🔥 ГЛАВНОЕ: Блокирует переход на внешнюю страницу благодарности
 
-    form.addEventListener("submit", async function (event) {
-        event.preventDefault();
-        
-        const contactInput = document.getElementById("email");
-        const contactValue = contactInput ? contactInput.value.trim() : "";
+        // Скрываем прошлые уведомления перед новой попыткой
+        successAlert.style.display = 'none';
+        errorAlert.style.display = 'none';
 
-        successMessage.style.display = "none";
-        errorMessage.style.display = "none";
-
-        // Проверяем введенные контактные данные
-        if (!validateContact(contactValue)) {
-            if (contactInput) {
-                contactInput.style.borderColor = "#dc3545";
-                contactInput.focus();
-            }
-            errorMessage.innerText = "Please enter a valid email address or @username for Telegram.";
-            errorMessage.style.display = "block";
-            return; 
+        // Проверяем валидность заполнения полей формы
+        if (!form.checkValidity()) {
+            alert('Please fill in all required fields.');
+            return;
         }
 
-        if (contactInput) contactInput.style.borderColor = "";
-
-        submitBtn.disabled = true;
-        submitBtn.innerText = "Sending...";
-
-        const data = new FormData(form);
+        // Собираем данные полей формы
+        const formData = new FormData(form);
+        const submitButton = form.querySelector('button[type="submit"]');
+        const originalButtonText = submitButton.textContent;
 
         try {
-            const response = await fetch("https://formspree.io", {
-                method: "POST",
-                body: data,
+            // Визуально меняем текст на кнопке во время отправки
+            submitButton.textContent = 'Sending...';
+            submitButton.disabled = true;
+
+            // Отправляем AJAX запрос на сервер Formspree
+            const response = await fetch(form.action, {
+                method: form.method,
+                body: formData,
                 headers: {
-                    'Accept': 'application/json'
+                    'Accept': 'application/json' // Важно для корректных ответов API Formspree
                 }
             });
 
-            submitBtn.disabled = false;
-            submitBtn.innerText = "Send message";
-
             if (response.ok) {
-                successMessage.style.display = "block";
-                form.reset();
+                // Если отправка успешна: показываем зеленую плашку и очищаем форму
+                successAlert.style.display = 'block';
+                form.reset(); 
             } else {
-                errorMessage.innerText = "Oops! There was a problem submitting your form.";
-                errorMessage.style.display = "block";
+                // Если сервер вернул ошибку
+                throw new Error('Server response was not ok.');
             }
         } catch (error) {
-            submitBtn.disabled = false;
-            submitBtn.innerText = "Send message";
-            errorMessage.innerText = "Oops! There was a problem submitting your form.";
-            errorMessage.style.display = "block";
+            // Если возникли проблемы с сетью или сервером
+            errorAlert.style.display = 'block';
+        } finally {
+            // В любом случае возвращаем кнопке её исходный текст и активность
+            submitButton.textContent = originalButtonText;
+            submitButton.disabled = false;
         }
     });
 }
