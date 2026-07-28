@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vladliena Abkadirova | Живопись & Портфолио</title>
+    <title>Vladliena Abkadirova | Painting & Portfolio</title>
     <style>
-        /* Светлая художественная палитра с яркими акцентами */
         :root {
             --bg-main: #fcfbfa; /* Мягкий жемчужно-белый */
             --bg-accent: linear-gradient(135deg, #fff5f5 0%, #f0f3ff 100%);
@@ -25,11 +24,14 @@
             scroll-behavior: smooth;
         }
 
-        body { 
+        body.home { 
             background-image: url('images/wall.jpg'); 
             background-repeat: no-repeat;
             background-size: cover;
             background-position: center;
+        }
+
+        body { 
             background-color: var(--bg-main); 
             color: var(--text-main); 
             min-height: 100vh; 
@@ -339,7 +341,7 @@
         }
     </style>
 </head>
-<body>
+<body class="home">
 
     <!-- Шапка сайта -->
     <header>
