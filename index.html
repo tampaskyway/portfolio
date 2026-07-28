@@ -314,7 +314,7 @@
             cursor: pointer; 
         } 
 
-        /* Поп-ап окно */ 
+        /* Поп-ап окно с эффектом матового стекла */ 
         .modal { 
             display: none; 
             position: fixed; 
@@ -322,20 +322,33 @@
             left: 0; 
             width: 100%; 
             height: 100%; 
-            background: rgba(252, 251, 250, 0.7); /* Сделали фон чуть прозрачнее */
-            backdrop-filter: blur(15px); /* Эффект матового размытия сайта на фоне */
-            -webkit-backdrop-filter: blur(15px);
+            /* Делаем белый фон очень прозрачным (0.3 вместо 0.96) */
+            background: rgba(255, 255, 255, 0.3); 
             z-index: 2000; 
             justify-content: center; 
             align-items: center; 
             padding: 20px; 
+    
+            /* Эффект глубокого размытия заднего плана */
+            backdrop-filter: blur(15px); 
+            -webkit-backdrop-filter: blur(15px); /* Поддержка для браузеров Safari и iPhone */
+    
+            /* Плавное проявление (опционально, для красоты) */
+            animation: fadeInModal 0.3s ease-out;
+        } 
+
+        /* Небольшая плавная анимация появления окна */
+            @keyframes fadeInModal {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         .modal-content { 
             max-width: 90%; 
             max-height: 85vh; 
-            border-radius: 8px; 
-            box-shadow: 0 20px 50px rgba(0,0,0,0.15); 
+            border-radius: 12px; /* Чуть более мягкие аккуратные углы */
+            /* Красивая глубокая тень, как у картины на выставке */
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2); 
         } 
 
         .modal-close { 
