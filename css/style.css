@@ -162,7 +162,7 @@ nav .social-icons a:hover {
 } 
 
 .hero h1 { 
-    font-size: 4rem; 
+    font-size: 6rem; 
     font-weight: 900; 
     margin-bottom: 20px; 
     line-height: 1.1; 
@@ -172,12 +172,11 @@ nav .social-icons a:hover {
 } 
 
 .hero h1 span { 
-    font-style: italic; 
+    font-style: normal; 
 } 
 
 .hero p { 
-    font-family: Georgia, 'Times New Roman', serif; 
-    font-style: italic; 
+    font-style: normal; 
     font-size: 1.5rem; 
     color: var(--text-muted); 
     max-width: 600px; 
