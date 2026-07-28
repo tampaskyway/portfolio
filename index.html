@@ -497,25 +497,34 @@
 
     <!-- Раздел: Контакты --> 
     <section id="contact"> 
-        <h2>Contact me</h2> 
-        <div class="contact-container"> 
-            <form action="#" method="POST"> 
-                <div class="form-group"> 
-                    <label for="name">Your Name</label> 
-                    <input type="text" id="name" required placeholder="Name"> 
-                </div> 
-                <div class="form-group"> 
-                    <label for="email">Contacts (Email / Telegram)</label> 
-                    <input type="text" id="email" required placeholder="example@gmail.com or @username"> 
-                </div> 
-                <div class="form-group"> 
-                    <label for="message">Your message</label> 
-                    <textarea id="message" rows="5" required placeholder="Which painting are you interested in, or what is your collaboration proposal??"></textarea> 
-                </div> 
-                <button type="submit" class="btn">Send message</button> 
-            </form> 
-        </div> 
-    </section> 
+    <h2>Contact me</h2> 
+    <div class="contact-container"> 
+        
+        <!-- Кастомные плашки уведомлений -->
+        <div id="form-success" style="display: none; padding: 15px; background: rgba(40, 167, 69, 0.1); color: #28a745; border-radius: 10px; margin-bottom: 20px; text-align: center; font-weight: 600;">
+            Thank you! Your message has been sent successfully.
+        </div>
+        <div id="form-error" style="display: none; padding: 15px; background: rgba(220, 53, 69, 0.1); color: #dc3545; border-radius: 10px; margin-bottom: 20px; text-align: center; font-weight: 600;">
+            Oops! There was a problem submitting your form.
+        </div>
+
+        <form id="contact-form"> 
+            <div class="form-group"> 
+                <label for="name">Your Name</label> 
+                <input type="text" id="name" name="name" required placeholder="Name"> 
+            </div> 
+            <div class="form-group"> 
+                <label for="email">Contacts (Email / Telegram)</label> 
+                <input type="text" id="email" name="contact" required placeholder="example@gmail.com or @username"> 
+            </div> 
+            <div class="form-group"> 
+                <label for="message">Your message</label> 
+                <textarea id="message" name="message" rows="5" required placeholder="Which painting are you interested in, or what is your collaboration proposal??"></textarea> 
+            </div> 
+            <button type="submit" id="submit-btn" class="btn">Send message</button> 
+        </form> 
+    </div> 
+</section>
 
     <!-- Всплывающее окно просмотра изображений --> 
     <div class="modal" id="artModal"> 
