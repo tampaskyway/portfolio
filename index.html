@@ -533,8 +533,8 @@
     </div> 
 
     <!-- ОДИН ОБЩИЙ ИСПРАВЛЕННЫЙ ТЕГ SCRIPT -->
-    <script> 
-        // 1. Логика модального окна просмотра картин
+<script> 
+        // 1. Логика модального окна просмотра картин 
         const modal = document.getElementById('artModal'); 
         const modalImg = document.getElementById('modalImg'); 
 
@@ -553,7 +553,7 @@
             } 
         }); 
 
-        // 2. Умный скролл: Подсветка меню + Появление картин «волной»
+        // 2. Умный скролл: Подсветка меню + Появление картин строго по очереди 
         function handleScroll() { 
             let scrollDistance = window.scrollY; 
             let windowHeight = window.innerHeight; 
@@ -573,14 +573,61 @@
                 if (card.getBoundingClientRect().top < windowHeight - 50) { 
                     setTimeout(() => { 
                         card.classList.add('reveal'); 
-                    }, index * 100); // <-- ТЕПЕРЬ ТУТ ПРОСТАЯ ОЧЕРЕДЬ: каждая следующая картина ждет ровно 100мс
+                    }, index * 100); 
                 } 
             }); 
         } 
 
-        // Привязка событий
+        // Привязка событий скролла
         window.addEventListener('scroll', handleScroll); 
         window.addEventListener('DOMContentLoaded', handleScroll); 
+
+        // 3. ВОЗВРАЩЕННЫЙ AJAX ОБРАБОТЧИК ФОРМЫ (Решает проблему ошибки 405 и отправляет в Telegram)
+        const form = document.getElementById("contact-form");
+        const successMessage = document.getElementById("form-success");
+        const errorMessage = document.getElementById("form-error");
+        const submitBtn = document.getElementById("submit-btn");
+
+        if (form) {
+            form.addEventListener("submit", async function (event) {
+                event.preventDefault(); // Блокируем перезагрузку страницы
+                
+                // Визуально отключаем кнопку на время отправки
+                submitBtn.disabled = true;
+                submitBtn.innerText = "Sending...";
+                
+                // Прячем старые уведомления
+                successMessage.style.display = "none";
+                errorMessage.style.display = "none";
+
+                // Собираем данные
+                const data = new FormData(form);
+
+                // Асинхронный фоновый AJAX-запрос на Formspree
+                fetch("https://formspree.io", {
+                    method: "POST",
+                    body: data,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                }).then(response => {
+                    submitBtn.disabled = false;
+                    submitBtn.innerText = "Send message";
+                    
+                    if (response.ok) {
+                        // Показываем плашку успеха и очищаем форму
+                        successMessage.style.display = "block";
+                        form.reset();
+                    } else {
+                        errorMessage.style.display = "block";
+                    }
+                }).catch(error => {
+                    submitBtn.disabled = false;
+                    submitBtn.innerText = "Send message";
+                    errorMessage.style.display = "block";
+                });
+            });
+        }
     </script> 
 </body> 
 </html>
