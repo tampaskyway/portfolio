@@ -24,14 +24,6 @@
             scroll-behavior: smooth; 
         } 
 
-        /* Сработает ТОЛЬКО на этой странице благодаря классу 'home' */
-        body.home { 
-            background-color: var(--bg-main); 
-            color: var(--text-main); 
-            min-height: 100vh; 
-            overflow-x: hidden; 
-        } 
-
         body { 
             background-color: var(--bg-main); 
             color: var(--text-main); 
@@ -75,11 +67,13 @@
         nav a:hover { 
             color: var(--accent-color); 
         } 
-        nav a.active {
-            color: var(--accent-color);
-            border-bottom: 2px solid var(--accent-color);
-            padding-bottom: 4px;
-        }
+
+        nav a.active { 
+            color: var(--accent-color); 
+            border-bottom: 2px solid var(--accent-color); 
+            padding-bottom: 4px; 
+        } 
+
         /* Главный экран */ 
         .hero { 
             height: 100vh; 
@@ -87,7 +81,6 @@
             background-repeat: no-repeat; 
             background-size: cover; 
             background-position: center; 
-    
             display: flex; 
             flex-direction: column; 
             justify-content: center; 
@@ -121,9 +114,8 @@
             display: inline-block; 
             padding: 16px 40px; 
             background: var(--accent-gradient); 
-            /* Растягиваем градиент в два раза, чтобы было куда его двигать */
             background-size: 200% auto; 
-            background-position: left center;
+            background-position: left center; 
             color: white; 
             text-decoration: none; 
             font-weight: 700; 
@@ -131,13 +123,11 @@
             text-transform: uppercase; 
             letter-spacing: 1px; 
             box-shadow: 0 10px 25px rgba(255, 0, 127, 0.2); 
-            /* Добавляем плавность для background-position */
             transition: background-position 0.4s ease, transform 0.3s ease, box-shadow 0.3s ease; 
         } 
 
         .btn:hover { 
             transform: translateY(-3px); 
-            /* Смещаем градиент вправо, заставляя цвета красиво переливаться */
             background-position: right center; 
             box-shadow: 0 15px 30px rgba(255, 0, 127, 0.35); 
         } 
@@ -172,15 +162,26 @@
             gap: 40px; 
         } 
 
+        /* ОБЪЕДИНЕННЫЙ КЛАСС КАРТОЧКИ: все стили внешнего вида + подготовка к анимации */
         .art-card { 
             background: var(--card-bg); 
             border-radius: 16px; 
             overflow: hidden; 
             border: 1px solid var(--border-color); 
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03); 
-            transition: 0.4s transform, 0.4s box-shadow; 
             cursor: pointer; 
+            
+            /* Начальное скрытое состояние для анимации наплыва */
+            opacity: 0; 
+            transform: translateY(40px); 
+            transition: opacity 0.8s ease, transform 0.8s ease, box-shadow 0.4s ease; 
         } 
+
+        /* Состояние, когда карточка становится видимой */
+        .art-card.reveal { 
+            opacity: 1; 
+            transform: translateY(0); 
+        }
 
         .art-card:hover { 
             transform: translateY(-10px); 
@@ -240,18 +241,6 @@
             background: #f5f5f5; 
             color: #888; 
             border: 1px solid #e0e0e0; 
-        } 
-        /* Начальное состояние карточек до появления (они скрыты и смещены вниз) */
-        .art-card {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 0.8s ease, transform 0.8s ease, box-shadow 0.4s ease;
-        }
-
-        /* Класс, который JS включит при прокрутке для плавного проявления */
-        .art-card.reveal {
-            opacity: 1;
-            transform: translateY(0);
         }
         
         /* О художнике */ 
@@ -489,7 +478,7 @@
         </div> 
     </section> 
 
-    <!-- Раздел: О художнике --> 
+ <!-- Раздел: О художнике --> 
     <section id="about"> 
         <h2>About me</h2> 
         <div class="about-container"> 
@@ -534,7 +523,9 @@
         <img class="modal-content" id="modalImg" alt="Modal view"> 
     </div> 
 
+    <!-- ОДИН ОБЩИЙ ИСПРАВЛЕННЫЙ ТЕГ SCRIPT -->
     <script> 
+        // 1. Логика модального окна просмотра картин
         const modal = document.getElementById('artModal'); 
         const modalImg = document.getElementById('modalImg'); 
 
@@ -552,56 +543,35 @@
                 closeModal(); 
             } 
         }); 
-    </script> 
-    // Элементы модального окна
-    const modal = document.getElementById('artModal'); 
-    const modalImg = document.getElementById('modalImg'); 
 
-    function openModal(imgSrc) { 
-        modal.style.display = 'flex'; 
-        modalImg.src = imgSrc; 
-    } 
+        // 2. Умный скролл: Подсветка меню + Появление картин «волной»
+        function handleScroll() { 
+            let scrollDistance = window.scrollY; 
+            let windowHeight = window.innerHeight; 
 
-    function closeModal() { 
-        modal.style.display = 'none'; 
-    } 
+            // Подсветка пунктов меню
+            document.querySelectorAll('.hero, section').forEach((el, i) => { 
+                if (el.offsetTop - document.querySelector('header').clientHeight <= scrollDistance + 50) { 
+                    document.querySelectorAll('nav a').forEach((link) => link.classList.remove('active')); 
+                    if(document.querySelectorAll('nav a')[i]) { 
+                        document.querySelectorAll('nav a')[i].classList.add('active'); 
+                    } 
+                } 
+            }); 
 
-    modal.addEventListener('click', function(e) { 
-        if(e.target === modal) { 
-            closeModal(); 
+            // Плавное появление карточек картин
+            document.querySelectorAll('.art-card').forEach((card, index) => { 
+                if (card.getBoundingClientRect().top < windowHeight - 50) { 
+                    setTimeout(() => { 
+                        card.classList.add('reveal'); 
+                    }, (index % 3) * 150); 
+                } 
+            }); 
         } 
-    }); 
 
-    // --- ФУНКЦИЯ СКРОЛЛА: Подсветка меню + Появление картин ---
-    function handleScroll() {
-        let scrollDistance = window.scrollY;
-        let windowHeight = window.innerHeight;
-        
-        // 1. Подсветка пунктов меню
-        document.querySelectorAll('.hero, section').forEach((el, i) => {
-            if (el.offsetTop - document.querySelector('header').clientHeight <= scrollDistance + 50) {
-                document.querySelectorAll('nav a').forEach((link) => link.classList.remove('active'));
-                if(document.querySelectorAll('nav a')[i]) {
-                    document.querySelectorAll('nav a')[i].classList.add('active');
-                }
-            }
-        });
-
-        // 2. Плавное появление карточек картин
-        document.querySelectorAll('.art-card').forEach((card, index) => {
-            // Если верхняя граница карточки вошла в зону видимости экрана
-            if (card.getBoundingClientRect().top < windowHeight - 50) {
-                // Добавляем небольшую задержку для каждой следующей карточки в ряду (эффект волны)
-                setTimeout(() => {
-                    card.classList.add('reveal');
-                }, (index % 3) * 150); // 3 карточки в ряд, задержка 150мс
-            }
-        });
-    }
-
-    // Запускаем функцию при скролле и один раз при загрузке страницы
-    window.addEventListener('scroll', handleScroll);
-    window.addEventListener('DOMContentLoaded', handleScroll);
-    </script>
+        // Привязка событий
+        window.addEventListener('scroll', handleScroll); 
+        window.addEventListener('DOMContentLoaded', handleScroll); 
+    </script> 
 </body> 
 </html>
