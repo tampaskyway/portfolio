@@ -4,6 +4,8 @@
     <meta charset="UTF-8"> 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <title>Vladliena Abkadirova | Painting & Portfolio</title> 
+    <!-- Подключение изящного шрифта Playfair Display с Google Fonts -->
+    <link href="https://googleapis.com" rel="stylesheet">
     <style> 
         :root { 
             --bg-main: #fcfbfa; /* Мягкий жемчужно-белый */ 
@@ -90,25 +92,32 @@
         } 
 
         .hero h1 { 
-            font-size: 4rem; 
-            font-weight: 900; 
+            /* Переключаем шрифт на изящный Playfair Display */
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 4.5rem; /* Немного увеличили размер для элегантности */
+            font-weight: 400;  /* Сделали буквы более тонкими и утонченными */
             margin-bottom: 20px; 
-            line-height: 1.1; 
-            letter-spacing: -1px; 
+            line-height: 1.2; 
+            letter-spacing: 0px; /* Убрали жесткое сжатие букв */
         } 
 
-        .hero h1 span { 
+        ..hero h1 span { 
             background: var(--accent-gradient); 
             -webkit-background-clip: text; 
             -webkit-text-fill-color: transparent; 
+            font-style: italic; /* Сделали само имя изящным курсивом */
+            font-weight: 700;   /* Имя автора делаем чуть плотнее */
         } 
 
         .hero p { 
-            font-size: 1.4rem; 
+            /* Для подзаголовка тоже используем новый шрифт в стиле легкого литературного курсива */
+            font-family: 'Playfair Display', Georgia, serif;
+            font-style: italic;
+            font-size: 1.5rem; 
             color: var(--text-muted); 
             max-width: 600px; 
             margin-bottom: 40px; 
-        } 
+        }
 
         .btn { 
             display: inline-block; 
