@@ -241,7 +241,19 @@
             color: #888; 
             border: 1px solid #e0e0e0; 
         } 
+        /* Начальное состояние карточек до появления (они скрыты и смещены вниз) */
+        .art-card {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease, box-shadow 0.4s ease;
+        }
 
+        /* Класс, который JS включит при прокрутке для плавного проявления */
+        .art-card.reveal {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
         /* О художнике */ 
         .about-container { 
             display: flex; 
@@ -541,24 +553,55 @@
             } 
         }); 
     </script> 
-    window.addEventListener('scroll', () => {
+    // Элементы модального окна
+    const modal = document.getElementById('artModal'); 
+    const modalImg = document.getElementById('modalImg'); 
+
+    function openModal(imgSrc) { 
+        modal.style.display = 'flex'; 
+        modalImg.src = imgSrc; 
+    } 
+
+    function closeModal() { 
+        modal.style.display = 'none'; 
+    } 
+
+    modal.addEventListener('click', function(e) { 
+        if(e.target === modal) { 
+            closeModal(); 
+        } 
+    }); 
+
+    // --- ФУНКЦИЯ СКРОЛЛА: Подсветка меню + Появление картин ---
+    function handleScroll() {
         let scrollDistance = window.scrollY;
+        let windowHeight = window.innerHeight;
         
-        // Перебираем главный экран и все секции сайта
+        // 1. Подсветка пунктов меню
         document.querySelectorAll('.hero, section').forEach((el, i) => {
-            // Вычисляем, доскроллил ли пользователь до текущей секции с учетом высоты шапки
             if (el.offsetTop - document.querySelector('header').clientHeight <= scrollDistance + 50) {
-                // Снимаем класс active со всех ссылок в меню
-                document.querySelectorAll('nav a').forEach((link) => {
-                    link.classList.remove('active');
-                });
-                // Добавляем класс active только той ссылке, которая соответствует текущей секции
+                document.querySelectorAll('nav a').forEach((link) => link.classList.remove('active'));
                 if(document.querySelectorAll('nav a')[i]) {
                     document.querySelectorAll('nav a')[i].classList.add('active');
                 }
             }
         });
-    });
-</script>
+
+        // 2. Плавное появление карточек картин
+        document.querySelectorAll('.art-card').forEach((card, index) => {
+            // Если верхняя граница карточки вошла в зону видимости экрана
+            if (card.getBoundingClientRect().top < windowHeight - 50) {
+                // Добавляем небольшую задержку для каждой следующей карточки в ряду (эффект волны)
+                setTimeout(() => {
+                    card.classList.add('reveal');
+                }, (index % 3) * 150); // 3 карточки в ряд, задержка 150мс
+            }
+        });
+    }
+
+    // Запускаем функцию при скролле и один раз при загрузке страницы
+    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('DOMContentLoaded', handleScroll);
+    </script>
 </body> 
 </html>
