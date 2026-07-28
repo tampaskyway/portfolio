@@ -165,3 +165,63 @@
                         <label for="message">Your message</label> 
                         <textarea id="message" name="message" rows="5" required placeholder="Which painting are you interested in, or what is your collaboration proposal??"></textarea> 
                     </div> 
+                     <!-- Полноэкранное модальное окно просмотра картин --> 
+    <div class="modal" id="artModal" aria-hidden="true" role="dialog"> 
+        <button class="modal-close" aria-label="Закрыть окно">&times;</button> 
+        <img class="modal-content" id="modalImg" alt="Увеличенный просмотр картины"> 
+    </div> 
+
+    <!-- ВОТ СЮДА МЫ ВСТАВИЛИ ПРЯМОЕ ПОДКЛЮЧЕНИЕ ФАЙЛОВ МОДАЛКИ И ФОРМЫ -->
+    <script src="js/modal.js"></script>
+    <script src="js/contact.js"></script>
+    <script>
+        // Инициализируем модалку и форму сразу после загрузки DOM
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof initModal === 'function') initModal();
+            if (typeof initContactForm === 'function') initContactForm();
+        });
+    </script>
+
+    <!-- СЛЕДОМ ИДЕТ ВАШ ВТОРОЙ СКРИПТ АНИМАЦИИ И СКРОЛЛА (СТРАХОВКА) -->
+    <script>
+        function forceRevealElements() {
+            let windowHeight = window.innerHeight;
+
+            // Каскадное появление картин строго по цепочке друг за другом
+            document.querySelectorAll('.art-card').forEach((card, index) => {
+                if (card.getBoundingClientRect().top < windowHeight - 50) {
+                    setTimeout(() => {
+                        card.classList.add('reveal');
+                    }, index * 100);
+                }
+            });
+
+            // Появление блока биографии
+            const aboutContainer = document.querySelector('.about-container');
+            if (aboutContainer && !aboutContainer.classList.contains('reveal') && aboutContainer.getBoundingClientRect().top < windowHeight - 50) {
+                setTimeout(() => {
+                    aboutContainer.classList.add('reveal');
+                }, 200);
+            }
+
+            // Автоподсветка активных пунктов меню
+            let scrollDistance = window.scrollY;
+            document.querySelectorAll('.hero, section').forEach((el, i) => {
+                if (el.offsetTop - document.querySelector('.site-header').clientHeight <= scrollDistance + 50) {
+                    document.querySelectorAll('.nav-menu .nav-link').forEach((link) => link.classList.remove('active'));
+                    if(document.querySelectorAll('.nav-menu .nav-link')[i]) {
+                        document.querySelectorAll('.nav-menu .nav-link')[i].classList.add('active');
+                    }
+                }
+            });
+        }
+
+        // Привязываем запуск напрямую к событиям окна
+        window.addEventListener('scroll', forceRevealElements);
+        window.addEventListener('DOMContentLoaded', forceRevealElements);
+        
+        // Запуск-страховка на случай мгновенного кэширования серверами GitHub Pages
+        setTimeout(forceRevealElements, 500);
+    </script>
+</body> 
+</html>
