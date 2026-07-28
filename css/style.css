@@ -157,8 +157,8 @@ nav .social-icons a:hover {
     min-height: 100vh;
     padding: 0 20px;
     
-    /* ВОЗВРАЩАЕМ КАРТИНКУ: Укажите здесь правильный путь к вашему фону */
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/wall.jpg') no-repeat center center / cover;
+    /* Фоновая картинка с легким затемнением для читаемости текста */
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../images/hero-bg.jpg') no-repeat center center / cover;
     
     color: #ffffff;
 }
@@ -178,13 +178,16 @@ nav .social-icons a:hover {
 .hero h1 span {
     font-family: 'Playfair Display', Georgia, serif;
     font-weight: 700;
-    font-style: normal;
+    font-style: normal; /* Оставляем прямой шрифт, как вы просили ранее */
     display: block;
     margin-top: 10px;
-    color: #0028b3; /* Валидный синий цвет */
-    background: none;
-    -webkit-background-clip: initial;
-    -webkit-text-fill-color: initial;
+    
+    /* ВОЗВРАЩЕН ГРАДИЕНТ: Наложение фирменных цветов */
+    background: linear-gradient(45deg, #ff7b00, #ff007b); 
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent; /* Страховка для старых браузеров */
 }
 
 /* Подзаголовок */
