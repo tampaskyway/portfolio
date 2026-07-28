@@ -91,7 +91,7 @@ section h2::after {
 } 
 
 .logo img { 
-    height: 45px; 
+    height: 60px; 
     width: auto; 
     display: block;
     transition: transform 0.3s ease, filter 0.3s ease; 
