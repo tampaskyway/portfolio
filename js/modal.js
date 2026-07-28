@@ -1,7 +1,7 @@
 /**
  * Модуль управления модальным окном просмотра картин
  */
-export function initModal() {
+function initModal() {
     const modal = document.getElementById('artModal');
     const modalImg = document.getElementById('modalImg');
     const closeBtn = document.querySelector('.modal-close');
