@@ -116,27 +116,25 @@
         } 
 
         .hero h1 { 
-            /* Используем изящный шрифт */
-            font-family: 'Playfair Display', Georgia, serif;
+            /* Используем благородный системный шрифт Georgia */
+            font-family: Georgia, 'Times New Roman', serif;
             font-size: 4.5rem; 
-            font-weight: 700;  /* Делаем шрифт плотнее, чтобы градиент читался идеально */
+            font-weight: 700;  
             margin-bottom: 20px; 
             line-height: 1.2; 
     
-            /* ВОЗВРАЩАЕМ ГРАДИЕНТ НА ВЕСЬ ЗАГОЛОВОК */
             background: var(--accent-gradient); 
             -webkit-background-clip: text; 
             -webkit-text-fill-color: transparent; 
         } 
 
         .hero h1 span { 
-            /* Для самого имени добавляем элегантный курсивный наклон */
-            font-style: italic; 
-            /* Свойства градиента здесь дублировать не нужно, они наследуются сверху */
+            font-style: italic; /* Ваше имя останется красивым курсивом */
         } 
+
         .hero p { 
-            /* Для подзаголовка тоже используем новый шрифт в стиле легкого литературного курсива */
-            font-family: 'Playfair Display', Georgia, serif;
+            /* Подзаголовок тоже переводим на системный шрифт в стиле курсива */
+            font-family: Georgia, 'Times New Roman', serif;
             font-style: italic;
             font-size: 1.5rem; 
             color: var(--text-muted); 
