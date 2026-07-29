@@ -363,7 +363,137 @@ nav .social-icons a:hover {
 }
 
 /* ==========================================================================
-   5. О ХУДОЖНИКЕ И КОНТАКТЫ
+   6. АРТКЛАССЫ
+   ========================================================================== */
+
+   /* Основные стили секции Арт-классов */
+.classes-section {
+    padding: 100px 20px;
+    background-color: #1a1a1a; /* Возвращаемся к основному темному фону сайта */
+}
+
+/* Контейнер-обертка для выравнивания в ряд */
+.classes-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* Левая текстовая колонка */
+.classes-content {
+    flex: 1;
+    text-align: left;
+}
+
+.classes-content h2 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: #ffffff;
+    margin-bottom: 15px;
+}
+
+.classes-intro {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 400;
+    line-height: 1.6;
+    color: #ff7b00; /* Подсвечиваем вводное предложение фирменным цветом */
+    margin-bottom: 20px;
+}
+
+.classes-content p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    font-weight: 300;
+    line-height: 1.7;
+    color: #cccccc;
+    margin-bottom: 25px;
+}
+
+/* Стилизация маркированного списка */
+.classes-details {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 40px 0;
+}
+
+.classes-details li {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 300;
+    color: #e0e0e0;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+/* Иконки-галочки в списке */
+.classes-details li i {
+    color: #ff007b; /* Розовый акцент из вашего градиента */
+    margin-top: 4px;
+    font-size: 0.9rem;
+}
+
+/* Стилизация кнопки */
+.class-btn {
+    display: inline-block;
+    padding: 14px 35px;
+    text-decoration: none;
+    font-weight: 500;
+    border-radius: 30px;
+    background: linear-gradient(45deg, #ff7b00, #ff007b); /* Градиент как на имени */
+    color: #ffffff !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.class-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(255, 123, 0, 0.3);
+}
+
+/* Правая колонка с изображением */
+.classes-image {
+    flex: 1;
+    max-width: 500px;
+}
+
+.classes-image img {
+    width: 100%;
+    height: auto;
+    max-height: 550px;
+    object-fit: cover;
+    border-radius: 15px; /* Мягкие скругленные углы для фото */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+}
+
+/* АДАПТИВНОСТЬ: Перестраиваем в один столбец на мобильных и планшетах */
+@media (max-width: 868px) {
+    .classes-wrapper {
+        flex-direction: column-reverse; /* Картинка будет опускаться под текст */
+        gap: 40px;
+    }
+    
+    .classes-content {
+        text-align: center;
+    }
+    
+    .classes-details li {
+        text-align: left;
+        justify-content: center;
+    }
+    
+    .classes-image {
+        width: 100%;
+    }
+}
+
+
+/* ==========================================================================
+   7. О ХУДОЖНИКЕ И КОНТАКТЫ
    ========================================================================== */
 .about-container { 
     display: flex; 
