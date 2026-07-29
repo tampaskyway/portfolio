@@ -286,6 +286,81 @@ nav .social-icons a:hover {
     color: #888; 
     border: 1px solid #e0e0e0; 
 } 
+/* ==========================================================================
+   5. ВЫСТАВКИ
+   ========================================================================== */
+/* Стили для секции выставок */
+.exhibitions-section {
+    padding: 80px 20px;
+    background-color: #1f1f1f; /* Темный фон для контраста с белым фоном «About me» */
+    text-align: center;
+}
+
+.exhibitions-section h2 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: #ffffff;
+    margin-bottom: 30px;
+}
+
+/* Блок текста */
+.exhibitions-container {
+    max-width: 750px;
+    margin: 0 auto 50px auto;
+    padding: 0 15px;
+}
+
+.exhibitions-text h3 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.6rem;
+    color: #ffffff;
+    margin-bottom: 10px;
+}
+
+.exhibitions-text .exhibitions-meta {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.95rem;
+    color: #ff7b00; /* Выделение места и даты фирменным цветом */
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+.exhibitions-text p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 300;
+    line-height: 1.7;
+    color: #cccccc;
+}
+
+/* Сетка фотографий */
+.exhibitions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* Стилизация карточек фото (чтобы гармонировали с основной галереей) */
+.exhibitions-grid .art-card {
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+}
+
+.exhibitions-grid .art-card:hover {
+    transform: scale(1.02);
+}
+
+.exhibitions-grid .art-img-wrapper img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover; /* Картинки будут ровными и не сожмутся */
+    display: block;
+}
 
 /* ==========================================================================
    5. О ХУДОЖНИКЕ И КОНТАКТЫ
