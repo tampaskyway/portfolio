@@ -1,5 +1,5 @@
 <!DOCTYPE html> 
-<html lang="ru"> 
+<html lang="en"> 
 <head> 
     <meta charset="UTF-8"> 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
@@ -133,10 +133,10 @@
                 <!-- Картина 7 -->
                 <article class="art-card" data-src="images/art7.webp"> 
                     <div class="art-img-wrapper"> 
-                        <img src="images/art7.webp" alt="Summer time" loading="lazy"> 
+                        <img src="images/art7.webp" alt="Summer" loading="lazy"> 
                     </div> 
                     <div class="art-info"> 
-                        <h3 class="art-title">Summer time</h3> 
+                        <h3 class="art-title">Summer</h3> 
                         <p class="art-meta">Canvas, oil • 16x20" • 2021</p> 
                         <span class="art-status status-available">$1200</span> 
                     </div> 
@@ -213,7 +213,7 @@
                         <img src="images/art15.webp" alt="Red Macaws" loading="lazy"> 
                     </div> 
                     <div class="art-info"> 
-                        <h3 class="art-title">red Macaws</h3> 
+                        <h3 class="art-title">Red Macaws</h3> 
                         <p class="art-meta">Canvas, oil • 36x24" • 2025</p> 
                         <span class="art-status status-available">$2500</span> 
                     </div> 
@@ -357,81 +357,100 @@
 
 
         
-        <!-- Раздел: О художнике --> 
-        <section id="about" class="about-section"> 
-            <h2>About me</h2> 
-            <div class="about-container"> 
-                <div class="about-text"> 
-                    <p>Hello! My name is <strong>Vladilena Abkadirova</strong>. I'm a professional artist dedicated to exploring the possibilities of color, form, and texture in contemporary painting.</p> 
-                    <p>I currently live in Florida, where the beauty of nature and the ever-changing light inspire my artistic journey every day.</p> 
-                    <p>I was born in Russia, where I received my education and discovered my passion for art, design, drawing, and painting. From an early early age, I was captivated by the expressive power of oil painting, a medium that has remained at the heart of my creative work.</p> 
-                    <p>Working primarily with oils on canvas, I enjoy exploring different techniques and textures, often incorporating a palette knife to bring depth, movement, and energy to my paintings.</p> 
-                    <p>Nature is my greatest source of inspiration. I'm especially drawn to landscapes, still lifes, and the beauty of birds and wildlife. Each subject offers an opportunity to capture not only its appearance but also its unique atmosphere and spirit.</p> 
-                    <p>For me, painting is much more than creating an image — it is a way of expressing emotions that can't always be put into words. Every painting reflects a moment in time, an impression, or a feeling that has touched me deeply. It's an invitation to slow down, appreciate the beauty that surrounds us, and connect with the quiet emotions of everyday life.</p> 
-                    <p>My work is shaped by memories, light, color, and the subtle impressions that remain in the subconscious. As every artist leaves a part of themselves in their work, each of my paintings carries a piece of my own story.</p> 
-                    <p>Painting is also my form of meditation. The moment I begin to paint, the outside world fades away, time loses it's meaning, and I become completely immersed in the creative process. It's a source of peace, fulfillment, and endless inspiration.</p> 
-                    <p>Through my art, I hope to share these feelings with others and create paintings that bring warmth, serenity, and joy to those who experience them.</p> 
-                </div> 
-            </div> 
-        </section>
+<!-- Раздел: О художнике -->
+<section id="about" class="about-section">
+    <h2>About me</h2>
+    <div class="about-container">
+        <div class="about-text">
+            <p>Hello! My name is <strong>Vladliena Abkadirova</strong>. I'm a professional artist dedicated to exploring the possibilities of color, form, and texture in contemporary painting.</p>
+            <p>I currently live in Florida, where the beauty of nature and the ever-changing light inspire my artistic journey every day.</p>
+            <!-- ИСПРАВЛЕНО: Удалено повторяющееся слово early -->
+            <p>I was born in Russia, where I received my education and discovered my passion for art, design, drawing, and painting. From an early age, I was captivated by the expressive power of oil painting, a medium that has remained at the heart of my creative work.</p>
+            <p>Working primarily with oils on canvas, I enjoy exploring different techniques and textures, often incorporating a palette knife to bring depth, movement, and energy to my paintings.</p>
+            <p>Nature is my greatest source of inspiration. I'm especially drawn to landscapes, still lifes, and the beauty of birds and wildlife. Each subject offers an opportunity to capture not only its appearance but also its unique atmosphere and spirit.</p>
+            <p>For me, painting is much more than creating an image — it is a way of expressing emotions that can't always be put into words. Every painting reflects a moment in time, an impression, or a feeling that has touched me deeply. It's an invitation to slow down, appreciate the beauty that surrounds us, and connect with the quiet emotions of everyday life.</p>
+            <p>My work is shaped by memories, light, color, and the subtle impressions that remain in the subconscious. As every artist leaves a part of themselves in their work, each of my paintings carries a piece of my own story.</p>
+            <!-- ИСПРАВЛЕНО: it's заменено на корректное its -->
+            <p>Painting is also my form of meditation. The moment I begin to paint, the outside world fades away, time loses its meaning, and I become completely immersed in the creative process. It's a source of peace, fulfillment, and endless inspiration.</p>
+            <p>Through my art, I hope to share these feelings with others and create paintings that bring warmth, serenity, and joy to those who experience them.</p>
+        </div>
+    </div>
+</section>
+
 </main> <!-- Закрываем тег main из первой части сайта -->
 
-    <!-- Раздел: Контакты -->
-    <section id="contact" class="contact-section">
-        <h2>Contact me</h2>
-        <div class="contact-subtitle">
-            <p>You can contact me using the form below or</p>
-            <p>find me on social media via the icons above.</p>
-        </div>
-        <div class="contact-container">
-            <!-- Контейнеры кастомных уведомлений -->
-            <div id="form-success" class="form-alert success" style="display: none;">
-                Thank you! Your message has been sent successfully.
-            </div>
-            <div id="form-error" class="form-alert error" style="display: none;">
-                Oops! There was a problem submitting your form.
-            </div>
-
-            <form id="contact-form" action="https://formspree.io/f/mrenjezk" method="POST" novalidate>
-    <!-- Защитное поле Formshield от спам-ботов -->
-    <input type="text" name="_gotcha" style="display:none !important" tabindex="-1" autocomplete="off">
-
-    <div class="form-group">
-        <label for="name">Your Name</label>
-        <input type="text" id="name" name="name" required placeholder="Name">
-    </div>
-    <div class="form-group">
-        <label for="email">Contacts (Email)</label>
-        <!-- ИСПРАВЛЕНО: name="email" вместо contact для совместимости с сервисами -->
-        <input type="email" id="email" name="email" required placeholder="example@gmail.com">
-    </div>
-    <div class="form-group">
-        <label for="message">Your message</label>
-        <textarea id="message" name="message" rows="5" required placeholder="Which painting are you interested in, or what is your collaboration proposal?"></textarea>
-    </div>
-    <!-- Убедитесь, что внутри формы есть кнопка отправки с типом submit -->
-    <button type="submit" class="btn">Send Message</button>
-</form>
-        </div>
-    </section>
-
-    <!-- Полноэкранное модальное окно просмотра картин -->
-        <div class="modal" id="artModal" aria-hidden="true" role="dialog" style="display: none;">
-        <button class="modal-close" id="modalCloseBtn" aria-label="Закрыть окно">&times;</button>
-        <img class="modal-content" id="modalImg" alt="Увеличенный просмотр картины">
-    </div>
-
-    <!-- Подключение внешних файлов скриптов -->
-    <script src="js/modal.js"></script>
-    <script src="js/contact.js"></script>
+<!-- Раздел: Контакты -->
+<section id="contact" class="contact-section">
+    <h2>Contact me</h2>
     
-    <script>
-        // Инициализируем модалку и форму сразу после загрузки DOM
-        document.addEventListener('DOMContentLoaded', () => {
-            if (typeof initModal === 'function') initModal();
-            if (typeof initContactForm === 'function') initContactForm();
-        });
-    </script>
+    <!-- ИСПРАВЛЕНО: Объединено в один блок для красоты верстки -->
+    <div class="contact-subtitle">
+        If you are interested in purchasing an original painting, commissioning a custom artwork, or discussing a collaboration proposal, please fill out the form below. I will get back to you as soon as possible.
+    </div>
+
+    <div class="contact-container">
+        <!-- Контейнеры кастомных уведомлений -->
+        <div id="form-success" class="form-alert success" style="display: none;">
+            Thank you! Your message has been sent successfully.
+        </div>
+        <div id="form-error" class="form-alert error" style="display: none;">
+            Oops! There was a problem submitting your form.
+        </div>
+        <!-- ДОБАВЛЕНО: Контейнер для вывода ошибок валидации мессенджеров -->
+        <div id="form-validation-error" class="form-alert error" style="display: none;"></div>
+
+        <form id="contact-form" action="https://formspree.io/f/mrenjezk" method="POST" novalidate>
+            <!-- Защитное поле Formshield от спам-ботов -->
+            <input type="text" name="_gotcha" style="display:none !important" tabindex="-1" autocomplete="off">
+            
+            <div class="form-group">
+                <label for="name">Your Name</label>
+                <input type="text" id="name" name="name" required placeholder="Name">
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required placeholder="example@gmail.com">
+            </div>
+
+            <!-- ДОБАВЛЕНО: Поле проверки Telegram -->
+            <div class="form-group">
+                <label for="telegram">Telegram Username</label>
+                <input type="text" id="telegram" name="telegram" placeholder="@username">
+            </div>
+
+            <!-- ДОБАВЛЕНО: Поле проверки WhatsApp -->
+            <div class="form-group">
+                <label for="whatsapp">WhatsApp (Phone number or Username)</label>
+                <input type="text" id="whatsapp" name="whatsapp" placeholder="+1234567890 or username">
+            </div>
+
+            <div class="form-group">
+                <label for="message">Your message</label>
+                <textarea id="message" name="message" rows="5" required placeholder="Which painting are you interested in, or what is your collaboration proposal?"></textarea>
+            </div>
+            
+            <button type="submit" class="btn">Send Message</button>
+        </form>
+    </div>
+</section>
+
+<!-- Полноэкранное модальное окно просмотра картин -->
+<div class="modal" id="artModal" aria-hidden="true" role="dialog" style="display: none;">
+    <button class="modal-close" id="modalCloseBtn" aria-label="Закрыть окно">&times;</button>
+    <img class="modal-content" id="modalImg" alt="Увеличенный просмотр картины">
+</div>
+
+<!-- Подключение внешних файлов скриптов -->
+<script src="js/modal.js"></script>
+<script src="js/contact.js"></script>
+<script>
+    // Инициализируем модалку и форму сразу после загрузки DOM
+    document.addEventListener('DOMContentLoaded', () => {
+        if (typeof initModal === 'function') initModal();
+        if (typeof initContactForm === 'function') initContactForm();
+    });
+</script>
 
     <!-- Оптимизированный скрипт анимации и скролла -->
     <script>
