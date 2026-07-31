@@ -158,7 +158,7 @@ nav .social-icons a:hover {
     padding: 0 20px;
     
     /* Фоновая картинка с легким затемнением для читаемости текста */
-    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../images/wall.jpeg') no-repeat center center / cover;
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../images/wall.webp') no-repeat center center / cover;
     
     color: #ffffff;
 }
