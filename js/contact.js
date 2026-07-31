@@ -7,52 +7,63 @@ function initContactForm() {
     if (!form) return;
 
     form.addEventListener('submit', async function(event) {
-        event.preventDefault(); // Блокируем перезагрузку и переход на Formspree
+        event.preventDefault(); // Блокируем перезагрузку страницы
 
-        // Сбрасываем плашки уведомлений перед новой попыткой
+        // Сбрасываем старые уведомления
         successAlert.style.display = 'none';
         errorAlert.style.display = 'none';
-        validationAlert.style.display = 'none';
-        validationAlert.innerHTML = '';
+        if (validationAlert) {
+            validationAlert.style.display = 'none';
+            validationAlert.innerHTML = '';
+        }
 
-        // 1. СТАНДАРТНАЯ ПРОВЕРКА ОБЯЗАТЕЛЬНЫХ ПОЛЕЙ (Имя, Email, Сообщение)
+        // 1. ПРОВЕРКА ОБЯЗАТЕЛЬНЫХ ПОЛЕЙ (Имя, Email, Сообщение)
         if (!form.checkValidity()) {
-            validationAlert.innerHTML = '• Please fill out all required fields correctly (Name, Email, and Message).';
-            validationAlert.style.display = 'block';
+            if (validationAlert) {
+                validationAlert.innerHTML = '• Please fill out all required fields correctly (Name, Email, and Message).';
+                validationAlert.style.display = 'block';
+            }
             return;
         }
 
-        // Получаем и очищаем значение из поля телефона
-        const phoneInput = document.getElementById('phone')?.value.trim() || '';
+        // Получаем значение телефона
+        const phoneField = document.getElementById('phone');
+        const phoneInput = phoneField ? phoneField.value.trim() : '';
         let errors = [];
 
-        // 2. УМНАЯ ВАЛИДАЦИЯ НОМЕРА ТЕЛЕФОНА (если поле заполнено)
+        // 2. УМНАЯ ВАЛИДАЦИЯ НОМЕРА ТЕЛЕФОНА
         if (phoneInput.length > 0) {
-            // Удаляем пробелы, скобки, дефисы и плюсы для чистой проверки цифр
-            const cleanedPhone = phoneInput.replace(/[\s()+-]/g, ''); 
-            // Проверяем, что осталось от 7 до 15 цифр
-            const phoneRegex = /^[1-9]\d{6,14}$/; 
+            // Удаляем абсолютно всё, КРОМЕ ЦИФР
+            const onlyDigits = phoneInput.replace(/\D/g, ''); 
             
-            if (!phoneRegex.test(cleanedPhone)) {
-                errors.push('• <b>Phone Number</b> must be a valid international number (e.g., +1 (234) 567-8900).');
+            // Если после очистки осталось меньше 7 цифр или больше 15
+            if (onlyDigits.length < 7 || onlyDigits.length > 15) {
+                errors.push('• <b>Phone Number</b> must be a valid number containing between 7 and 15 digits.');
             }
         }
 
-        // Если обнаружены ошибки в телефоне, прерываем отправку
+        // Если есть ошибки — выводим и стопим отправку
         if (errors.length > 0) {
-            validationAlert.innerHTML = errors.join('<br>');
-            validationAlert.style.display = 'block';
+            if (validationAlert) {
+                validationAlert.innerHTML = errors.join('<br>');
+                validationAlert.style.display = 'block';
+            } else {
+                // Страховка: если блока на странице нет, выводим обычный alert
+                alert(errors.join('\n').replace(/<\/?[^>]+(>|$)/g, ""));
+            }
             return;
         }
 
-        // ЕСЛИ ВСЁ В ПОРЯДКЕ — ОТПРАВЛЯЕМ ДАННЫЕ ЧЕРЕЗ AJAX (FETCH)
+        // ОТПРАВКА ФОРМЫ ЧЕРЕЗ AJAX
         const formData = new FormData(form);
         const submitButton = form.querySelector('button[type="submit"]');
-        const originalButtonText = submitButton.textContent;
+        const originalButtonText = submitButton ? submitButton.textContent : 'Send Message';
 
         try {
-            submitButton.textContent = 'Sending...';
-            submitButton.disabled = true;
+            if (submitButton) {
+                submitButton.textContent = 'Sending...';
+                submitButton.disabled = true;
+            }
 
             const response = await fetch(form.action, {
                 method: form.method,
@@ -71,8 +82,10 @@ function initContactForm() {
         } catch (error) {
             errorAlert.style.display = 'block';
         } finally {
-            submitButton.textContent = originalButtonText;
-            submitButton.disabled = false;
+            if (submitButton) {
+                submitButton.textContent = originalButtonText;
+                submitButton.disabled = false;
+            }
         }
     });
 }
