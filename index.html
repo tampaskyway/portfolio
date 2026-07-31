@@ -488,6 +488,46 @@
         window.addEventListener('DOMContentLoaded', forceRevealElements);
         // Запуск-страховка для GitHub Pages
         setTimeout(forceRevealElements, 500);
+
+        document.addEventListener('DOMContentLoaded', () => {
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinksWrapper = document.getElementById('navLinksWrapper');
+    const navLinks = document.querySelectorAll('.nav-links-wrapper .nav-link');
+
+    if (!menuToggle || !navLinksWrapper) return;
+
+    // Функция переключения меню
+    function toggleMenu() {
+        const isOpen = navLinksWrapper.classList.toggle('open');
+        menuToggle.classList.toggle('active');
+        menuToggle.setAttribute('aria-expanded', isOpen);
+    }
+
+    // Открытие/закрытие по клику на гамбургер
+    menuToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleMenu();
+    });
+
+    // Автоматическое закрытие меню при клике на любую ссылку
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            if (navLinksWrapper.classList.contains('open')) {
+                toggleMenu();
+            }
+        });
+    });
+
+    // Закрытие меню, если кликнули в любое другое место экрана
+    document.addEventListener('click', (e) => {
+        if (!navLinksWrapper.contains(e.target) && !menuToggle.contains(e.target)) {
+            if (navLinksWrapper.classList.contains('open')) {
+                toggleMenu();
+            }
+        }
+    });
+});
+
     </script>
 </body>
 </html>
