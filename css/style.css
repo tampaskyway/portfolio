@@ -992,3 +992,53 @@ nav .social-icons a:hover {
     }
 }
 
+/* ==========================================================================
+   X. ПОДВАЛ САЙТА (FOOTER)
+   ========================================================================== */
+.site-footer {
+    background-color: #1f1f1f; /* Немного контрастный темный фон подвала */
+    padding: 30px 20px;
+    border-top: 1px solid var(--border-color);
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-copy {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem;
+    color: #888888; /* Аккуратный приглушенный цвет */
+    font-weight: 300;
+}
+
+.footer-socials {
+    display: flex;
+    gap: 20px;
+}
+
+.footer-socials a {
+    color: #888888;
+    font-size: 1.2rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.footer-socials a:hover {
+    color: var(--accent-color); /* Подсветка вашим розовым цветом при наведении */
+    transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   АДАПТИВНОСТЬ ПОД МОБИЛЬНЫЕ (Внутрь вашего медиа-запроса 768px)
+   ========================================================================== */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column; /* Элементы встанут друг под другом на телефонах */
+        gap: 15px;
+        text-align: center;
+    }
+}
