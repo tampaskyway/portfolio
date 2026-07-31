@@ -465,7 +465,7 @@ nav .social-icons a:hover {
 /* Исправленная сетка фото для мастер-классов */
 .class-photos-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Строго 3 равные колонки */
+    grid-template-columns: repeat(3, 1fr); 
     gap: 20px;
     margin-bottom: 40px;
 }
@@ -476,10 +476,14 @@ nav .social-icons a:hover {
     border-radius: 8px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    
+    /* 🔥 ХАК 1: Полностью обесцвечиваем карточку. 
+       Если Safari промажет по высоте, зазору просто нечего будет красить в серый цвет */
     background: transparent !important;
     background-color: transparent !important;
     
-    /* 🔥 ШАГ 1: Задаем жесткое соотношение сторон для карточки (4:3) */
+    /* Делаем позиционирование относительным для дочернего абсолюта */
+    position: relative;
     aspect-ratio: 4 / 3; 
 }
 
@@ -488,37 +492,40 @@ nav .social-icons a:hover {
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
 }
 
-/* Настройки для самого тега img и его обертки */
-.class-photos-grid .art-img-wrapper,
-.class-photos-grid .art-img-wrapper img {
+/* Обертка изображения внутри карточки */
+.class-photos-grid .art-img-wrapper {
     width: 100%;
-    height: 100%; /* 🔥 ШАГ 2: Картинка заполняет карточку на все 100% */
-    
-    /* 🔥 ШАГ 3: Умное кадрирование. Картинка подстроится под формат 4:3, 
-       не сожмется, не растянется, а серые полосы исчезнут навсегда */
-    object-fit: cover; 
+    height: 100%;
+    background: transparent !important;
+}
+
+/* 🔥 ХАК 2: Жесткое абсолютное привязывание тега img ко всем краям.
+   Этот способ заставляет iOS Safari идеально плотно натягивать картинку без пиксельных щелей */
+.class-photos-grid .art-img-wrapper img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     display: block;
 }
 
-/* ================= АДАПТИВНОСТЬ ПОД МОБИЛЬНЫЕ ================= */
+/* АДАПТИВНОСТЬ ПОД МОБИЛЬНЫЕ (АЙФОНЫ И АНДРОИДЫ) */
 @media (max-width: 868px) {
-    .class-block {
-        padding: 35px 20px;
-    }
-
-    /* Перестраиваем фотки в один столбец */
     .class-photos-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr; /* 1 колонка на телефонах */
         gap: 15px;
     }
-
-    /* 🔥 ИСПРАВЛЕНО: Убираем любые фиксы высоты, которые ломали object-fit */
-    .class-photos-grid .art-img-wrapper img {
+    
+    /* Страховка для мобильной верстки: сохраняем пропорции и прозрачность */
+    .class-photos-grid .art-card {
         width: 100%;
-        height: 100%; /* Картинка должна полностью занимать 100% высоты карточки */
-        object-fit: cover; /* Умное кадрирование без искажений */
+        aspect-ratio: 4 / 3;
+        background: transparent !important;
     }
 }
+
 
 
 /* Контейнер для центрирования кнопки */
