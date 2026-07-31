@@ -383,57 +383,64 @@
 <section id="contact" class="contact-section">
     <h2>Contact me</h2>
     
-    <!-- ИСПРАВЛЕНО: Объединено в один блок для красоты верстки -->
     <div class="contact-subtitle">
         If you are interested in purchasing an original painting, commissioning a custom artwork, or discussing a collaboration proposal, please fill out the form below. I will get back to you as soon as possible.
     </div>
 
-    <div class="contact-container">
-        <!-- Контейнеры кастомных уведомлений -->
-        <div id="form-success" class="form-alert success" style="display: none;">
-            Thank you! Your message has been sent successfully.
+    <!-- НОВЫЙ ОБЩИЙ КОНТЕЙНЕР ДЛЯ РАЗДЕЛЕНИЯ НА ФОТО И ФОРМУ -->
+    <div class="contact-wrapper">
+        
+        <!-- Левая часть: Фотография художника -->
+        <div class="contact-image-block">
+            <img src="images/artist-contact.webp" alt="Artist Vladliena Abkadirova" loading="lazy">
         </div>
-        <div id="form-error" class="form-alert error" style="display: none;">
-            Oops! There was a problem submitting your form.
+
+        <!-- Правая часть: Контейнер с формой -->
+        <div class="contact-container">
+            <!-- Контейнеры кастомных уведомлений -->
+            <div id="form-success" class="form-alert success" style="display: none;">
+                Thank you! Your message has been sent successfully.
+            </div>
+            <div id="form-error" class="form-alert error" style="display: none;">
+                Oops! There was a problem submitting your form.
+            </div>
+            <div id="form-validation-error" class="form-alert error" style="display: none;"></div>
+
+            <form id="contact-form" action="https://formspree.io" method="POST" novalidate>
+                <input type="text" name="_gotcha" style="display:none !important" tabindex="-1" autocomplete="off">
+                
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name" required placeholder="Name">
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required placeholder="example@gmail.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="telegram">Telegram Username</label>
+                    <input type="text" id="telegram" name="telegram" placeholder="@username">
+                </div>
+
+                <div class="form-group">
+                    <label for="whatsapp">WhatsApp (Phone number or Username)</label>
+                    <input type="text" id="whatsapp" name="whatsapp" placeholder="+1234567890 or username">
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Your message</label>
+                    <textarea id="message" name="message" rows="5" required placeholder="Which painting are you interested in, or what is your collaboration proposal?"></textarea>
+                </div>
+                
+                <button type="submit" class="btn">Send Message</button>
+            </form>
         </div>
-        <!-- ДОБАВЛЕНО: Контейнер для вывода ошибок валидации мессенджеров -->
-        <div id="form-validation-error" class="form-alert error" style="display: none;"></div>
 
-        <form id="contact-form" action="https://formspree.io/f/mrenjezk" method="POST" novalidate>
-            <!-- Защитное поле Formshield от спам-ботов -->
-            <input type="text" name="_gotcha" style="display:none !important" tabindex="-1" autocomplete="off">
-            
-            <div class="form-group">
-                <label for="name">Your Name</label>
-                <input type="text" id="name" name="name" required placeholder="Name">
-            </div>
-            
-            <div class="form-group">
-                <label for="email">Email Address</label>
-                <input type="email" id="email" name="email" required placeholder="example@gmail.com">
-            </div>
-
-            <!-- ДОБАВЛЕНО: Поле проверки Telegram -->
-            <div class="form-group">
-                <label for="telegram">Telegram Username</label>
-                <input type="text" id="telegram" name="telegram" placeholder="@username">
-            </div>
-
-            <!-- ДОБАВЛЕНО: Поле проверки WhatsApp -->
-            <div class="form-group">
-                <label for="whatsapp">WhatsApp (Phone number or Username)</label>
-                <input type="text" id="whatsapp" name="whatsapp" placeholder="+1234567890 or username">
-            </div>
-
-            <div class="form-group">
-                <label for="message">Your message</label>
-                <textarea id="message" name="message" rows="5" required placeholder="Which painting are you interested in, or what is your collaboration proposal?"></textarea>
-            </div>
-            
-            <button type="submit" class="btn">Send Message</button>
-        </form>
     </div>
 </section>
+
 
 <!-- Подвал сайта (Footer) -->
 <footer class="site-footer">
