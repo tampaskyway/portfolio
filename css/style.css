@@ -618,7 +618,7 @@ nav .social-icons a:hover {
 .contact-section h2 {
     font-family: 'Playfair Display', Georgia, serif;
     font-size: clamp(2rem, 4vw, 3rem);
-    color: #ffffff;
+    color: #000000;
     margin-bottom: 20px;
     text-align: center;
 }
