@@ -476,7 +476,8 @@ nav .social-icons a:hover {
     border-radius: 8px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    background: transparent;
+    background: transparent !important;
+    background-color: transparent !important;
     
     /* 🔥 ШАГ 1: Задаем жесткое соотношение сторон для карточки (4:3) */
     aspect-ratio: 4 / 3; 
@@ -499,11 +500,23 @@ nav .social-icons a:hover {
     display: block;
 }
 
-/* АДАПТИВНОСТЬ ПОД МОБИЛЬНЫЕ */
+/* ================= АДАПТИВНОСТЬ ПОД МОБИЛЬНЫЕ ================= */
 @media (max-width: 868px) {
+    .class-block {
+        padding: 35px 20px;
+    }
+
+    /* Перестраиваем фотки в один столбец */
     .class-photos-grid {
-        grid-template-columns: 1fr; /* На телефонах выстраиваем в одну колонку */
+        grid-template-columns: 1fr;
         gap: 15px;
+    }
+
+    /* 🔥 ИСПРАВЛЕНО: Убираем любые фиксы высоты, которые ломали object-fit */
+    .class-photos-grid .art-img-wrapper img {
+        width: 100%;
+        height: 100%; /* Картинка должна полностью занимать 100% высоты карточки */
+        object-fit: cover; /* Умное кадрирование без искажений */
     }
 }
 
