@@ -42,7 +42,7 @@ section h2 {
     margin-bottom: 60px;
     text-transform: uppercase;
     letter-spacing: 1px;
-    color: #ffffff; /* Или ваш цвет var(--text-main) */
+    color: var(--text-main);
 } 
 
 section h2::after { 
