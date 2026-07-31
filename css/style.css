@@ -462,12 +462,12 @@ nav .social-icons a:hover {
     margin-bottom: 0;
 }
 
-/* Горизонтальная сетка из 3-х фотографий */
 .class-photos-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Авто-колонки */
     gap: 20px;
     margin-bottom: 40px;
+    align-items: start; /* 🔥 ИСПРАВЛЕНО: Карточки не будут насильно растягиваться по высоте */
 }
 
 .class-photos-grid .art-card {
@@ -476,19 +476,15 @@ nav .social-icons a:hover {
     border-radius: 8px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.class-photos-grid .art-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+    background: transparent; /* 🔥 ИСПРАВЛЕНО: Убираем серый фон карточки-подложки */
 }
 
 .class-photos-grid .art-img-wrapper img {
     width: 100%;
-    height: 240px; /* Фиксированная высота, чтобы превью были одинаковыми */
-    object-fit: cover;
+    height: auto; /* 🔥 ИСПРАВЛЕНО: Картинка сама задает высоту без фиксированных пикселей */
     display: block;
 }
+
 
 /* Контейнер для центрирования кнопки */
 .class-btn-wrapper {
