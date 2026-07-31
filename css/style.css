@@ -746,3 +746,55 @@ nav .social-icons a:hover {
         display: none; 
     } 
 }
+
+@media (max-width: 768px) {
+    
+    /* 1. ОПТИМИЗАЦИЯ НАВИГАЦИИ (ШАПКИ) */
+    .site-header {
+        padding: 15px;
+        flex-direction: column; /* Логотип и меню встанут друг под другом */
+        gap: 15px;
+    }
+    
+    .nav-menu {
+        display: flex;
+        flex-wrap: wrap; /* Если ссылки не влезают в ряд, они аккуратно переносят на вторую строку */
+        justify-content: center;
+        gap: 15px;
+    }
+    
+    .nav-menu .nav-link {
+        font-size: 0.95rem; /* Чуть уменьшаем размер ссылок для пальцев */
+    }
+
+    /* 2. СНИЖЕНИЕ ОТСТУПОВ ДЛЯ СЭКОНОМЛЕНИЯ МЕСТА */
+    section {
+        padding: 50px 15px !important; /* Уменьшаем гигантские компьютерные отступы сверху и снизу */
+    }
+    
+    h2 {
+        font-size: 2rem !important; /* Делаем главные заголовки секций аккуратнее */
+        margin-bottom: 30px !important;
+    }
+
+    /* 3. ГАЛЕРЕЯ КАРТИН (ПЕРЕСТРОЕНИЕ В СТОЛБЕЦ) */
+    .gallery-grid {
+        grid-template-columns: 1fr !important; /* Каждая картина растягивается во всю ширину экрана */
+        gap: 25px !important;
+    }
+    
+    .art-card .art-img-wrapper img {
+        height: auto !important; /* Картины сохраняют свои естественные пропорции */
+        max-height: 400px;
+    }
+
+    /* 4. ФОРМА ОБРАТНОЙ СВЯЗИ */
+    .contact-container {
+        padding: 20px 15px !important; /* Убираем широкие поля вокруг формы */
+    }
+    
+    .contact-section input, 
+    .contact-section textarea {
+        font-size: 16px !important; /* 🔥 КРИТИЧНО ДЛЯ IPHONE: если шрифт меньше 16px, iOS Safari принудительно увеличивает экран при клике на поле ввода, что ломает верстку */
+    }
+}
