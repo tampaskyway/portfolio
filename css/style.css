@@ -289,10 +289,10 @@ nav .social-icons a:hover {
 /* ==========================================================================
    5. ВЫСТАВКИ
    ========================================================================== */
-/* Стили для секции выставок */
+/* Общие стили секции выставок */
 .exhibitions-section {
-    padding: 80px 20px;
-    background-color: #1f1f1f; /* Темный фон для контраста с белым фоном «About me» */
+    padding: 100px 20px;
+    background-color: #1f1f1f; /* Контрастный темный фон */
     text-align: center;
 }
 
@@ -300,32 +300,42 @@ nav .social-icons a:hover {
     font-family: 'Playfair Display', Georgia, serif;
     font-size: clamp(2rem, 4vw, 3rem);
     color: #ffffff;
-    margin-bottom: 30px;
+    margin-bottom: 50px;
 }
 
-/* Блок текста */
-.exhibitions-container {
-    max-width: 750px;
-    margin: 0 auto 50px auto;
-    padding: 0 15px;
+/* Флекс-контейнер для разделения блока на две половины */
+.exhibitions-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-.exhibitions-text h3 {
+/* Левая колонка с текстом */
+.exhibitions-content {
+    flex: 1;
+    text-align: left; /* Текст аккуратно выровнен по левому краю */
+}
+
+.exhibitions-content h3 {
     font-family: 'Playfair Display', Georgia, serif;
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     color: #ffffff;
     margin-bottom: 10px;
 }
 
-.exhibitions-text .exhibitions-meta {
+.exhibitions-content .exhibitions-meta {
     font-family: 'Montserrat', sans-serif;
     font-size: 0.95rem;
-    color: #ff7b00; /* Выделение места и даты фирменным цветом */
+    color: #ff7b00; /* Выделение галереи фирменным оранжевым цветом */
     margin-bottom: 20px;
     font-weight: 500;
+    letter-spacing: 0.5px;
 }
 
-.exhibitions-text p {
+.exhibitions-content p {
     font-family: 'Montserrat', sans-serif;
     font-size: 1.05rem;
     font-weight: 300;
@@ -333,34 +343,71 @@ nav .social-icons a:hover {
     color: #cccccc;
 }
 
-/* Сетка фотографий */
+/* Правая колонка с галереей картинок */
 .exhibitions-grid {
+    flex: 1.2; /* Картинкам отдаем чуть больше пространства, чем тексту */
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
-    max-width: 1100px;
-    margin: 0 auto;
+    /* Создаем красивую сетку: одна большая картинка слева и две поменьше справа */
+    grid-template-columns: 1.5fr 1fr;
+    grid-template-rows: repeat(2, 130px);
+    gap: 15px;
 }
 
-/* Стилизация карточек фото (чтобы гармонировали с основной галереей) */
+/* Первая картинка занимает всю высоту сетки */
+.exhibitions-grid .art-card:nth-child(1) {
+    grid-row: span 2;
+}
+
 .exhibitions-grid .art-card {
     cursor: pointer;
     overflow: hidden;
     border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-    transition: transform 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .exhibitions-grid .art-card:hover {
-    transform: scale(1.02);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
 }
 
+.exhibitions-grid .art-img-wrapper,
 .exhibitions-grid .art-img-wrapper img {
     width: 100%;
-    height: 220px;
-    object-fit: cover; /* Картинки будут ровными и не сожмутся */
+    height: 100%;
+    object-fit: cover;
     display: block;
 }
+
+/* АДАПТИВНОСТЬ: для планшетов и телефонов перестраиваем в одну колонку */
+@media (max-width: 992px) {
+    .exhibitions-wrapper {
+        flex-direction: column;
+        gap: 40px;
+    }
+    
+    .exhibitions-content {
+        text-align: center; /* На мобилках текст будет по центру */
+        max-width: 700px;
+    }
+    
+    .exhibitions-grid {
+        width: 100%;
+        max-width: 600px;
+        grid-template-rows: repeat(2, 160px); /* Увеличиваем высоту фото на мобильных */
+    }
+}
+
+@media (max-width: 480px) {
+    .exhibitions-grid {
+        grid-template-columns: 1fr; /* На очень узких экранах фото выстроятся в 1 столбец */
+        grid-template-rows: repeat(3, 200px);
+    }
+    .exhibitions-grid .art-card:nth-child(1) {
+        grid-row: span 1;
+    }
+}
+
 
 /* ==========================================================================
    6. АРТКЛАССЫ
