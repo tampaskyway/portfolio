@@ -11,20 +11,31 @@
 </head> 
 <body> 
 
-    <!-- Шапка сайта --> 
-    <header class="site-header"> 
-        <div class="logo"> 
-            <a href="#home" aria-label="На главную"> 
-                <img src="images/logo-gradient.png" alt="Vladilena Art Logo"> 
-            </a> 
-        </div> 
-        <nav class="nav-menu" aria-label="Основная навигация"> 
-            <a href="#home" class="nav-link">Home</a> 
-            <a href="#gallery" class="nav-link">Gallery</a> 
+<!-- Шапка сайта -->
+<header class="site-header">
+    <div class="logo">
+        <a href="#home" aria-label="На главную">
+            <img src="images/logo-gradient.png" alt="Vladliena Art Logo">
+        </a>
+    </div>
+    
+    <nav class="nav-menu" aria-label="Основная навигация">
+        <!-- 🔥 ДОБАВЛЕНА КНОПКА ГАМБУРГЕРА -->
+        <button class="menu-toggle" id="menuToggle" aria-label="Открыть меню" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <!-- Контейнер для ссылок, который будет скрываться/открываться -->
+        <div class="nav-links-wrapper" id="navLinksWrapper">
+            <a href="#home" class="nav-link">Home</a>
+            <a href="#gallery" class="nav-link">Gallery</a>
             <a href="#exhibitions" class="nav-link">Exhibitions</a>
             <a href="#classes" class="nav-link">Classes</a>
-            <a href="#about" class="nav-link">About</a> 
-            <a href="#contact" class="nav-link">Contact</a> 
+            <a href="#about" class="nav-link">About</a>
+            <a href="#contact" class="nav-link">Contact</a>
+        </div>
             
             <span class="social-icons"> 
                 <a href="https://instagram.com/art.vladilena" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a> 
