@@ -462,12 +462,12 @@ nav .social-icons a:hover {
     margin-bottom: 0;
 }
 
+/* Исправленная сетка фото для мастер-классов */
 .class-photos-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Авто-колонки */
+    grid-template-columns: repeat(3, 1fr); /* Строго 3 равные колонки */
     gap: 20px;
     margin-bottom: 40px;
-    align-items: start; /* 🔥 ИСПРАВЛЕНО: Карточки не будут насильно растягиваться по высоте */
 }
 
 .class-photos-grid .art-card {
@@ -476,13 +476,35 @@ nav .social-icons a:hover {
     border-radius: 8px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    background: transparent; /* 🔥 ИСПРАВЛЕНО: Убираем серый фон карточки-подложки */
+    background: transparent;
+    
+    /* 🔥 ШАГ 1: Задаем жесткое соотношение сторон для карточки (4:3) */
+    aspect-ratio: 4 / 3; 
 }
 
+.class-photos-grid .art-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+}
+
+/* Настройки для самого тега img и его обертки */
+.class-photos-grid .art-img-wrapper,
 .class-photos-grid .art-img-wrapper img {
     width: 100%;
-    height: auto; /* 🔥 ИСПРАВЛЕНО: Картинка сама задает высоту без фиксированных пикселей */
+    height: 100%; /* 🔥 ШАГ 2: Картинка заполняет карточку на все 100% */
+    
+    /* 🔥 ШАГ 3: Умное кадрирование. Картинка подстроится под формат 4:3, 
+       не сожмется, не растянется, а серые полосы исчезнут навсегда */
+    object-fit: cover; 
     display: block;
+}
+
+/* АДАПТИВНОСТЬ ПОД МОБИЛЬНЫЕ */
+@media (max-width: 868px) {
+    .class-photos-grid {
+        grid-template-columns: 1fr; /* На телефонах выстраиваем в одну колонку */
+        gap: 15px;
+    }
 }
 
 
