@@ -836,7 +836,7 @@ nav .social-icons a:hover {
         text-align: center;
         padding: 5px 0;
     }
-}
+
     /* 2. СНИЖЕНИЕ ОТСТУПОВ ДЛЯ СЭКОНОМЛЕНИЯ МЕСТА */
     section {
         padding: 50px 15px !important; /* Уменьшаем гигантские компьютерные отступы сверху и снизу */
