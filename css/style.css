@@ -101,9 +101,7 @@ section h2::after {
     transform: scale(1.05); 
     filter: opacity(0.8); 
 } 
-.menu-toggle {
-    display: none;
-}
+
 .nav-menu a { 
     color: var(--text-main); 
     text-decoration: none; 
@@ -758,8 +756,9 @@ nav .social-icons a:hover {
         flex-direction: column; /* Логотип и меню встанут друг под другом */
         gap: 15px;
     }
-      .menu-toggle {
-        display: flex;
+
+   .menu-toggle {
+        display: none;
         flex-direction: column;
         justify-content: space-between;
         width: 30px;
