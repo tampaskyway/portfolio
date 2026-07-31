@@ -20,7 +20,7 @@ function initContactForm() {
         // 1. ПРОВЕРКА ОБЯЗАТЕЛЬНЫХ ПОЛЕЙ (Имя, Email, Сообщение)
         if (!form.checkValidity()) {
             if (validationAlert) {
-                validationAlert.innerHTML = '• Please fill out all required fields correctly (Name, Email, and Message).';
+                validationAlert.innerHTML = '• Please fill out all required fields correctly (Name, Email, Phone and Message).';
                 validationAlert.style.display = 'block';
             }
             return;
