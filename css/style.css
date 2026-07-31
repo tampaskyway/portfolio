@@ -343,41 +343,34 @@ nav .social-icons a:hover {
     color: #cccccc;
 }
 
-/* Правая колонка с галереей картинок */
-.exhibitions-grid {
-    flex: 1.2; /* Картинкам отдаем чуть больше пространства, чем тексту */
-    display: grid;
-    /* Создаем красивую сетку: одна большая картинка слева и две поменьше справа */
-    grid-template-columns: 1.5fr 1fr;
-    grid-template-rows: repeat(2, 130px);
-    gap: 15px;
+/* Правая колонка с одной картинкой */
+.exhibitions-grid.single-mode {
+    flex: 1.3; /* УВЕЛИЧЕНО: картинка теперь забирает больше ширины (было 1) */
+    display: block;
+    max-width: 600px; /* УВЕЛИЧЕНО: максимальная ширина превью (было 500px) */
 }
 
-/* Первая картинка занимает всю высоту сетки */
-.exhibitions-grid .art-card:nth-child(1) {
-    grid-row: span 2;
-}
-
-.exhibitions-grid .art-card {
+.exhibitions-grid.single-mode .art-card {
     cursor: pointer;
     overflow: hidden;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.exhibitions-grid .art-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+.exhibitions-grid.single-mode .art-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
 }
 
-.exhibitions-grid .art-img-wrapper,
-.exhibitions-grid .art-img-wrapper img {
+.exhibitions-grid.single-mode .art-img-wrapper img {
     width: 100%;
-    height: 100%;
+    height: auto;
+    max-height: 550px; /* УВЕЛИЧЕНО: превью станет заметно выше (было 450px) */
     object-fit: cover;
     display: block;
 }
+
 
 /* АДАПТИВНОСТЬ: для планшетов и телефонов перестраиваем в одну колонку */
 @media (max-width: 992px) {
