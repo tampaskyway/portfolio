@@ -2,62 +2,75 @@ function initContactForm() {
     const form = document.getElementById('contact-form');
     const successAlert = document.getElementById('form-success');
     const errorAlert = document.getElementById('form-error');
-    const phoneInput = document.getElementById('phone').value.trim();
+    const validationAlert = document.getElementById('form-validation-error');
 
     if (!form) return;
 
     form.addEventListener('submit', async function(event) {
-        event.preventDefault(); // 🔥 ГЛАВНОЕ: Блокирует переход на внешнюю страницу благодарности
+        event.preventDefault(); // Блокируем перезагрузку и переход на Formspree
 
-        // Скрываем прошлые уведомления перед новой попыткой
+        // Сбрасываем плашки уведомлений перед новой попыткой
         successAlert.style.display = 'none';
         errorAlert.style.display = 'none';
+        validationAlert.style.display = 'none';
+        validationAlert.innerHTML = '';
 
-        // Проверяем валидность заполнения полей формы
+        // 1. СТАНДАРТНАЯ ПРОВЕРКА ОБЯЗАТЕЛЬНЫХ ПОЛЕЙ (Имя, Email, Сообщение)
         if (!form.checkValidity()) {
-            alert('Please fill in all required fields.');
+            validationAlert.innerHTML = '• Please fill out all required fields correctly (Name, Email, and Message).';
+            validationAlert.style.display = 'block';
             return;
         }
-// 2. Валидация телефона (вставьте рядом с проверкой WhatsApp и Telegram)
-if (phoneInput.length > 0) {
-    // Регулярное выражение: обязательно начинается с +, затем от 7 до 15 цифр
-    const phoneRegex = /^\+[1-9]\d{7,14}$/;
-    if (!phoneRegex.test(phoneInput)) {
-        errors.push('• <b>Phone Number</b> must be a valid international number starting with <b>+</b> (e.g., +1234567890).');
-    }
-}
-        // Собираем данные полей формы
+
+        // Получаем и очищаем значение из поля телефона
+        const phoneInput = document.getElementById('phone')?.value.trim() || '';
+        let errors = [];
+
+        // 2. УМНАЯ ВАЛИДАЦИЯ НОМЕРА ТЕЛЕФОНА (если поле заполнено)
+        if (phoneInput.length > 0) {
+            // Удаляем пробелы, скобки, дефисы и плюсы для чистой проверки цифр
+            const cleanedPhone = phoneInput.replace(/[\s()+-]/g, ''); 
+            // Проверяем, что осталось от 7 до 15 цифр
+            const phoneRegex = /^[1-9]\d{6,14}$/; 
+            
+            if (!phoneRegex.test(cleanedPhone)) {
+                errors.push('• <b>Phone Number</b> must be a valid international number (e.g., +1 (234) 567-8900).');
+            }
+        }
+
+        // Если обнаружены ошибки в телефоне, прерываем отправку
+        if (errors.length > 0) {
+            validationAlert.innerHTML = errors.join('<br>');
+            validationAlert.style.display = 'block';
+            return;
+        }
+
+        // ЕСЛИ ВСЁ В ПОРЯДКЕ — ОТПРАВЛЯЕМ ДАННЫЕ ЧЕРЕЗ AJAX (FETCH)
         const formData = new FormData(form);
         const submitButton = form.querySelector('button[type="submit"]');
         const originalButtonText = submitButton.textContent;
 
         try {
-            // Визуально меняем текст на кнопке во время отправки
             submitButton.textContent = 'Sending...';
             submitButton.disabled = true;
 
-            // Отправляем AJAX запрос на сервер Formspree
             const response = await fetch(form.action, {
                 method: form.method,
                 body: formData,
                 headers: {
-                    'Accept': 'application/json' // Важно для корректных ответов API Formspree
+                    'Accept': 'application/json'
                 }
             });
 
             if (response.ok) {
-                // Если отправка успешна: показываем зеленую плашку и очищаем форму
                 successAlert.style.display = 'block';
                 form.reset(); 
             } else {
-                // Если сервер вернул ошибку
-                throw new Error('Server response was not ok.');
+                throw new Error('Server error');
             }
         } catch (error) {
-            // Если возникли проблемы с сетью или сервером
             errorAlert.style.display = 'block';
         } finally {
-            // В любом случае возвращаем кнопке её исходный текст и активность
             submitButton.textContent = originalButtonText;
             submitButton.disabled = false;
         }
