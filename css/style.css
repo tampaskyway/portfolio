@@ -1070,7 +1070,7 @@ nav .social-icons a:hover {
     }
 
     .nav-links-wrapper.open {
-        max-height: 310px !important; 
+        max-height: 400px !important; 
         opacity: 1 !important;
     }
 
