@@ -975,38 +975,43 @@ nav .social-icons a:hover {
 
     /* 2. Оптимизация навигации и включение гамбургера */
     .site-header {
-        padding: 12px 5% !important; /* Сделали шапку аккуратной по высоте */
+        padding: 12px 5% !important;
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: space-between !important; /* Логотип слева, меню справа */
+        align-items: center !important;
         position: fixed;
     }
 
-    /* ИСПРАВЛЕНО: Меню навигации теперь держит Языки и Бургер строго в один горизонтальный ряд */
+    /* Главный контейнер навигации на смартфонах */
     .site-header .nav-menu {
         display: flex !important;
-        flex-direction: row !important; /* Элементы идут слева направо */
+        flex-direction: row !important; /* Строго в одну линию */
         align-items: center !important;
         justify-content: flex-end !important;
-        gap: 15px !important; /* Отступ между языками и бургером */
-        width: auto;
-        position: relative;
+        gap: 0 !important; /* Сбрасываем общие отступы, настроим их индивидуально */
+        width: auto !important;
+        position: static !important;
     }
 
-    /* 🔥 ИСПРАВЛЕНО: Переключатель языков теперь ВСЕГДА на виду в шапке слева от бургера */
+    /* 🔥 ИСПРАВЛЕНО: Кнопки языков теперь имеют жесткий отступ от бургера и не налезут на него */
     .lang-switcher {
         display: inline-flex !important;
+        align-items: center !important;
         justify-content: center !important;
-        margin-left: 0 !important;
-        margin-top: 0 !important; /* Сбросили старый компьютерный/мобильный отступ сверху */
-        margin-right: 5px !important; /* Легкий отступ до кнопочки-гамбургера */
+        margin-left: auto !important; /* Авто-выталкивание */
+        margin-top: 0 !important; 
+        margin-right: 20px !important; /* 🔥 НАДЕЖНЫЙ ЗАЗОР: 20 пикселей свободного места до бургера */
         font-size: 0.95rem !important;
         z-index: 1002 !important;
     }
 
-    /* Скрываем вертикальный разделитель на смартфонах, чтобы освободить место */
+    /* Скрываем вертикальный разделитель на смартфонах */
     .header-divider {
         display: none !important;
     }
 
-    /* Активируем кнопку из 3 полосок в общем горизонтальном потоке шапки */
+    /* Кнопка гамбургера стоит замыкающей в ряду */
     .menu-toggle {
         display: flex !important;
         flex-direction: column !important;
@@ -1017,14 +1022,12 @@ nav .social-icons a:hover {
         border: none !important;
         cursor: pointer !important;
         padding: 0 !important;
-        position: relative !important; /* Убрали сложный absolute */
-        right: auto !important;
-        top: auto !important;
-        transform: none !important;
+        position: relative !important;
+        margin: 0 !important;
         z-index: 1002 !important;
     }
 
-    /* Цвет полосок подстраивается под текст вашей шапки */
+    /* Полоски бургера */
     .menu-toggle span {
         display: block !important;
         width: 100% !important;
@@ -1034,27 +1037,26 @@ nav .social-icons a:hover {
         transition: transform 0.3s ease, opacity 0.3s ease !important;
     }
 
-    /* Трансформация бургера в аккуратный крестик */
+    /* Трансформация бургера в крестик */
     .menu-toggle.active span:nth-child(1) { transform: translateY(8px) rotate(45deg) !important; }
     .menu-toggle.active span:nth-child(2) { opacity: 0 !important; }
     .menu-toggle.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg) !important; }
 
-    /* Прячем горизонтальное меню, превращая его в выпадающий блок со ссылками */
+    /* Выпадающий блок навигации (только 6 ссылок) */
     .nav-links-wrapper {
         position: absolute !important;
         top: 100% !important;
         left: 0 !important;
         width: 100% !important;
-        background-color: rgba(252, 251, 250, 0.98) !important; /* В цвет вашей светлой шапки */
+        background-color: rgba(252, 251, 250, 0.98) !important; 
         backdrop-filter: blur(10px) !important;
         display: flex !important;
         flex-direction: column !important;
         align-items: center !important;
         gap: 20px !important;
-        padding: 25px 0 !important; /* Настроили аккуратные чистые отступы */
+        padding: 25px 0 !important; 
         border-bottom: 1px solid var(--border-color) !important;
         
-        /* Логика анимации схлопывания */
         max-height: 0 !important;
         opacity: 0 !important;
         overflow: hidden !important;
@@ -1062,7 +1064,6 @@ nav .social-icons a:hover {
         z-index: 1000 !important;
     }
 
-    /* Класс, который навесит JS при клике на бургер (высота рассчитана ровно на 6 ссылок) */
     .nav-links-wrapper.open {
         max-height: 310px !important; 
         opacity: 1 !important;
@@ -1099,12 +1100,12 @@ nav .social-icons a:hover {
     
     .art-card {
         width: 100% !important;
-        transform: none !important; /* Отключаем тяжелые ПК-сдвиги */
+        transform: none !important;
     }
 
     .art-card .art-img-wrapper {
         height: auto !important;
-        aspect-ratio: 4 / 3 !important; /* Картинки галереи станут идеально пропорциональными */
+        aspect-ratio: 4 / 3 !important;
     }
 
     .art-card .art-img-wrapper img {
