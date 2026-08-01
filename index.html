@@ -1,5 +1,5 @@
 <!DOCTYPE html> 
-<html lang="ru"> 
+<html lang="en"> 
 <head> 
     <meta charset="UTF-8"> 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
@@ -15,42 +15,46 @@
     <!-- Подключение иконок Font Awesome --> 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> 
     <!-- Единый файл стилей проекта -->
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head> 
 <body> 
 
-<!-- Шапка сайта (Русская версия) -->
+<!-- Шапка сайта -->
 <header class="site-header">
     <div class="logo">
         <a href="#home" aria-label="На главную">
-            <img src="../images/logo-gradient.png" alt="Vladliena Art Logo">
+            <img src="images/logo-gradient.png" alt="Vladliena Art Logo">
         </a>
     </div>
     
     <nav class="nav-menu" aria-label="Основная навигация">
+        <!-- Контейнер для ссылок (скрывается на мобильных) -->
         <div class="nav-links-wrapper" id="navLinksWrapper">
-            <a href="#home" class="nav-link">Главная</a>
-            <a href="#gallery" class="nav-link">Галерея</a>
-            <a href="#exhibitions" class="nav-link">Выставки</a>
-            <a href="#classes" class="nav-link">Мастер-классы</a>
-            <a href="#about" class="nav-link">Обо мне</a>
-            <a href="#contact" class="nav-link">Контакты</a>
+            <a href="#home" class="nav-link">Home</a>
+            <a href="#gallery" class="nav-link">Gallery</a>
+            <a href="#exhibitions" class="nav-link">Exhibitions</a>
+            <a href="#classes" class="nav-link">Classes</a>
+            <a href="#about" class="nav-link">About</a>
+            <a href="#contact" class="nav-link">Contact</a>
         </div>
 
+        <!-- ИСПРАВЛЕНО: Разделитель и Языки вынесены НАРУЖУ — они всегда видны на виду -->
         <span class="header-divider"></span>
 
         <div class="lang-switcher">
-            <a href="../index.html" class="lang-btn">EN</a>
+            <a href="index.html" class="lang-btn active">EN</a>
             <span class="lang-divider">|</span>
-            <a href="index.html" class="lang-btn active">RU</a>
+            <a href="ru/index.html" class="lang-btn">RU</a>
         </div>
 
+        <!-- Иконки соцсетей -->
         <span class="social-icons">
             <a href="https://instagram.com.art.vladilena" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
             <a href="https://facebook.com/vladkamsk/" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
             <a href="https://youtube.com/@artistvladilena" target="_blank" rel="noopener" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
         </span>
 
+        <!-- Кнопка гамбургера (стоит в самом конце, чтобы на телефонах быть справа от языков) -->
         <button class="menu-toggle" id="menuToggle" aria-label="Открыть меню" aria-expanded="false">
             <span></span>
             <span></span>
@@ -64,205 +68,205 @@
     <main>
         <!-- Главный экран --> 
         <section class="hero" id="home"> 
-            <h1>Живопись<br><span>Владилена Абкадирова</span></h1> 
-            <p>Яркие визуальные образы, цветовая выразительность и фактурные холсты современного художника.</p> 
-            <a href="#gallery" class="btn">Посмотрите галерею</a> 
+            <h1>Painting <br><span>Vladilena Abkadirova</span></h1> 
+            <p>Vivid visual subjects, color expression and textured canvases of a contemporary artist.</p> 
+            <a href="#gallery" class="btn">Explore the gallery</a> 
         </section> 
 
         <!-- Раздел: Галерея картинок --> 
         <section id="gallery" class="gallery-section"> 
-            <h2>Галерея</h2> 
+            <h2>Gallery</h2> 
             <div class="gallery-grid"> 
                 <!-- Картина 1 -->
-                <article class="art-card" data-src="../images/art1.webp"> 
+                <article class="art-card" data-src="images/art1.webp"> 
                     <div class="art-img-wrapper"> 
-                        <img src="../images/art1.webp" alt="Old tree in Sunset painting" loading="lazy"> 
+                        <img src="images/art1.webp" alt="Old tree in Sunset painting" loading="lazy"> 
                     </div> 
                     <div class="art-info"> 
-                        <h3 class="art-title">Старое дерево на закате</h3> 
-                        <p class="art-meta">Холст, масло • 36x48" • 2026</p> 
+                        <h3 class="art-title">Old tree in Sunset</h3> 
+                        <p class="art-meta">Canvas, oil • 36x48" • 2026</p> 
                         <span class="art-status status-available">$3000</span> 
                     </div> 
                 </article> 
 
                 <!-- Картина 2 -->
-                <article class="art-card" data-src="../images/art2.webp"> 
+                <article class="art-card" data-src="images/art2.webp"> 
                     <div class="art-img-wrapper"> 
-                        <img src="../images/art2.webp" alt="Surfer painting" loading="lazy"> 
+                        <img src="images/art2.webp" alt="Surfer painting" loading="lazy"> 
                     </div> 
                     <div class="art-info"> 
-                        <h3 class="art-title">Серфер</h3> 
-                        <p class="art-meta">Холст, масло • 24x36" • 2025</p> 
+                        <h3 class="art-title">Surfer</h3> 
+                        <p class="art-meta">Canvas, oil • 24x36" • 2025</p> 
                         <span class="art-status status-available">$2500</span> 
                     </div> 
                 </article> 
 
                 <!-- Картина 3 -->
-                <article class="art-card" data-src="../images/art3.webp"> 
+                <article class="art-card" data-src="images/art3.webp"> 
                     <div class="art-img-wrapper"> 
-                        <img src="../images/art3.webp" alt="Beach painting" loading="lazy"> 
+                        <img src="images/art3.webp" alt="Beach painting" loading="lazy"> 
                     </div> 
                     <div class="art-info"> 
-                        <h3 class="art-title">Пляж</h3> 
-                        <p class="art-meta">Холст, масло • 24x36" • 2025</p> 
+                        <h3 class="art-title">Beach</h3> 
+                        <p class="art-meta">Canvas, oil • 24x36" • 2025</p> 
                         <span class="art-status status-available">$2500</span> 
                     </div> 
                 </article> 
 
                 <!-- Картина 4 -->
-                <article class="art-card" data-src="../images/art4.webp"> 
+                <article class="art-card" data-src="images/art4.webp"> 
                     <div class="art-img-wrapper"> 
-                        <img src="../images/art4.webp" alt="Apples painting" loading="lazy"> 
+                        <img src="images/art4.webp" alt="Apples painting" loading="lazy"> 
                     </div> 
                     <div class="art-info"> 
-                        <h3 class="art-title">Яблоки</h3> 
-                        <p class="art-meta">Холст, масло • 24x18" • 2026</p> 
+                        <h3 class="art-title">Apples</h3> 
+                        <p class="art-meta">Canvas, oil • 24x18" • 2026</p> 
                         <span class="art-status status-available">$1000</span> 
                     </div> 
                 </article> 
 
                 <!-- Картина 5 -->
-                <article class="art-card" data-src="../images/art5.webp"> 
+                <article class="art-card" data-src="images/art5.webp"> 
                     <div class="art-img-wrapper"> 
-                        <img src="../images/art5.webp" alt="Sea Turtle painting" loading="lazy"> 
+                        <img src="images/art5.webp" alt="Sea Turtle painting" loading="lazy"> 
                     </div> 
                     <div class="art-info"> 
-                        <h3 class="art-title">Морская черепаха</h3> 
-                        <p class="art-meta">Холст, масло • 24x36" • 2025</p> 
+                        <h3 class="art-title">Sea Turtle</h3> 
+                        <p class="art-meta">Canvas, oil • 24x36" • 2025</p> 
                         <span class="art-status status-available">$2500</span> 
                     </div> 
                 </article> 
 
                 <!-- Картина 6 -->
-                <article class="art-card" data-src="../images/art6.webp"> 
+                <article class="art-card" data-src="images/art6.webp"> 
                     <div class="art-img-wrapper"> 
-                        <img src="../images/art6.webp" alt="Wave painting" loading="lazy"> 
+                        <img src="images/art6.webp" alt="Wave painting" loading="lazy"> 
                     </div> 
                     <div class="art-info"> 
-                        <h3 class="art-title">Волна</h3> 
-                        <p class="art-meta">Холст, акрил • 24x36" • 2025</p> 
+                        <h3 class="art-title">Wave</h3> 
+                        <p class="art-meta">Canvas, acryl • 24x36" • 2025</p> 
                         <span class="art-status status-available">$1200</span> 
                     </div> 
                 </article> 
                 
                 <!-- Картина 7 -->
-                <article class="art-card" data-src="../images/art7.webp"> 
+                <article class="art-card" data-src="images/art7.webp"> 
                     <div class="art-img-wrapper"> 
-                        <img src="../images/art7.webp" alt="Summer" loading="lazy"> 
+                        <img src="images/art7.webp" alt="Summer" loading="lazy"> 
                     </div> 
                     <div class="art-info"> 
-                        <h3 class="art-title">Лето</h3> 
-                        <p class="art-meta">Холст, масло • 16x20" • 2021</p> 
+                        <h3 class="art-title">Summer</h3> 
+                        <p class="art-meta">Canvas, oil • 16x20" • 2021</p> 
                         <span class="art-status status-available">$1200</span> 
                     </div> 
                 </article> 
                 <!-- Картина 8 -->
-                <article class="art-card" data-src="../images/art8.webp"> 
+                <article class="art-card" data-src="images/art8.webp"> 
                     <div class="art-img-wrapper"> 
-                        <img src="../images/art8.webp" alt="Owl" loading="lazy"> 
+                        <img src="images/art8.webp" alt="Owl" loading="lazy"> 
                     </div> 
                     <div class="art-info"> 
-                        <h3 class="art-title">Сова</h3> 
-                        <p class="art-meta">Холст, масло • 16x20" • 2021</p> 
+                        <h3 class="art-title">Owl</h3> 
+                        <p class="art-meta">Canvas, oil • 16x20" • 2021</p> 
                         <span class="art-status status-available">$1200</span> 
                     </div> 
                 </article> 
                 <!-- Картина 9 -->
-                <article class="art-card" data-src="../images/art9.webp"> 
+                <article class="art-card" data-src="images/art9.webp"> 
                     <div class="art-img-wrapper"> 
-                        <img src="../images/art9.webp" alt="Mountain lake" loading="lazy"> 
+                        <img src="images/art9.webp" alt="Mountain lake" loading="lazy"> 
                     </div> 
                     <div class="art-info"> 
-                        <h3 class="art-title">Горное озеро</h3> 
-                        <p class="art-meta">Холст, масло • 36x24" • 2025</p> 
+                        <h3 class="art-title">Mountain lake</h3> 
+                        <p class="art-meta">Canvas, oil • 36x24" • 2025</p> 
                         <span class="art-status status-available">$2500</span> 
                     </div> 
                 </article>
                  <!-- Картина 10 -->
-                <article class="art-card" data-src="../images/art10.webp"> 
+                <article class="art-card" data-src="images/art10.webp"> 
                     <div class="art-img-wrapper"> 
-                        <img src="../images/art10.webp" alt="Spring" loading="lazy"> 
+                        <img src="images/art10.webp" alt="Spring" loading="lazy"> 
                     </div> 
                     <div class="art-info"> 
-                        <h3 class="art-title">Весна</h3> 
-                        <p class="art-meta">Холст, масло • 36x24" • 2021</p> 
+                        <h3 class="art-title">Spring</h3> 
+                        <p class="art-meta">Canvas, oil • 36x24" • 2021</p> 
                         <span class="art-status status-available">$2500</span> 
                     </div> 
                 </article> 
                  <!-- Картина 11 -->
-                <article class="art-card" data-src="../images/art11.webp"> 
+                <article class="art-card" data-src="images/art11.webp"> 
                     <div class="art-img-wrapper"> 
-                        <img src="../images/art11.webp" alt="Koi Fish" loading="lazy"> 
+                        <img src="images/art11.webp" alt="Koi Fish" loading="lazy"> 
                     </div> 
                     <div class="art-info"> 
-                        <h3 class="art-title">Рыба Кои</h3> 
-                        <p class="art-meta">Холст, масло • 36x24" • 2023</p> 
+                        <h3 class="art-title">Koi Fish</h3> 
+                        <p class="art-meta">Canvas, oil • 36x24" • 2023</p> 
                         <span class="art-status status-available">$2500</span> 
                     </div> 
                 </article> 
                  <!-- Картина 13 -->
-                <article class="art-card" data-src="../images/art13.webp"> 
+                <article class="art-card" data-src="images/art13.webp"> 
                     <div class="art-img-wrapper"> 
-                        <img src="../images/art13.webp" alt="Old Parrot" loading="lazy"> 
+                        <img src="images/art13.webp" alt="Old Parrot" loading="lazy"> 
                     </div> 
                     <div class="art-info"> 
-                        <h3 class="art-title">Старый попугай</h3> 
-                        <p class="art-meta">Холст, масло • 16x20" • 2022</p> 
+                        <h3 class="art-title">Old Parrot</h3> 
+                        <p class="art-meta">Canvas, oil • 16x20" • 2022</p> 
                         <span class="art-status status-available">$1500</span> 
                     </div> 
                 </article> 
                  <!-- Картина 14 -->
-                <article class="art-card" data-src="../images/art14.webp"> 
+                <article class="art-card" data-src="images/art14.webp"> 
                     <div class="art-img-wrapper"> 
-                        <img src="../images/art14.webp" alt="Blue Macaws" loading="lazy"> 
+                        <img src="images/art14.webp" alt="Blue Macaws" loading="lazy"> 
                     </div> 
                     <div class="art-info"> 
-                        <h3 class="art-title">Голубые Макао</h3> 
-                        <p class="art-meta">Холст, масло • 18x24" • 2021</p> 
+                        <h3 class="art-title">Blue Macaws</h3> 
+                        <p class="art-meta">Canvas, oil • 18x24" • 2021</p> 
                         <span class="art-status status-available">$1500</span> 
                     </div> 
                 </article> 
                  <!-- Картина 15 -->
-                <article class="art-card" data-src="../images/art15.webp"> 
+                <article class="art-card" data-src="images/art15.webp"> 
                     <div class="art-img-wrapper"> 
-                        <img src="../images/art15.webp" alt="Red Macaws" loading="lazy"> 
+                        <img src="images/art15.webp" alt="Red Macaws" loading="lazy"> 
                     </div> 
                     <div class="art-info"> 
-                        <h3 class="art-title">Красные Макао</h3> 
-                        <p class="art-meta">Холст, масло • 36x24" • 2025</p> 
+                        <h3 class="art-title">Red Macaws</h3> 
+                        <p class="art-meta">Canvas, oil • 36x24" • 2025</p> 
                         <span class="art-status status-available">$2500</span> 
                     </div> 
                 </article> 
                  <!-- Картина 16 -->
-                <article class="art-card" data-src="../images/art16.webp"> 
+                <article class="art-card" data-src="images/art16.webp"> 
                     <div class="art-img-wrapper"> 
-                        <img src="../images/art16.webp" alt="Sunflowers" loading="lazy"> 
+                        <img src="images/art16.webp" alt="Sunflowers" loading="lazy"> 
                     </div> 
                     <div class="art-info"> 
-                        <h3 class="art-title">Подсолнухи</h3> 
-                        <p class="art-meta">Холст, масло • 18x24" • 2023</p> 
+                        <h3 class="art-title">Sunflowers</h3> 
+                        <p class="art-meta">Canvas, oil • 18x24" • 2023</p> 
                         <span class="art-status status-available">$1500</span> 
                     </div> 
                 </article> 
                  <!-- Картина 17 -->
-                <article class="art-card" data-src="../images/art17.webp"> 
+                <article class="art-card" data-src="images/art17.webp"> 
                     <div class="art-img-wrapper"> 
-                        <img src="../images/art17.webp" alt="Summer time" loading="lazy"> 
+                        <img src="images/art17.webp" alt="Summer time" loading="lazy"> 
                     </div> 
                     <div class="art-info"> 
-                        <h3 class="art-title">Летний день</h3> 
-                        <p class="art-meta">Холст, масло • 18x24" • 2023</p> 
+                        <h3 class="art-title">Summer time</h3> 
+                        <p class="art-meta">Canvas, oil • 18x24" • 2023</p> 
                         <span class="art-status status-available">$1500</span> 
                     </div> 
                 </article> 
                  <!-- Картина 18 -->
-                <article class="art-card" data-src="../images/art18.webp"> 
+                <article class="art-card" data-src="images/art18.webp"> 
                     <div class="art-img-wrapper"> 
-                        <img src="../images/art18.webp" alt="Sunflower" loading="lazy"> 
+                        <img src="images/art18.webp" alt="Sunflower" loading="lazy"> 
                     </div> 
                     <div class="art-info"> 
-                        <h3 class="art-title">Подсолнух</h3> 
-                        <p class="art-meta">Холст, масло • 18x24" • 2022</p> 
+                        <h3 class="art-title">Sunflower</h3> 
+                        <p class="art-meta">Canvas, oil • 18x24" • 2022</p> 
                         <span class="art-status status-available">$1500</span> 
                     </div> 
                 </article> 
@@ -270,25 +274,25 @@
         </section> 
 <!-- Раздел: Выставки (Exhibitions) -->
 <section id="exhibitions" class="exhibitions-section">
-    <h2>Выставки</h2>
+    <h2>Exhibitions</h2>
     
     <div class="exhibitions-wrapper">
         
         <!-- Левая часть: Текстовое описание выставки -->
         <div class="exhibitions-content">
-            <h3>Моя Первая Выставка</h3>
-            <p class="exhibitions-meta">Флорида, Галерея "Number 33" • Март 2025</p>
+            <h3>My First Exhibition</h3>
+            <p class="exhibitions-meta">Venice, Number 33 Gallery of Arts • March 2025</p>
             
             <!-- ИСПРАВЛЕНО: Добавлен ваш новый текст описания -->
-            <p>Я с радостью делюсь яркими моментами своей первой выставки в художественной галерее. В экспозицию вошли семь оригинальных картин, написанных маслом; каждая из них отражает мой творческий путь и выражает мое уникальное видение как художника. Это событие стало для меня по-настоящему важной вехой и прекрасной возможностью представить свои работы широкой аудитории, познакомиться с вдохновляющими людьми, обменяться идеями и ощутить неповторимую творческую атмосферу галереи.</p>
-            <p style="margin-top: 15px;">Больше всего меня тронуло то, как мои картины находят отклик у посетителей: видеть их искренние эмоции, слышать их личные впечатления и истории. Такие моменты вдохновляют меня продолжать творить, искать новые идеи и делиться своим искусством с миром.</p>
+            <p>I am delighted to share the highlights of my first exhibition at an art gallery. The exhibition featured seven original oil paintings, each reflecting my artistic journey and expressing my unique vision as an artist. This exhibition was a truly special milestone for me and a wonderful opportunity to present my work to a wider audience, meet inspiring people, exchange ideas, and experience the unique creative atmosphere of the gallery.</p>
+            <p style="margin-top: 15px;">What meant the most to me was seeing my paintings resonate with visitors, witnessing their genuine emotions, and hearing their personal impressions and stories. Moments like these inspire me to continue creating, exploring new ideas, and sharing my art with the world.</p>
         </div>
 
         <!-- Правая часть: Одна фотография с мероприятия -->
         <div class="exhibitions-grid single-mode">
-            <article class="art-card" data-src="../images/exhibit1.webp">
+            <article class="art-card" data-src="images/exhibit1.webp">
                 <div class="art-img-wrapper">
-                    <img src="../images/exhibit1.webp" alt="First art gallery exhibition opening" loading="lazy">
+                    <img src="images/exhibit1.webp" alt="First art gallery exhibition opening" loading="lazy">
                 </div>
             </article>
         </div>
@@ -298,73 +302,73 @@
 
 <!-- Раздел: Арт-классы (Art Classes) -->
 <section id="classes" class="classes-section">
-    <h2>Мастер-классы и уроки</h2>
+    <h2>Art Workshops & Lessons</h2>
     
     <!-- ================= БЛОК 1: ДЛЯ ВЗРОСЛЫХ ================= -->
     <div class="class-block">
-        <h3>Мастер-классы для взрослых каждый месяц</h3>
+        <h3>Monthly Art Workshops for Adults</h3>
         
         <div class="class-text-container">
-            <p>Я искренне верю, что каждый может научиться рисовать. Ведь каждый ребенок рождается художником — нужно лишь поддерживать этот творческий огонек, чтобы он не погас. Именно поэтому я с таким удовольствием провожу художественные мастер-классы для взрослых. На наших занятиях я делюсь своей любовью к живописи, знакомлю участников с великими мастерами и их работами, а также обучаю профессиональным приемам в теплой, дружелюбной и вдохновляющей атмосфере, где каждый чувствует себя комфортно, раскрывая свой творческий потенциал.</p>
-            <p>Больше всего меня радует, когда люди открывают в себе творческие способности, обретают уверенность и получают удовольствие от создания картины своими руками. По окончании каждого мастер-класса участники уносят с собой картину, написанную самостоятельно, чудесные воспоминания и чувство выполненной задачи. Для многих этот первый опыт становится началом любви к живописи на всю жизнь.</p>
+            <p>I truly believe that everyone can learn to paint. After all, every child is born an artist—it simply takes encouragement to keep that creative spirit alive. That is why I so enjoy hosting art workshops for adults. During our sessions, I share my passion for painting, introduce participants to great artists and their work, and teach professional techniques in a warm, welcoming, and inspiring atmosphere where everyone feels comfortable exploring their creativity.</p>
+            <p>My greatest joy is seeing people discover their artistic abilities, gain confidence, and experience the pleasure of creating something with their own hands. By the end of each workshop, every participant leaves with a painting they have created themselves, wonderful memories, and a sense of accomplishment. For many, this first experience becomes the beginning of a lifelong love of painting.</p>
         </div>
 
         <!-- 3 Фотографии для взрослых -->
         <div class="class-photos-grid">
-            <article class="art-card" data-src="../images/adult-class1.webp">
+            <article class="art-card" data-src="images/adult-class1.webp">
                 <div class="art-img-wrapper">
-                    <img src="../images/adult-class1.webp" alt="Adult painting together" loading="lazy">
+                    <img src="images/adult-class1.webp" alt="Adult painting together" loading="lazy">
                 </div>
             </article>
-            <article class="art-card" data-src="../images/adult-class2.webp">
+            <article class="art-card" data-src="images/adult-class2.webp">
                 <div class="art-img-wrapper">
-                    <img src="../images/adult-class2.webp" alt="Adult workshop process" loading="lazy">
+                    <img src="images/adult-class2.webp" alt="Adult workshop process" loading="lazy">
                 </div>
             </article>
-            <article class="art-card" data-src="../images/adult-class3.webp">
+            <article class="art-card" data-src="images/adult-class3.webp">
                 <div class="art-img-wrapper">
-                    <img src="../images/adult-class3.webp" alt="Adult workshop process" loading="lazy">
+                    <img src="images/adult-class3.webp" alt="Adult workshop process" loading="lazy">
                 </div>
             </article>
         </div>
 
         <!-- Кнопка бронирования -->
         <div class="class-btn-wrapper">
-            <a href="#contact" class="btn class-booking-btn">Забронировать</a>
+            <a href="#contact" class="btn class-booking-btn">Book an Adult Workshop</a>
         </div>
     </div>
 
     <!-- ================= БЛОК 2: ДЛЯ ДЕТЕЙ ================= -->
     <div class="class-block">
-        <h3>Мастер-классы и уроки для детей</h3>
+        <h3>Art Lessons for Children</h3>
         
         <div class="class-text-container">
-            <p>Я провожу как индивидуальные, так и групповые занятия по рисованию для детей всех возрастов. Обучение детей доставляет мне особую радость. Нет ничего более вдохновляющего, чем видеть, как загораются их глаза, когда они заканчивают рисунок или картину, которыми могут гордиться. Эти счастливые улыбки и моменты успеха делают каждое занятие по-настоящему ценным.</p>
-            <p>Я рада разделить со своими юными художниками эти чудесные моменты творчества, успеха и открытий. Моя цель — помочь каждому ребенку обрести уверенность в себе, проявить воображение и получить удовольствие от творческого процесса в теплой, вдохновляющей и поддерживающей атмосфере. Вместе мы осваиваем новые техники, находим свежие идеи и создаем прекрасные работы. Каждый урок — это шаг к новым знаниям, новым навыкам и множеству замечательных картин.</p>
+            <p>I offer both private and group art lessons for children of all ages. Teaching children is a special joy for me. There is nothing more rewarding than seeing their eyes light up when they complete a drawing or painting they are proud of. Those happy smiles and moments of accomplishment make every lesson truly worthwhile.</p>
+            <p>I am grateful to share these wonderful moments of creativity, success, and discovery with my young artists. My goal is to help every child develop confidence, express their imagination, and enjoy the creative process in a warm, encouraging, and supportive environment. Together, we explore new techniques, discover new ideas, and create beautiful artwork. Every lesson is a step toward new knowledge, new skills, and many wonderful paintings.</p>
         </div>
 
         <!-- 3 Фотографии для детей -->
         <div class="class-photos-grid">
-            <article class="art-card" data-src="../images/child-class1.webp">
+            <article class="art-card" data-src="images/child-class1.webp">
                 <div class="art-img-wrapper">
-                    <img src="../images/child-class1.webp" alt="Children painting in studio" loading="lazy">
+                    <img src="images/child-class1.webp" alt="Children painting in studio" loading="lazy">
                 </div>
             </article>
-            <article class="art-card" data-src="../images/child-class2.webp">
+            <article class="art-card" data-src="images/child-class2.webp">
                 <div class="art-img-wrapper">
-                    <img src="../images/child-class2.webp" alt="Young artist process" loading="lazy">
+                    <img src="images/child-class2.webp" alt="Young artist process" loading="lazy">
                 </div>
             </article>
-            <article class="art-card" data-src="../images/child-class3.webp">
+            <article class="art-card" data-src="images/child-class3.webp">
                 <div class="art-img-wrapper">
-                    <img src="../images/child-class3.webp" alt="Happy kids with their art" loading="lazy">
+                    <img src="images/child-class3.webp" alt="Happy kids with their art" loading="lazy">
                 </div>
             </article>
         </div>
 
         <!-- Кнопка бронирования -->
         <div class="class-btn-wrapper">
-            <a href="#contact" class="btn class-booking-btn">Забронировать</a>
+            <a href="#contact" class="btn class-booking-btn">Book a Kids Lesson</a>
         </div>
     </div>
 
@@ -374,18 +378,20 @@
         
 <!-- Раздел: О художнике -->
 <section id="about" class="about-section">
-    <h2>Обо мне</h2>
+    <h2>About me</h2>
     <div class="about-container">
         <div class="about-text">
-            <p>Привет! Меня зовут <strong>Владилена Абкадирова</strong>. Я профессиональный художник, посвятивший себя исследованию возможностей цвета, формы и фактуры в современной живописи.</p>
-            <p>В настоящее время я живу во Флориде, где красота природы и постоянно меняющееся освещение каждый день вдохновляют меня на моем творческом пути.</p>
-            <p>Я родилась в России; там я получила образование и открыла в себе страсть к искусству, дизайну, рисунку и живописи. С ранних лет меня завораживала выразительная сила масляной живописи — техники, которая и по сей день занимает центральное место в моем творчестве.</p>
-            <p>Работая преимущественно маслом на холсте, я люблю экспериментировать с различными техниками и фактурами, часто используя мастихин, чтобы придать своим картинам глубину, динамику и энергию.</p>
-            <p>Природа — мой главный источник вдохновения. Меня особенно привлекают пейзажи, натюрморты, а также красота птиц и животных дикой природы. Каждый сюжет дарит возможность запечатлеть не только внешний облик, но и уникальную атмосферу и дух.</p>
-            <p>Для меня живопись — это нечто большее, чем просто создание изображения; это способ выразить эмоции, которые не всегда можно облечь в слова. Каждая картина отражает мгновение, впечатление или чувство, глубоко меня затронувшее. Это приглашение замедлить бег времени, оценить окружающую нас красоту и соприкоснуться с тихими эмоциями повседневной жизни.</p>
-            <p>На мое творчество влияют воспоминания, свет, цвет и тонкие впечатления, остающиеся в подсознании. Поскольку каждый художник вкладывает частицу себя в свои произведения, каждая из моих картин несет в себе фрагмент моей собственной истории.</p>
-            <p>Живопись для меня — это своего рода медитация. Стоит мне начать писать, как внешний мир отступает на задний план, время теряет свое значение, и я полностью погружаюсь в творческий процесс. Это источник умиротворения, чувства самореализации и бесконечного вдохновения.</p>
-            <p>Через свое творчество я надеюсь поделиться этими чувствами с окружающими и создавать картины, которые дарят тепло, умиротворение и радость тем, кто их созерцает.</p>
+            <p>Hello! My name is <strong>Vladliena Abkadirova</strong>. I'm a professional artist dedicated to exploring the possibilities of color, form, and texture in contemporary painting.</p>
+            <p>I currently live in Florida, where the beauty of nature and the ever-changing light inspire my artistic journey every day.</p>
+            <!-- ИСПРАВЛЕНО: Удалено повторяющееся слово early -->
+            <p>I was born in Russia, where I received my education and discovered my passion for art, design, drawing, and painting. From an early age, I was captivated by the expressive power of oil painting, a medium that has remained at the heart of my creative work.</p>
+            <p>Working primarily with oils on canvas, I enjoy exploring different techniques and textures, often incorporating a palette knife to bring depth, movement, and energy to my paintings.</p>
+            <p>Nature is my greatest source of inspiration. I'm especially drawn to landscapes, still lifes, and the beauty of birds and wildlife. Each subject offers an opportunity to capture not only its appearance but also its unique atmosphere and spirit.</p>
+            <p>For me, painting is much more than creating an image — it is a way of expressing emotions that can't always be put into words. Every painting reflects a moment in time, an impression, or a feeling that has touched me deeply. It's an invitation to slow down, appreciate the beauty that surrounds us, and connect with the quiet emotions of everyday life.</p>
+            <p>My work is shaped by memories, light, color, and the subtle impressions that remain in the subconscious. As every artist leaves a part of themselves in their work, each of my paintings carries a piece of my own story.</p>
+            <!-- ИСПРАВЛЕНО: it's заменено на корректное its -->
+            <p>Painting is also my form of meditation. The moment I begin to paint, the outside world fades away, time loses its meaning, and I become completely immersed in the creative process. It's a source of peace, fulfillment, and endless inspiration.</p>
+            <p>Through my art, I hope to share these feelings with others and create paintings that bring warmth, serenity, and joy to those who experience them.</p>
         </div>
     </div>
 </section>
@@ -394,10 +400,10 @@
 
 <!-- Раздел: Контакты -->
 <section id="contact" class="contact-section">
-    <h2>Контакты</h2>
+    <h2>Contact me</h2>
     
     <div class="contact-subtitle">
-        Если вы хотите приобрести оригинальную картину, заказать работу или обсудить предложение о сотрудничестве, пожалуйста, заполните форму ниже. Я свяжусь с вами в ближайшее время.
+        If you are interested in purchasing an original painting, commissioning a custom artwork, or discussing a collaboration proposal, please fill out the form below. I will get back to you as soon as possible.
     </div>
 
     <!-- НОВЫЙ ОБЩИЙ КОНТЕЙНЕР ДЛЯ РАЗДЕЛЕНИЯ НА ФОТО И ФОРМУ -->
@@ -405,17 +411,17 @@
         
         <!-- Левая часть: Фотография художника -->
         <div class="contact-image-block">
-            <img src="../images/artist-contact.webp" alt="Artist Vladliena Abkadirova" loading="lazy">
+            <img src="images/artist-contact.webp" alt="Artist Vladliena Abkadirova" loading="lazy">
         </div>
 
         <!-- Правая часть: Контейнер с формой -->
         <div class="contact-container">
             <!-- Контейнеры кастомных уведомлений -->
             <div id="form-success" class="form-alert success" style="display: none;">
-                Спасибо! Ваше сообщение успешно отправлено.
+                Thank you! Your message has been sent successfully.
             </div>
             <div id="form-error" class="form-alert error" style="display: none;">
-                Упс! Возникла проблема при отправке формы.
+                Oops! There was a problem submitting your form.
             </div>
             <div id="form-validation-error" class="form-alert error" style="display: none;"></div>
 
@@ -423,26 +429,26 @@
                 <input type="text" name="_gotcha" style="display:none !important" tabindex="-1" autocomplete="off">
                 
                 <div class="form-group">
-                    <label for="name">Ваше Имя</label>
-                    <input type="text" id="name" name="name" required placeholder="Имя">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name" required placeholder="Name">
                 </div>
                 
                 <div class="form-group">
-                    <label for="email">Email</label>
+                    <label for="email">Email Address</label>
                     <input type="email" id="email" name="email" required placeholder="example@gmail.com">
                 </div>
                 
                 <div class="form-group">
-                    <label for="phone">Телефон</label>
+                    <label for="phone">Phone Number</label>
                     <input type="text" id="phone" name="phone" required placeholder="+1-234-567-8900">
                 </div>
 
                 <div class="form-group">
-                    <label for="message">Ваше сообщение</label>
-                    <textarea id="message" name="message" rows="5" required placeholder="Что вас заинтересовало?"></textarea>
+                    <label for="message">Your message</label>
+                    <textarea id="message" name="message" rows="5" required placeholder="What caught your interest?"></textarea>
                 </div>
                 
-                <button type="submit" class="btn">Отправить</button>
+                <button type="submit" class="btn">Send Message</button>
             </form>
         </div>
 
@@ -472,8 +478,8 @@
 </div>
 
 <!-- Подключение внешних файлов скриптов -->
-<script src="../js/modal.js"></script>
-<script src="../js/contact.js"></script>
+<script src="js/modal.js"></script>
+<script src="js/contact.js"></script>
 <script>
     // Инициализируем модалку и форму сразу после загрузки DOM
     document.addEventListener('DOMContentLoaded', () => {
