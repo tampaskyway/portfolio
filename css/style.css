@@ -975,34 +975,52 @@ nav .social-icons a:hover {
 
     /* 2. Оптимизация навигации и включение гамбургера */
     .site-header {
-        padding: 15px 5% !important;
+        padding: 12px 5% !important; /* Сделали шапку аккуратной по высоте */
         position: fixed;
     }
 
-    /* ИСПРАВЛЕНО: Главное меню навигации сбрасывает компьютерные флексы */
+    /* ИСПРАВЛЕНО: Меню навигации теперь держит Языки и Бургер строго в один горизонтальный ряд */
     .site-header .nav-menu {
         display: flex !important;
+        flex-direction: row !important; /* Элементы идут слева направо */
         align-items: center !important;
         justify-content: flex-end !important;
+        gap: 15px !important; /* Отступ между языками и бургером */
         width: auto;
-        position: static;
+        position: relative;
     }
 
-    /* Насильно активируем кнопку из 3 полосок и жестко фиксируем её в углу */
+    /* 🔥 ИСПРАВЛЕНО: Переключатель языков теперь ВСЕГДА на виду в шапке слева от бургера */
+    .lang-switcher {
+        display: inline-flex !important;
+        justify-content: center !important;
+        margin-left: 0 !important;
+        margin-top: 0 !important; /* Сбросили старый компьютерный/мобильный отступ сверху */
+        margin-right: 5px !important; /* Легкий отступ до кнопочки-гамбургера */
+        font-size: 0.95rem !important;
+        z-index: 1002 !important;
+    }
+
+    /* Скрываем вертикальный разделитель на смартфонах, чтобы освободить место */
+    .header-divider {
+        display: none !important;
+    }
+
+    /* Активируем кнопку из 3 полосок в общем горизонтальном потоке шапки */
     .menu-toggle {
         display: flex !important;
         flex-direction: column !important;
         justify-content: space-between !important;
-        width: 30px !important;
-        height: 21px !important;
+        width: 28px !important;
+        height: 19px !important;
         background: transparent !important;
         border: none !important;
         cursor: pointer !important;
         padding: 0 !important;
-        position: absolute;
-        right: 5%;
-        top: 50%;
-        transform: translateY(-50%);
+        position: relative !important; /* Убрали сложный absolute */
+        right: auto !important;
+        top: auto !important;
+        transform: none !important;
         z-index: 1002 !important;
     }
 
@@ -1017,11 +1035,11 @@ nav .social-icons a:hover {
     }
 
     /* Трансформация бургера в аккуратный крестик */
-    .menu-toggle.active span:nth-child(1) { transform: translateY(9px) rotate(45deg) !important; }
+    .menu-toggle.active span:nth-child(1) { transform: translateY(8px) rotate(45deg) !important; }
     .menu-toggle.active span:nth-child(2) { opacity: 0 !important; }
-    .menu-toggle.active span:nth-child(3) { transform: translateY(-9px) rotate(-45deg) !important; }
+    .menu-toggle.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg) !important; }
 
-    /* Прячем горизонтальное меню, превращая его в выпадающий блок */
+    /* Прячем горизонтальное меню, превращая его в выпадающий блок со ссылками */
     .nav-links-wrapper {
         position: absolute !important;
         top: 100% !important;
@@ -1033,7 +1051,7 @@ nav .social-icons a:hover {
         flex-direction: column !important;
         align-items: center !important;
         gap: 20px !important;
-        padding: 30px 0 15px 0 !important; /* Настроили нижний отступ */
+        padding: 25px 0 !important; /* Настроили аккуратные чистые отступы */
         border-bottom: 1px solid var(--border-color) !important;
         
         /* Логика анимации схлопывания */
@@ -1044,9 +1062,9 @@ nav .social-icons a:hover {
         z-index: 1000 !important;
     }
 
-    /* Класс, который навесит JS при клике на бургер */
+    /* Класс, который навесит JS при клике на бургер (высота рассчитана ровно на 6 ссылок) */
     .nav-links-wrapper.open {
-        max-height: 350px !important; /* Высота оптимизирована строго под ссылки */
+        max-height: 310px !important; 
         opacity: 1 !important;
     }
 
@@ -1054,23 +1072,8 @@ nav .social-icons a:hover {
         font-size: 1.15rem !important;
         width: 100% !important;
         text-align: center !important;
-        padding: 5px 0 !important;
+        padding: 4px 0 !important;
         margin-left: 0 !important;
-    }
-
-    /* 🔥 ИСПРАВЛЕНО: Скрываем вертикальный разделитель на смартфонах, чтобы он не висел в углу */
-    .header-divider {
-        display: none !important;
-    }
-
-    /* 🔥 ДОБАВЛЕНО: Перевод кнопок переключения языков строго вниз по центру */
-    .lang-switcher {
-        display: flex !important;
-        justify-content: center !important;
-        margin-left: 0 !important;
-        margin-top: 15px !important; /* Аккуратный отступ от ссылок сверху */
-        width: 100% !important;
-        z-index: 1001 !important;
     }
 
     /* Скрываем иконки соцсетей в мобильной шапке */
