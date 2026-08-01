@@ -988,14 +988,14 @@ nav .social-icons a:hover {
     }
 
     /* Главный контейнер навигации (для кнопок) */
-    .site-header .nav-menu {
+     .site-header .nav-menu {
         display: flex !important;
         flex-direction: row !important;
         align-items: center !important;
         justify-content: flex-end !important;
-        gap: 0 !important;
         width: auto !important;
-        position: static !important; /* 🔥 КРИТИЧНО: отвязываем абсолютное меню от этого контейнера */
+        height: auto !important; /* 🔥 Снимаем ограничения по высоте */
+        position: static !important;
     }
 
     /* Кнопки языков всегда на виду с надежным зазором до бургера */
@@ -1049,37 +1049,42 @@ nav .social-icons a:hover {
     /* 🔥 ИСПРАВЛЕНО: Выпадающий блок теперь привязан к краям самого экрана (left: 0, width: 100%) */
     .nav-links-wrapper {
         position: absolute !important;
-        top: 100% !important; /* Откроется ровно под нижней границей шапки */
-        left: 0 !important;    /* Намертво прижимаем к левому краю экрана телефона */
-        width: 100vw !important; /* Растягиваем строго на 100% ширины мобильного дисплея */
-        background-color: rgba(252, 251, 250, 0.98) !important; 
+        top: 100% !important; /* Выпадает ровно под шапкой */
+        left: 0 !important;
+        width: 100vw !important;
+        background-color: rgba(252, 251, 250, 0.98) !important;
         backdrop-filter: blur(10px) !important;
+        -webkit-backdrop-filter: blur(10px) !important;
+        
         display: flex !important;
         flex-direction: column !important;
         align-items: center !important;
-        gap: 20px !important;
-        padding: 25px 0 !important; 
+        
+        /* 🔥 МАКСИМАЛЬНАЯ КОМПАКТНОСТЬ: сжимаем зазоры до минимума */
+        gap: 12px !important; 
+        padding: 20px 0 !important; 
         border-bottom: 1px solid var(--border-color) !important;
         
-        /* Логика анимации схлопывания */
-        max-height: 0 !important;
+        /* Логика скрытия */
+        display: none !important; /* По умолчанию полностью выключаем блок из верстки */
         opacity: 0 !important;
-        overflow: hidden !important;
-        transition: max-height 0.4s ease, opacity 0.3s ease !important;
+        transition: opacity 0.25s ease-in-out !important;
         z-index: 1000 !important;
     }
 
     .nav-links-wrapper.open {
-        max-height: 400px !important; 
+        display: flex !important; /* Включаем отображение */
         opacity: 1 !important;
+        height: auto !important; /* Меню само подстроится под размер всех 6 ссылок */
     }
 
     .nav-links-wrapper .nav-link {
-        font-size: 1.15rem !important;
+        font-size: 1.1rem !important;
         width: 100% !important;
         text-align: center !important;
         padding: 4px 0 !important;
         margin-left: 0 !important;
+        line-height: 1.2 !important;
     }
 
     /* Скрываем иконки соцсетей в мобильной шапке */
