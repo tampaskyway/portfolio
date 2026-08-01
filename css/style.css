@@ -978,30 +978,33 @@ nav .social-icons a:hover {
         padding: 12px 5% !important;
         display: flex !important;
         flex-direction: row !important;
-        justify-content: space-between !important; /* Логотип слева, меню справа */
+        justify-content: space-between !important; /* Логотип строго слева, меню строго справа */
         align-items: center !important;
         position: fixed;
+        width: 100% !important;
+        left: 0 !important;
+        top: 0 !important;
     }
 
-    /* Главный контейнер навигации на смартфонах */
+    /* Главный контейнер навигации (для кнопок) */
     .site-header .nav-menu {
         display: flex !important;
-        flex-direction: row !important; /* Строго в одну линию */
+        flex-direction: row !important;
         align-items: center !important;
         justify-content: flex-end !important;
-        gap: 0 !important; /* Сбрасываем общие отступы, настроим их индивидуально */
+        gap: 0 !important;
         width: auto !important;
-        position: static !important;
+        position: static !important; /* 🔥 КРИТИЧНО: отвязываем абсолютное меню от этого контейнера */
     }
 
-    /* 🔥 ИСПРАВЛЕНО: Кнопки языков теперь имеют жесткий отступ от бургера и не налезут на него */
+    /* Кнопки языков всегда на виду с надежным зазором до бургера */
     .lang-switcher {
         display: inline-flex !important;
         align-items: center !important;
         justify-content: center !important;
-        margin-left: auto !important; /* Авто-выталкивание */
+        margin-left: 0 !important;
         margin-top: 0 !important; 
-        margin-right: 20px !important; /* 🔥 НАДЕЖНЫЙ ЗАЗОР: 20 пикселей свободного места до бургера */
+        margin-right: 20px !important; /* Фиксированный зазор до бургера */
         font-size: 0.95rem !important;
         z-index: 1002 !important;
     }
@@ -1011,7 +1014,7 @@ nav .social-icons a:hover {
         display: none !important;
     }
 
-    /* Кнопка гамбургера стоит замыкающей в ряду */
+    /* Кнопка гамбургера */
     .menu-toggle {
         display: flex !important;
         flex-direction: column !important;
@@ -1042,12 +1045,12 @@ nav .social-icons a:hover {
     .menu-toggle.active span:nth-child(2) { opacity: 0 !important; }
     .menu-toggle.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg) !important; }
 
-    /* Выпадающий блок навигации (только 6 ссылок) */
+    /* 🔥 ИСПРАВЛЕНО: Выпадающий блок теперь привязан к краям самого экрана (left: 0, width: 100%) */
     .nav-links-wrapper {
         position: absolute !important;
-        top: 100% !important;
-        left: 0 !important;
-        width: 100% !important;
+        top: 100% !important; /* Откроется ровно под нижней границей шапки */
+        left: 0 !important;    /* Намертво прижимаем к левому краю экрана телефона */
+        width: 100vw !important; /* Растягиваем строго на 100% ширины мобильного дисплея */
         background-color: rgba(252, 251, 250, 0.98) !important; 
         backdrop-filter: blur(10px) !important;
         display: flex !important;
@@ -1057,6 +1060,7 @@ nav .social-icons a:hover {
         padding: 25px 0 !important; 
         border-bottom: 1px solid var(--border-color) !important;
         
+        /* Логика анимации схлопывания */
         max-height: 0 !important;
         opacity: 0 !important;
         overflow: hidden !important;
@@ -1131,6 +1135,7 @@ nav .social-icons a:hover {
         font-size: 16px !important;
     }
 }
+
 
 /* ==========================================================================
    X. ПОДВАЛ САЙТА (FOOTER)
