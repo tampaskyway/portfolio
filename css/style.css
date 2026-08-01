@@ -859,8 +859,8 @@ nav .social-icons a:hover {
 
     /* Класс открытия меню через JavaScript */
     .nav-links-wrapper.open {
-        max-height: 380px;
-        opacity: 1;
+    max-height: 420px !important; /* Увеличено с 350px, чтобы языки точно влезли на экранах любых телефонов */
+    opacity: 1 !important;
     }
 
     .nav-links-wrapper .nav-link {
@@ -976,9 +976,19 @@ nav .social-icons a:hover {
     /* 2. Оптимизация навигации и включение гамбургера */
     .site-header {
         padding: 15px 5% !important;
+        position: fixed;
     }
 
-    /* Насильно активируем кнопку из 3 полосок */
+    /* ИСПРАВЛЕНО: Главное меню навигации сбрасывает компьютерные флексы */
+    .site-header .nav-menu {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: flex-end !important;
+        width: auto;
+        position: static;
+    }
+
+    /* Насильно активируем кнопку из 3 полосок и жестко фиксируем её в углу */
     .menu-toggle {
         display: flex !important;
         flex-direction: column !important;
@@ -989,6 +999,10 @@ nav .social-icons a:hover {
         border: none !important;
         cursor: pointer !important;
         padding: 0 !important;
+        position: absolute;
+        right: 5%;
+        top: 50%;
+        transform: translateY(-50%);
         z-index: 1002 !important;
     }
 
@@ -1019,7 +1033,7 @@ nav .social-icons a:hover {
         flex-direction: column !important;
         align-items: center !important;
         gap: 20px !important;
-        padding: 30px 0 !important;
+        padding: 30px 0 15px 0 !important; /* Настроили нижний отступ */
         border-bottom: 1px solid var(--border-color) !important;
         
         /* Логика анимации схлопывания */
@@ -1032,7 +1046,7 @@ nav .social-icons a:hover {
 
     /* Класс, который навесит JS при клике на бургер */
     .nav-links-wrapper.open {
-        max-height: 400px !important;
+        max-height: 350px !important; /* Высота оптимизирована строго под ссылки */
         opacity: 1 !important;
     }
 
@@ -1042,6 +1056,21 @@ nav .social-icons a:hover {
         text-align: center !important;
         padding: 5px 0 !important;
         margin-left: 0 !important;
+    }
+
+    /* 🔥 ИСПРАВЛЕНО: Скрываем вертикальный разделитель на смартфонах, чтобы он не висел в углу */
+    .header-divider {
+        display: none !important;
+    }
+
+    /* 🔥 ДОБАВЛЕНО: Перевод кнопок переключения языков строго вниз по центру */
+    .lang-switcher {
+        display: flex !important;
+        justify-content: center !important;
+        margin-left: 0 !important;
+        margin-top: 15px !important; /* Аккуратный отступ от ссылок сверху */
+        width: 100% !important;
+        z-index: 1001 !important;
     }
 
     /* Скрываем иконки соцсетей в мобильной шапке */
@@ -1094,8 +1123,7 @@ nav .social-icons a:hover {
         border-radius: 16px !important;
     }
     
-    .contact-section input, 
-    .contact-section textarea {
+    .contact-section input, .contact-section textarea {
         font-size: 16px !important;
     }
 }
