@@ -220,7 +220,7 @@ nav .social-icons a:hover {
     text-align: center;
     min-height: 100vh;
     padding: 0 20px;
-    scroll-margin-top: 90px !important;
+    scroll-margin-top: 80px !important;
     /* Фоновая картинка с легким затемнением для читаемости текста */
     background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../images/wall.webp') no-repeat center center / cover;
     
@@ -879,7 +879,7 @@ nav .social-icons a:hover {
     /* Адаптация секций */
     section {
         padding: 60px 5% !important; /* Снижаем гигантские компьютерные отступы */
-        scroll-margin-top: 90px !important;
+        scroll-margin-top: 80px !important;
     }
 
     section h2 {
