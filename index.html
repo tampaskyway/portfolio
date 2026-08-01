@@ -28,14 +28,7 @@
     </div>
     
     <nav class="nav-menu" aria-label="Основная навигация">
-        <!-- Кнопка гамбургера (видна только на мобильных) -->
-        <button class="menu-toggle" id="menuToggle" aria-label="Открыть меню" aria-expanded="false">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-
-        <!-- Контейнер для ссылок, который прячется на смартфонах -->
+        <!-- Контейнер для ссылок (скрывается на мобильных) -->
         <div class="nav-links-wrapper" id="navLinksWrapper">
             <a href="#home" class="nav-link">Home</a>
             <a href="#gallery" class="nav-link">Gallery</a>
@@ -43,26 +36,33 @@
             <a href="#classes" class="nav-link">Classes</a>
             <a href="#about" class="nav-link">About</a>
             <a href="#contact" class="nav-link">Contact</a>
-            
-            <!-- Вертикальный разделитель (внутри враппера, чтобы на мобильных скрыться) -->
-            <span class="header-divider"></span>
+        </div>
 
-            <!-- Переключатель языков (внутри враппера, чтобы на мобильных упасть вниз по центру) -->
-            <div class="lang-switcher">
-                <a href="index.html" class="lang-btn active">EN</a>
-                <span class="lang-divider">|</span>
-                <a href="ru/index.html" class="lang-btn">RU</a>
-            </div>
-        </div> <!-- ИСПРАВЛЕНО: Теперь nav-links-wrapper закрывается здесь -->
+        <!-- ИСПРАВЛЕНО: Разделитель и Языки вынесены НАРУЖУ — они всегда видны на виду -->
+        <span class="header-divider"></span>
 
-        <!-- Иконки соцсетей (лежат отдельно, чтобы на ПК отображаться справа, а на мобильных скрываться) -->
+        <div class="lang-switcher">
+            <a href="index.html" class="lang-btn active">EN</a>
+            <span class="lang-divider">|</span>
+            <a href="ru/index.html" class="lang-btn">RU</a>
+        </div>
+
+        <!-- Иконки соцсетей -->
         <span class="social-icons">
-            <a href="https://instagram.com/art.vladilena" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://instagram.com.art.vladilena" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
             <a href="https://facebook.com/vladkamsk/" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
             <a href="https://youtube.com/@artistvladilena" target="_blank" rel="noopener" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
         </span>
+
+        <!-- Кнопка гамбургера (стоит в самом конце, чтобы на телефонах быть справа от языков) -->
+        <button class="menu-toggle" id="menuToggle" aria-label="Открыть меню" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
     </nav>
 </header>
+
 
     <!-- Главный смысловой блок сайта -->
     <main>
