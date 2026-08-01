@@ -94,7 +94,47 @@ section h2::after {
     z-index: 1000;
     border-bottom: 1px solid var(--border-color);
 }
+/* Главный вертикальный разделитель в шапке */
+.header-divider {
+    display: inline-block;
+    width: 1px;                /* Толщина линии */
+    height: 20px;               /* Высота линии */
+    background-color: var(--border-color); /* Используем цвет границ из ваших переменных */
+    margin-left: 25px;          /* Отступ от последней ссылки (Contact) */
+    opacity: 0.7;
+}
+/* Переключатель языков в шапке */
+.lang-switcher {
+    display: inline-flex;
+    align-items: center;
+    margin-left: 25px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem;
+}
 
+.lang-btn {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.lang-btn:hover {
+    color: var(--accent-color);
+}
+
+/* Стили для активного (выбранного) языка */
+.lang-btn.active {
+    color: var(--text-main);
+    font-weight: 700;
+    pointer-events: none; /* Отключает кликабельность по уже выбранному языку */
+}
+
+.lang-divider {
+    color: var(--border-color);
+    margin: 0 8px;
+    font-size: 0.8rem;
+}
 .logo img {
     height: 60px;
     width: auto;
@@ -750,12 +790,23 @@ nav .social-icons a:hover {
         max-width: 100%;
         padding: 30px 20px !important;
     }
+    /* На смартфонах вертикальная линия превратится в горизонтальную */
+    .header-divider {
+        width: 40px;            /* Ширина линии на мобильном */
+        height: 1px;            /* Толщина линии на мобильном */
+        margin: 15px 0 5px 0;   /* Отступы сверху и снизу в выпадающем меню */
+        background-color: rgba(0, 0, 0, 0.1); /* Мягкий цвет для мобильного меню */
+    }
     /* Адаптация шапки сайта */
     .site-header {
         padding: 15px 5%;
         position: fixed;
     }
-
+    /* АДАПТИВНОСТЬ: Настройка для мобильного меню гамбургера */
+    .lang-switcher {
+        margin-left: 0;
+        margin-top: 10px;
+    }
     /* ВКЛЮЧАЕМ И ПРАВИЛЬНО ПОЗИЦИОНИРУЕМ БУРГЕР-КНОПКУ */
     .menu-toggle {
         display: flex !important;
