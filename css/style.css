@@ -859,7 +859,7 @@ nav .social-icons a:hover {
 
     /* Класс открытия меню через JavaScript */
     .nav-links-wrapper.open {
-    max-height: 380px !important; /* Увеличено с 350px, чтобы языки точно влезли на экранах любых телефонов */
+    max-height: 450px !important; /* Увеличено с 350px, чтобы языки точно влезли на экранах любых телефонов */
     opacity: 1 !important;
     }
 
