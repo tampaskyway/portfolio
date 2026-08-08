@@ -334,7 +334,13 @@ nav .social-icons a:hover {
     font-weight: 600; 
     text-transform: uppercase; 
 } 
-
+.order-notice {
+  margin-top: 8px;          /* Отступ сверху от кнопки статуса */
+  font-size: 0.85rem;       /* Аккуратный, чуть уменьшенный шрифт */
+  color: #666666;           /* Мягкий серый цвет, чтобы не отвлекать внимание */
+  font-style: italic;       /* Курсивное начертание для стиля */
+  line-height: 1.4;
+}
 .status-available { 
     background: rgba(255, 0, 127, 0.06); 
     color: var(--accent-color); 
