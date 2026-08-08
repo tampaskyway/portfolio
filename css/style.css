@@ -299,12 +299,13 @@ nav .social-icons a:hover {
   transform: translateY(0);
 }
 
-.art-img-wrapper { 
-    width: 100%; 
-    height: 380px; 
-    overflow: hidden; 
-    background: #f0f0f0; 
-} 
+.art-img-wrapper {
+  width: 100%;
+  height: 380px;
+  overflow: hidden;
+  background: #f0f0f0;
+  position: relative; /* Обязательно: удерживает плашку внутри контейнера */
+}
 
 .art-card img { 
     width: 100%; 
@@ -353,6 +354,23 @@ nav .social-icons a:hover {
     color: #888; 
     border: 1px solid #e0e0e0; 
 } 
+.sold-badge {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-10deg); /* Центрирует и наклоняет */
+  background: rgba(0, 0, 0, 0.75); /* Темный стильный фон */
+  color: #ffffff;
+  padding: 10px 24px;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+  pointer-events: none; /* Пропускает клики сквозь себя на карточку */
+  z-index: 2;
+}
 /* ==========================================================================
    5. ВЫСТАВКИ
    ========================================================================== */
