@@ -358,17 +358,17 @@ nav .social-icons a:hover {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%) rotate(-10deg); /* Центрирует и наклоняет */
-  background: rgba(0, 0, 0, 0.75); /* Темный стильный фон */
-  color: #ffffff;
-  padding: 10px 24px;
-  font-size: 14px;
-  font-weight: 700;
+  transform: translate(-50%, -50%) rotate(-10deg);
+  background: rgba(0, 0, 0, 0.8); /* Чуть более плотный фон для контраста */
+  color: #ffffff; /* Чистый белый цвет */
+  padding: 12px 32px; /* Увеличили отступы, чтобы плашка подходила под крупный шрифт */
+  font-size: 18px; /* Крупный, заметный размер шрифта */
+  font-weight: 800; /* Максимально жирный шрифт */
   text-transform: uppercase;
-  letter-spacing: 2px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 4px;
-  pointer-events: none; /* Пропускает клики сквозь себя на карточку */
+  letter-spacing: 3px; /* Увеличили расстояние между буквами для стиля */
+  border: 2px solid #ffffff; /* Сделали белую рамку толще и ярче */
+  border-radius: 6px;
+  pointer-events: none;
   z-index: 2;
 }
 /* ==========================================================================
