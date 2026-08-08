@@ -356,10 +356,10 @@ nav .social-icons a:hover {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) rotate(-10deg);
-  background: rgba(0, 0, 0, 0.8); /* Чуть более плотный фон для контраста */
+  background: rgba(106, 27, 154, 0.9); /* Чуть более плотный фон для контраста */
   color: #ffffff; /* Чистый белый цвет */
   padding: 12px 32px; /* Увеличили отступы, чтобы плашка подходила под крупный шрифт */
-  font-size: 18px; /* Крупный, заметный размер шрифта */
+  font-size: 30px; /* Крупный, заметный размер шрифта */
   font-weight: 800; /* Максимально жирный шрифт */
   text-transform: uppercase;
   letter-spacing: 3px; /* Увеличили расстояние между буквами для стиля */
