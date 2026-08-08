@@ -274,32 +274,30 @@ nav .social-icons a:hover {
     gap: 40px; 
 } 
 
-.art-card { 
-    background: var(--card-bg); 
-    border-radius: 16px; 
-    overflow: hidden; 
-    border: 1px solid var(--border-color); 
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03); 
-    cursor: pointer; 
-    opacity: 0; 
-    transform: translateY(40px); 
-    transition: opacity 0.8s ease, transform 0.4s ease, box-shadow 0.4s ease; 
-} 
-.art-card:has(.status-sold) {
-  opacity: 0.6 !important;
-  filter: grayscale(20%);
-  /* Возвращаем transform в исходное состояние, чтобы карточка не улетала вниз */
-  transform: translateY(0) !important; 
+.art-card {
+  background: var(--card-bg);
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.4s ease, box-shadow 0.4s ease;
+}
+.art-card.reveal:has(.status-sold) {
+  opacity: 0.6;
+  filter: grayscale(20%); /* Слегка приглушает цвета */
 }
 .art-card.reveal { 
     opacity: 1; 
     transform: translateY(0); 
 } 
 
-.art-card.reveal:hover { 
-    transform: translateY(-10px); 
-    box-shadow: 0 20px 40px rgba(255, 0, 127, 0.1); 
-} 
+.art-card.reveal {
+  opacity: 1;
+  transform: translateY(0);
+}
 
 .art-img-wrapper { 
     width: 100%; 
