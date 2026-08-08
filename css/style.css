@@ -286,9 +286,10 @@ nav .social-icons a:hover {
     transition: opacity 0.8s ease, transform 0.4s ease, box-shadow 0.4s ease; 
 } 
 .art-card:has(.status-sold) {
-  opacity: 0.6;
-  filter: grayscale(20%); /* Дополнительно слегка приглушает цвета */
-  transition: opacity 0.3s ease; /* Плавный переход эффекта */
+  opacity: 0.6 !important;
+  filter: grayscale(20%);
+  /* Возвращаем transform в исходное состояние, чтобы карточка не улетала вниз */
+  transform: translateY(0) !important; 
 }
 .art-card.reveal { 
     opacity: 1; 
