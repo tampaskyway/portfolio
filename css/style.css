@@ -286,11 +286,6 @@ nav .social-icons a:hover {
   transition: opacity 0.8s ease, transform 0.4s ease, box-shadow 0.4s ease;
 }
 
-.art-card.reveal { 
-    opacity: 1; 
-    transform: translateY(0); 
-} 
-
 .art-card.reveal {
   opacity: 1;
   transform: translateY(0);
@@ -335,7 +330,7 @@ nav .social-icons a:hover {
     display: inline-block; 
     padding: 6px 14px; 
     border-radius: 20px; 
-    font-size: 0.8rem; 
+    font-size: 1.05rem; 
     font-weight: 600; 
     text-transform: uppercase; 
 } 
