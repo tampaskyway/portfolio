@@ -285,10 +285,7 @@ nav .social-icons a:hover {
   transform: translateY(40px);
   transition: opacity 0.8s ease, transform 0.4s ease, box-shadow 0.4s ease;
 }
-.art-card.reveal:has(.status-sold) {
-  opacity: 0.3;
-  filter: grayscale(20%); /* Слегка приглушает цвета */
-}
+
 .art-card.reveal { 
     opacity: 1; 
     transform: translateY(0); 
