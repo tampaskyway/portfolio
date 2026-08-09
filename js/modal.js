@@ -52,3 +52,4 @@ export function initModal() {
         }
     });
 }
+window.initModal = initModal;

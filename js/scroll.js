@@ -77,3 +77,5 @@ export function initScrollEffects() {
         aboutObserver.observe(aboutContainer);
     }
 }
+        window.initScrollEffects = initScrollEffects;
+        
